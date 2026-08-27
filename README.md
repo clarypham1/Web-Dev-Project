@@ -1,3 +1,7 @@
 # Our girlies project - CLOSIS
- saga was here
- ngan was here too
+There are 4 people in the closet at the moment
+- Saga
+- Ngan
+- Yamong
+- Clary
+
