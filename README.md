@@ -1,1 +1,1 @@
-# Our girlies project - ClOSIS
+# Our girlies project - CLOSIS
