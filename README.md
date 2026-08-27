@@ -1,1 +1,1 @@
-# demo-project
+# Our girlies project - ClOSIS
