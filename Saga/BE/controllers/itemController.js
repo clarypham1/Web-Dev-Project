@@ -3,10 +3,10 @@ const Item = require("../models/itemModel.js");
 const getAllItems = (req, res) => {
   res.json(Item.getAll());
 };
- 
-const createItem = (req, res) => { //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
-  const { name, info, image, price, duration, groupSize, rating, availability } = req.body;
-  const newItem = Item.addOne(name, info, image, price, duration, groupSize, rating, availability);
+
+const createItem = (req, res) => { 
+  const { name, type, image, colour, times_used, style, size, comfy_level, season } = req.body;
+  const newItem = Item.addOne(name, type, image, colour, times_used, style, size, comfy_level, season);
   if (newItem) {
     res.status(201).json(newItem);
   } else {
