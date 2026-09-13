@@ -1,8 +1,10 @@
 
 
 import {useState} from "react";
+import { Link } from "react-router-dom";
 import Header from "./Header";
 import Footer from "./Footer";
+
 
 function Login () {
 
@@ -51,12 +53,12 @@ function Login () {
                 <button type= "submit"> log in </button>
 
                 <p>
-                    <a herf= "/forgot-password"> forget your password?</a>
+                    <a href= "/forgot-password"> forget your password?</a>
                 </p>
 
                 <p>
                     Don't have an account? {" "}
-                    <a href="/signup">Sign up</a>
+                    <Link to="/signup">Sign up</Link>
                 </p>
 
             </form>
