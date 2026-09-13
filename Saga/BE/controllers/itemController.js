@@ -25,8 +25,8 @@ const createItem = async (req, res) => {
     res.status(201).json(newItem);
   }
   catch (error){
-    res.status(400).jsomn({
-      message: "Could not crateItem",
+    res.status(400).json({
+      message: "Could not createItem",
       error: error.message
     })
   }
@@ -49,7 +49,7 @@ const getItemById = async (req, res) => {
     }
   }
   catch (error) {
-    res.status(400).jsomn({
+    res.status(400).json({
       message: "Could not getItemById",
       error: error.message
     })
@@ -81,7 +81,7 @@ const updateItem = async (req, res) => {
   }
 
   catch (error) {
-    res.status(400).jsomn({
+    res.status(400).json({
       message: "Could not updateItem",
       error: error.message
     })
@@ -103,7 +103,7 @@ const deleteItem = async (req, res) => {
     }
 
     catch (error) {
-      res.status(400).jsomn({
+      res.status(400).json({
       message: "Could not deleteItem",
       error: error.message
     })

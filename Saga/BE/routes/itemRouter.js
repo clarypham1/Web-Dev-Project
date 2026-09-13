@@ -1,7 +1,8 @@
-const express = require('express')
+import express from "express";
 const router = express.Router()
-const auth = require('../middleware/auth.js')
-const {
+//const auth = require('../middleware/auth.js')
+
+import { //const to import
 
   getAllItems,
 
@@ -13,13 +14,13 @@ const {
 
   deleteItem,
 
-} = require('../controllers/itemController.js');
+} from "../controllers/itemController.js";
 
 // ROUTES
 // GET /items
 router.get("/", getAllItems);
 
-router.use(auth);
+//router.use(auth);
 
 // POST /items
 router.post("/", createItem);
@@ -33,4 +34,6 @@ router.put("/:itemId", updateItem);
 // DELETE /items/:itemId
 router.delete("/:itemId", deleteItem);
 
-module.exports = router
+export default router;
+
+//module.exports = router
