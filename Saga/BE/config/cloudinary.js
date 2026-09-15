@@ -1,0 +1,1 @@
+// this will be a setup fro the cloudinary (cloud photo storage and img background removal)
