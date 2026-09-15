@@ -24,7 +24,7 @@ function SignUp () {
 
         };
 
-        console.log (SignUpInformation);
+        console.log (SignUpInformation); 
     };
 
     return (
@@ -59,6 +59,8 @@ function SignUp () {
                     type = "password"
                     value = {password}
                     onChange = {(event) => setPassword (event.target.value)}
+                    minLength="8"
+                    required
 
                 />
                 <br />
@@ -69,15 +71,13 @@ function SignUp () {
                     type = "password"
                     value = {confirmpassword}
                     onChange = {(event) => setConfirmPassword (event.target.value)}
+                    minLength="8"
+                    required
 
                 />
                 <br />
 
                 <button type= "submit"> Sign Up </button>
-
-                {/* <p>
-                    <a herf= ""> Already have an account?</a>
-                </p> */}
 
                 <p>
                     Already have an account? {" "}
