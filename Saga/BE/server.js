@@ -3,6 +3,8 @@ import mongoose from "mongoose";
 import cors from "cors";
 import dotenv from "dotenv";
 import itemRouter from "./routes/itemRouter.js";
+import userRouter from "./routes/userRouter.js"
+
 console.log("ITEM ROUTER LOADED");
 
 dotenv.config();
@@ -16,6 +18,7 @@ app.use(express.json());
 
 
 app.use("/items", itemRouter)
+app.use("/users", userRouter)
 
 
 //test route
