@@ -1,0 +1,632 @@
+/* =========================
+   GENERAL
+========================= */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+
+  font-family:
+    "Segoe UI",
+    Tahoma,
+    Geneva,
+    Verdana,
+    sans-serif;
+
+  color: #4f3b42;
+
+  background-color: #fff8fa;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.header {
+  background-color: #fff8fa;
+
+  padding: 18px 20px;
+
+  position: sticky;
+  top: 0;
+
+  z-index: 100;
+
+  border-bottom: 1px solid #f0dfe4;
+}
+
+
+/* =========================
+   NAVIGATION
+========================= */
+
+.nav {
+  width: fit-content;
+
+  margin: 0 auto;
+
+  display: flex;
+
+  gap: 6px;
+
+  background-color: #f7e8ed;
+
+  padding: 7px;
+
+  border-radius: 999px;
+
+  box-shadow:
+    0 8px 20px
+    rgba(120, 80, 95, 0.08);
+}
+
+
+/* NAV BUTTONS */
+
+.nav button {
+  border: none;
+
+  background-color: transparent;
+
+  color: #5e3f49;
+
+  padding: 10px 22px;
+
+  border-radius: 999px;
+
+  cursor: pointer;
+
+  font-size: 14px;
+
+  font-weight: 500;
+
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+
+/* NAV HOVER */
+
+.nav button:hover {
+  background-color: #ead0d8;
+
+  color: #4f333c;
+
+  transform: translateY(-1px);
+}
+
+
+/* =========================
+   HERO SECTION
+========================= */
+
+.hero {
+  min-height: 470px;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  text-align: center;
+
+  padding: 60px 20px;
+
+  color: white;
+
+  background:
+    linear-gradient(
+      135deg,
+      #f2c8d4,
+      #e8afbf
+    );
+}
+
+
+/* HERO CONTENT */
+
+.hero-content {
+  width: 760px;
+
+  max-width: 100%;
+}
+
+
+/* MAIN TITLE */
+
+.hero-content h1 {
+  margin-top: 0;
+
+  margin-bottom: 32px;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: 48px;
+
+  line-height: 1.15;
+
+  color: white;
+
+  text-shadow:
+    0 4px 12px
+    rgba(90, 50, 65, 0.12);
+}
+
+
+/* =========================
+   PLACE BUTTONS
+========================= */
+
+.place-buttons {
+  display: flex;
+
+  justify-content: center;
+
+  flex-wrap: wrap;
+
+  gap: 12px;
+
+  margin-bottom: 22px;
+}
+
+
+/* SCHOOL / WORK / GYM / CAFE */
+
+.place-button {
+  border: none;
+
+  background-color: #fff3f6;
+
+  color: #5a3944;
+
+  padding: 11px 22px;
+
+  border-radius: 10px;
+
+  cursor: pointer;
+
+  font-size: 14px;
+
+  font-weight: 500;
+
+  box-shadow:
+    0 4px 10px
+    rgba(110, 70, 85, 0.08);
+
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+
+/* PLACE BUTTON HOVER */
+
+.place-button:hover {
+  background-color: #f4dce3;
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 7px 14px
+    rgba(110, 70, 85, 0.12);
+}
+
+
+/* SELECTED PLACE */
+
+.place-button.active {
+  background-color: #c98fa1;
+
+  color: white;
+
+  box-shadow:
+    0 7px 16px
+    rgba(120, 75, 90, 0.18);
+}
+
+
+/* =========================
+   CUSTOM LOCATION INPUT
+========================= */
+
+.custom-input {
+  width: 320px;
+
+  max-width: 92%;
+
+  padding: 13px 16px;
+
+  border: 1px solid #ead8de;
+
+  border-radius: 10px;
+
+  outline: none;
+
+  background-color: white;
+
+  color: #5d4b51;
+
+  font-size: 14px;
+
+  box-shadow:
+    0 7px 18px
+    rgba(110, 70, 85, 0.09);
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+
+.custom-input:focus {
+  border-color: #c98fa1;
+
+  box-shadow:
+    0 0 0 4px
+    rgba(201, 143, 161, 0.13);
+}
+
+
+.custom-input::placeholder {
+  color: #9c8c91;
+}
+
+
+/* SELECTED TEXT */
+
+.choice-text {
+  margin-top: 17px;
+
+  color: white;
+
+  font-size: 15px;
+
+  font-weight: 500;
+}
+
+
+/* =========================
+   GENERAL SECTION
+========================= */
+
+.section {
+  padding: 85px 8%;
+}
+
+
+/* =========================
+   TWO COLUMN LAYOUT
+========================= */
+
+.two-columns {
+  display: grid;
+
+  grid-template-columns:
+    1fr 1fr;
+
+  gap: 60px;
+
+  align-items: center;
+}
+
+
+/* =========================
+   SECTION TITLE
+========================= */
+
+.section h2 {
+  margin-top: 0;
+
+  margin-bottom: 18px;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: 36px;
+
+  line-height: 1.2;
+
+  color: #a85262;
+}
+
+
+/* =========================
+   SECTION TEXT
+========================= */
+
+.section p {
+  max-width: 500px;
+
+  margin-bottom: 24px;
+
+  color: #74676c;
+
+  font-size: 16px;
+
+  line-height: 1.7;
+}
+
+
+/* =========================
+   SMALL INPUT
+========================= */
+
+.small-input {
+  width: 280px;
+
+  max-width: 100%;
+
+  padding: 13px 15px;
+
+  border: 1px solid #d8c6cc;
+
+  border-radius: 10px;
+
+  outline: none;
+
+  background-color: white;
+
+  color: #55464b;
+
+  font-size: 14px;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+
+.small-input:focus {
+  border-color: #c98fa1;
+
+  box-shadow:
+    0 0 0 4px
+    rgba(201, 143, 161, 0.12);
+}
+
+
+/* =========================
+   IMAGE PLACEHOLDER
+========================= */
+
+.placeholder {
+  width: 100%;
+
+  min-height: 280px;
+
+  border-radius: 24px;
+
+  box-shadow:
+    0 18px 35px
+    rgba(150, 100, 120, 0.12);
+}
+
+
+/* PLACEHOLDER ONE */
+
+.placeholder-one {
+  background:
+    radial-gradient(
+      circle at center,
+      #ef8dbc 0%,
+      #ebb6cf 50%,
+      #f8edf3 100%
+    );
+}
+
+
+/* PLACEHOLDER TWO */
+
+.placeholder-two {
+  background:
+    linear-gradient(
+      135deg,
+      #d8c9ed,
+      #f0b7d4
+    );
+}
+
+
+/* =========================
+   LIGHT SECTION
+========================= */
+
+.light {
+  background-color: #fcf3f6;
+}
+
+
+/* =========================
+   GENERATE BUTTON
+========================= */
+
+.generate-button {
+  border: none;
+
+  background-color: #e8c3ce;
+
+  color: #5b3d47;
+
+  padding: 13px 22px;
+
+  border-radius: 10px;
+
+  cursor: pointer;
+
+  font-size: 14px;
+
+  font-weight: 600;
+
+  box-shadow:
+    0 7px 16px
+    rgba(150, 100, 120, 0.11);
+
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+
+.generate-button:hover {
+  background-color: #dcaabd;
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 10px 20px
+    rgba(150, 100, 120, 0.15);
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  gap: 40px;
+
+  padding: 50px 8%;
+
+  background-color: #fffafb;
+
+  border-top: 1px solid #f0dfe4;
+}
+
+
+/* FOOTER TITLES */
+
+.footer h3 {
+  margin-top: 0;
+
+  margin-bottom: 10px;
+
+  color: #523b43;
+
+  font-size: 17px;
+}
+
+
+/* FOOTER TEXT */
+
+.footer p {
+  margin: 0;
+
+  color: #817177;
+
+  font-size: 14px;
+
+  line-height: 1.6;
+}
+
+
+/* =========================
+   RESPONSIVE TABLET
+========================= */
+
+@media (max-width: 900px) {
+
+  .hero-content h1 {
+    font-size: 40px;
+  }
+
+
+  .section h2 {
+    font-size: 32px;
+  }
+
+
+  .two-columns {
+    grid-template-columns: 1fr;
+
+    gap: 40px;
+  }
+
+
+  .placeholder {
+    min-height: 250px;
+  }
+
+}
+
+
+/* =========================
+   RESPONSIVE MOBILE
+========================= */
+
+@media (max-width: 700px) {
+
+  .header {
+    padding: 14px 12px;
+  }
+
+
+  .nav {
+    flex-wrap: wrap;
+
+    justify-content: center;
+  }
+
+
+  .nav button {
+    padding: 9px 16px;
+  }
+
+
+  .hero {
+    min-height: 400px;
+
+    padding: 60px 18px;
+  }
+
+
+  .hero-content h1 {
+    font-size: 34px;
+  }
+
+
+  .section {
+    padding: 65px 7%;
+  }
+
+
+  .section h2 {
+    font-size: 29px;
+  }
+
+
+  .section p {
+    font-size: 15px;
+  }
+
+
+  .footer {
+    grid-template-columns: 1fr;
+
+    gap: 30px;
+  }
+
+}

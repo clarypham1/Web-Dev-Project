@@ -1,0 +1,41 @@
+
+.site-footer {
+    padding: 40px 20px 20px;
+    background-color: whitesmoke; /* Matches your nav background preference, or change as needed */
+}
+
+.footer-columns {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto 40px auto;
+}
+
+.footer-col {
+    flex: 1;
+    max-width: 350px;
+    border-top: 1px solid gray;
+    padding-top: 15px;
+}
+
+.footer-col h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+.footer-col p {
+    color: #555;
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+.footer-bottom {
+    text-align: center;
+    border-top: 1px solid #ddd;
+    padding-top: 20px;
+    color: #666;
+    font-size: 0.9rem;
+}

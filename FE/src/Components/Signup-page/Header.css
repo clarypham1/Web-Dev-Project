@@ -1,0 +1,26 @@
+
+header {
+    padding: 20px 40px;
+}
+
+header h1 {
+    margin: 0;
+    text-align: center;
+}
+
+nav ul {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    gap: 30px;
+    padding: 20px;
+    margin: 20px auto;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid gray;
+    border-radius: 10px;
+    background-color: whitesmoke;
+    max-width: 800px;
+
+}
+
