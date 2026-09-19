@@ -1,0 +1,134 @@
+[
+  {
+    "name": "Black oversized T-shirt",
+    "type": "shirt",
+    "image": "black-oversized-shirt.jpg",
+    "colour": "black",
+    "times_used": 12,
+    "style": "alternative",
+    "size": 38,
+    "comfy_level": 5,
+    "season": "summer"
+  },
+  {
+    "name": "Blue straight-leg jeans",
+    "type": "pants",
+    "image": "blue-jeans.jpg",
+    "colour": "blue",
+    "times_used": 18,
+    "style": "casual",
+    "size": 38,
+    "comfy_level": 4,
+    "season": "all"
+  },
+  {
+    "name": "Grey hoodie",
+    "type": "hoodie",
+    "image": "grey-hoodie.jpg",
+    "colour": "grey",
+    "times_used": 25,
+    "style": "casual",
+    "size": 40,
+    "comfy_level": 5,
+    "season": "winter"
+  },
+  {
+    "name": "Red knit sweater",
+    "type": "sweater",
+    "image": "red-sweater.jpg",
+    "colour": "red",
+    "times_used": 7,
+    "style": "cozy",
+    "size": 38,
+    "comfy_level": 5,
+    "season": "winter"
+  },
+  {
+    "name": "Black leather jacket",
+    "type": "jacket",
+    "image": "black-leather-jacket.jpg",
+    "colour": "black",
+    "times_used": 9,
+    "style": "alternative",
+    "size": 38,
+    "comfy_level": 3,
+    "season": "autumn"
+  },
+  {
+    "name": "White button-up shirt",
+    "type": "shirt",
+    "image": "white-button-up.jpg",
+    "colour": "white",
+    "times_used": 4,
+    "style": "formal",
+    "size": 38,
+    "comfy_level": 3,
+    "season": "all"
+  },
+  {
+    "name": "Green cargo pants",
+    "type": "pants",
+    "image": "green-cargo-pants.jpg",
+    "colour": "green",
+    "times_used": 11,
+    "style": "streetwear",
+    "size": 40,
+    "comfy_level": 4,
+    "season": "all"
+  },
+  {
+    "name": "Cream knit cardigan",
+    "type": "cardigan",
+    "image": "cream-cardigan.jpg",
+    "colour": "cream",
+    "times_used": 15,
+    "style": "cozy",
+    "size": 38,
+    "comfy_level": 5,
+    "season": "autumn"
+  },
+  {
+    "name": "Black mini skirt",
+    "type": "skirt",
+    "image": "black-skirt.jpg",
+    "colour": "black",
+    "times_used": 6,
+    "style": "alternative",
+    "size": 38,
+    "comfy_level": 3,
+    "season": "summer"
+  },
+  {
+    "name": "Blue denim jacket",
+    "type": "jacket",
+    "image": "blue-denim-jacket.jpg",
+    "colour": "blue",
+    "times_used": 10,
+    "style": "casual",
+    "size": 40,
+    "comfy_level": 4,
+    "season": "spring"
+  },
+  {
+    "name": "Black turtleneck",
+    "type": "shirt",
+    "image": "black-turtleneck.jpg",
+    "colour": "black",
+    "times_used": 20,
+    "style": "minimalist",
+    "size": 38,
+    "comfy_level": 4,
+    "season": "winter"
+  },
+  {
+    "name": "Purple graphic T-shirt",
+    "type": "shirt",
+    "image": "purple-graphic-shirt.jpg",
+    "colour": "purple",
+    "times_used": 3,
+    "style": "streetwear",
+    "size": 40,
+    "comfy_level": 5,
+    "season": "summer"
+  }
+]

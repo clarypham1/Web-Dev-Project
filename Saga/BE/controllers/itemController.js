@@ -30,12 +30,14 @@ const createItem = async (req, res) => {
       error: error.message
     })
   }
+};
+
+
 /*    if (newItem) {
     res.status(201).json(newItem);    // i don't think this error part is necessary but will leave it for now
   } else {
     res.status(500).json({ message: "Failed to create item" });
   }*/
-};
 
 const getItemById = async (req, res) => {
   try {
