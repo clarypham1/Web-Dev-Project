@@ -1,63 +1,121 @@
-const User = require("../models/userModel");
+//const User = require("../models/userModel.js");
+import User from "../models/userModel.js";
 
-// GET /users
 const getAllUsers = async (req, res) => {
-  const users = await User.find({}).sort({ createdAt: -1 });
-  res.status(200).json(users);
+  try {
+    const users = await User.find();
+    res.json(users);
+  } catch (error) {
+    res.status(500).json({
+
+      message: "Could not getAllUsers",
+      error: error.message
+    })
+  } 
+  
 };
 
-// POST /users
-const createUser = async (req, res) => {
-  const newUser = await User.create({ ...req.body });
-  res.status(201).json(newUser);
+
+const createUser = async (req, res) => { 
+  try {
+    const { email, name, username, password } = req.body;
+    const newUser = await User.create({ email, name, username, password });
+
+    //then we senddd to postman/fe
+    res.status(201).json(newUser);
+  }
+  catch (error){
+    res.status(400).json({
+      message: "Could not createUser",
+      error: error.message
+    })
+  }
 };
 
-// GET /users/:userId
+
+/*    if (newUser) {
+    res.status(201).json(newUser);    // i don't think this error part is necessary but will leave it for now
+  } else {
+    res.status(500).json({ message: "Failed to create user" });
+  }*/
+
 const getUserById = async (req, res) => {
-  const { userId } = req.params;
-
-  const user = await User.findById(userId);
-  if (user) {
-    res.status(200).json(user);
-  } else {
-    res.status(404).json({ message: "User not found" });
+  try {
+    const userId = req.params.userId;
+    const user = await User.findById(userId);
+    
+    if (user) {
+      res.json(user);
+    } else {
+      res.status(404).json({ message: "User not found" });
+    }
   }
+  catch (error) {
+    res.status(400).json({
+      message: "Could not getUserById",
+      error: error.message
+    })
+  }
+  
 };
 
-// PUT /users/:userId
 const updateUser = async (req, res) => {
-  const { userId } = req.params;
+  
+  try {
+    const userId = req.params.userId;
+    const updatedData = req.body;
+    
+    //findbyidandupdate is mongooses own function
+    const updatedUser = await User.findByIdAndUpdate(
+    userId,
+    updatedData,
+    {
+      new: true,
+      runValidators: true
+    }
+    );
 
-  const updatedUser = await User.findOneAndUpdate(
-    { _id: userId },
-    { ...req.body },
-    { new: true }
-  );
-  if (updatedUser) {
-    res.status(200).json(updatedUser);
-  } else {
-    res.status(404).json({ message: "User not found" });
+    if (updatedUser) {
+      res.json(updatedUser);
+    } else {
+      res.status(404).json({ message: "User not found" });
+    }
   }
+
+  catch (error) {
+    res.status(400).json({
+      message: "Could not updateUser",
+      error: error.message
+    })
+  }
+  
 };
 
-// DELETE /users/:userId
 const deleteUser = async (req, res) => {
-  const { userId } = req.params;
+  try {
+    const userId = req.params.userId;
 
-  const deletedUser = await User.findOneAndDelete({ _id: userId });
-  if (deletedUser) {
-    res.status(200).json({ message: "User deleted successfully" });
-  } else {
-    res.status(404).json({ message: "User not found" });
-  }
+    //once again mongoose built-in function:
+    const deletedUser = await User.findByIdAndDelete(userId);
+    if (deletedUser) { //if (we found and deleted user)
+      res.status(204).send();
+    } else {
+      res.status(404).json({ message: "User not found" });
+    }
+    }
+
+    catch (error) {
+      res.status(400).json({
+      message: "Could not deleteUser",
+      error: error.message
+    })
+    }
 };
 
-module.exports = {
+export {
   getAllUsers,
   getUserById,
   createUser,
   updateUser,
   deleteUser,
 };
-
-

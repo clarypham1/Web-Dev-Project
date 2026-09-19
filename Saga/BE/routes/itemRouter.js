@@ -3,17 +3,11 @@ const router = express.Router()
 //const auth = require('../middleware/auth.js')
 
 import { //const to import
-
   getAllItems,
-
   getItemById,
-
   createItem,
-
   updateItem,
-
   deleteItem,
-
 } from "../controllers/itemController.js";
 
 // ROUTES
