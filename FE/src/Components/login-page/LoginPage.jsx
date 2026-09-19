@@ -2,8 +2,8 @@
 
 import {useState} from "react";
 import { Link } from "react-router-dom";
-import Header from "./Header";
-import Footer from "./Footer";
+// import Header from "./Header";
+// import Footer from "./Footer";
 
 
 function Login () {
@@ -40,8 +40,6 @@ function Login () {
 
     return (
         <>
-        {/* header component */}
-        <Header />
         <div className = "log-in">
             <h3> Welcome your Closis! </h3>
 
@@ -95,8 +93,6 @@ function Login () {
             </form>
 
         </div>
-        {/* footer component */}
-        <Footer/> 
     </>
     );
 
