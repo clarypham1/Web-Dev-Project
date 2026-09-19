@@ -4,7 +4,7 @@ import {useState} from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 
-function Login () {
+function Login ({setIsLoggedIn}) {
 
     const navigate = useNavigate();
 
@@ -37,8 +37,12 @@ function Login () {
             return;
         }
 
+        setIsLoggedIn(true);
+
+        localStorage.setItem("isLoggedIn", "true");
+
         console.log (loginInformation); // show the login information in console
-        // navigate("wardrobe");
+        navigate("/start");
     };
 
     return (

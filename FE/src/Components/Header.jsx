@@ -1,8 +1,11 @@
+
 import {Link} from "react-router-dom";
-function Header(){
+import Profile from "./Profile/Profile.jsx";
+
+function Header({isLoggedIn}){
 
     return (
-        <header>
+        <header className="header">
             <h1>Closis</h1>
             <nav>
                 <ul>
@@ -26,6 +29,7 @@ function Header(){
                     </li>
                 </ul>
             </nav>
+            {isLoggedIn && <Profile />}
             <hr />
         </header>
     );
