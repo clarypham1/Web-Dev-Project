@@ -1,12 +1,12 @@
 
 
 import {useState} from "react";
-import { Link } from "react-router-dom";
-// import Header from "./Header";
-// import Footer from "./Footer";
+import { Link, useNavigate } from "react-router-dom";
 
 
 function Login () {
+
+    const navigate = useNavigate();
 
     //store email typed by user
     const [email, setEmail] = useState ("");
@@ -14,6 +14,8 @@ function Login () {
     const [password, setPassword] = useState ("");
     // store the error message (there is no error if it is empty)
     const [error, setError] = useState ("");
+
+
 
 
     const handleSubmit = (event) => {
@@ -36,6 +38,7 @@ function Login () {
         }
 
         console.log (loginInformation); // show the login information in console
+        // navigate("wardrobe");
     };
 
     return (
@@ -81,7 +84,9 @@ function Login () {
 
                 {/* link forget password  */}
                 <p>
-                    <a href= "/forgot-password"> forget your password?</a>
+                    <Link to="/forgot-password">
+                        Forgot your password?
+                    </Link>
                 </p>
                 
                 {/* link to the sign up page */}

@@ -1,4 +1,4 @@
-
+import {Link} from "react-router-dom";
 function Header(){
 
     return (
@@ -6,15 +6,27 @@ function Header(){
             <h1>Closis</h1>
             <nav>
                 <ul>
-                    <li><a href='#'>Home</a></li>
-                    <li><a href='#'>Wardrobe</a></li>
-                    <li><a href='#'>How</a></li>
-                    <li><a href='#'>History</a></li>
-                    <li><a href='#'>Our story</a></li>
-                    <li><a href='#'>About Us</a></li>
+                    <li>
+                        <Link to="/" >Home</Link>
+                    </li>
+                    <li>
+                        <Link to="/wardrobe" >Wardrobe</Link>
+                    </li>
+                    <li>
+                        <Link to="/How" >How</Link>
+                    </li>
+                    <li>
+                        <Link to="/History" >History</Link>
+                    </li>
+                    <li>
+                        <Link to="/Our Story" >Our Story</Link>
+                    </li>
+                    <li>
+                        <Link to="/About us" >About us</Link>
+                    </li>
                 </ul>
             </nav>
-            <hr></hr>
+            <hr />
         </header>
     );
 

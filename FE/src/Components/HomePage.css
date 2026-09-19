@@ -1,0 +1,43 @@
+
+.home-page {
+    font-family: Arial, sans-serif;
+    width: 800px;
+    height: 400px;
+    margin: 50px auto;
+    text-align: center;
+    border: 1px solid pink;
+    border-radius: 10px;
+    background-color: pink;
+
+}
+
+.home-page h1 {
+    font-size: 40px;
+    color:deeppink;
+    margin-bottom: 60px;
+    padding: 20px;
+
+}
+
+.home-page button {
+    padding: 10px 30px;
+    border: 1px solid pink;
+    border-radius: 10px;
+    background-color: deeppink;
+    color: black;
+    font-size: 18px;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.home-page p {
+    font-size: 30px;
+    color: hotpink;
+    padding: 20px;
+    margin-bottom: 50px;
+    font-family:Georgia, serif;
+    font-style: italic;
+}
+
+.home-page button:hover { 
+    background-color: #e8aaa2; }
