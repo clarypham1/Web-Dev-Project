@@ -1,12 +1,16 @@
 
 import "./StartPage.css";
+import Weather from "../Weather/Weather";
 
 function StartPage() {
     return (
         <main className="start-page">
 
             <section className="weather-section">
+
                 <h1>Where are you heading today?</h1>
+                
+                <Weather />
 
             </section>
 

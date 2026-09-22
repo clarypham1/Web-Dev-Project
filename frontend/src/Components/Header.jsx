@@ -2,7 +2,7 @@
 import {Link} from "react-router-dom";
 import Profile from "./Profile/Profile.jsx";
 
-function Header({isLoggedIn}){
+function Header({isLoggedIn, setIsLoggedIn}){
 
     return (
         <header className="header">
@@ -29,8 +29,12 @@ function Header({isLoggedIn}){
                     </li>
                 </ul>
             </nav>
-            {isLoggedIn && <Profile />}
+
+            {isLoggedIn && 
+            (<Profile setIsLoggedIn={setIsLoggedIn} />)}
+
             <hr />
+            
         </header>
     );
 
