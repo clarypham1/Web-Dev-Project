@@ -2,23 +2,23 @@
 import {useState} from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import Footer from "./Components/Footer.jsx";
-import Header from "./Components/Header.jsx";
+import Header from "./Components/Header/Header.jsx";
+import Footer from "./Components/Footer/Footer.jsx";
 
-import Login from './Components/login-page/LoginPage.jsx';
-import Signup from './Components/Signup-page/SignupPage.jsx';
-import HomePage from "./Components/HomePage.jsx";
-import ForgotPassword from "./Components/forgotpassword-page/ForgotPassword.jsx";
-import StartPage from "./Components/Start-Page/StartPage.jsx";
+import Login from './pages/login-page/LoginPage.jsx';
+import Signup from './pages/Signup-page/SignupPage.jsx';
+import HomePage from "./pages/Home/HomePage.jsx";
+import ForgotPassword from "./pages/forgotpassword-page/ForgotPassword.jsx";
+import StartPage from "./pages/Start-Page/StartPage.jsx";
 
 
-import "./Components/login-page/LoginPage.css";
-import "./Components/Signup-page/SignupPage.css";
-import "./Components/forgotpassword-page/ForgotPassword.css";
+import "./pages/login-page/LoginPage.css";
+import "./pages/Signup-page/SignupPage.css";
+import "./pages/forgotpassword-page/ForgotPassword.css";
 
-import "./Components/Footer.css";
-import "./Components/Header.css";
-import "./Components/HomePage.css";
+import "./Components/Footer/Footer.css";
+import "./Components/Header/Header.css";
+import "./pages/Home/HomePage.css";
 
 
 

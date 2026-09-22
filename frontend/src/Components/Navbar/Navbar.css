@@ -1,0 +1,16 @@
+
+.header nav {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+.navbar > * {
+    color: blue;
+}
+
+.header nav > *:hover {
+    color: deeppink;
+}
