@@ -1,0 +1,307 @@
+
+.body {
+    font-family: "Nunito", sans-serif;
+}
+
+h1, h2, h3 {
+    font-family: "Quicksand", sans-serif;
+}
+
+.how {
+    padding: 70px 40px 200px;
+    background-color: #fffaf9;
+
+    /* Important: prevents content from escaping */
+    overflow: hidden;
+}
+
+
+/* Introduction */
+.how-introduction {
+    max-width: 750px;
+    margin: 0 auto 80px;
+    text-align: center;
+}
+
+.how-introduction h1 {
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+
+.how-introduction p {
+    font-size: 20px;
+    line-height: 1.7;
+    color: #666;
+}
+
+.who-is-closis-for {
+    max-width: 1100px;
+    margin: 0 auto 100px;
+
+    text-align: center;
+}
+
+.who-is-closis-for > h2 {
+    font-size: 30px;
+    margin-bottom: 40px;
+   
+}
+
+
+/* Three cards */
+.user-types {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    padding: 10px;
+}
+
+
+/* Individual card */
+.user-type-card {
+    flex: 1;
+
+    max-width: 350px;
+    min-height: 190px;
+
+    padding: 20px;
+
+    background-color: white;
+
+    border-radius: 20px;
+
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    transition: transform 0.2s ease;
+}
+
+
+/* Card title */
+.user-type-card h3 {
+    margin-bottom: 15px;
+
+    font-size: 24px;
+}
+
+
+/* Card text */
+.user-type-card p {
+    margin: 0;
+
+    color: #666;
+
+    line-height: 1.6;
+    font-size: 20px;
+}
+
+
+/* Hover effect */
+.user-type-card:hover {
+    transform: translateY(-5px);
+}
+
+
+/* Circular cycle */
+.how-steps {
+    position: relative;
+
+    width: 800px;
+    height: 850px;
+
+    margin: 0 auto;
+}
+
+.how-steps > h2 {
+    text-align: left;
+
+    font-size: 30px;
+    font-weight: 600;
+
+    margin: 0 0 60px;
+
+}
+
+
+/* Each step */
+.how-step {
+    position: absolute;
+
+    width: 170px;
+    min-height: 150px;
+
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+
+
+/* Number circle */
+.how-step::before {
+    content: "";
+
+    width: 90px;
+    height: 90px;
+
+    border-radius: 50%;
+
+    background-color: #f5cac3;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 22px;
+    font-weight: 600;
+
+    margin-bottom: 15px;
+
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+
+/* Numbers */
+.how-step:nth-of-type(1)::before {
+    content: "01";
+}
+
+.how-step:nth-of-type(2)::before {
+    content: "02";
+}
+
+.how-step:nth-of-type(3)::before {
+    content: "03";
+}
+
+.how-step:nth-of-type(4)::before {
+    content: "04";
+}
+
+.how-step:nth-of-type(5)::before {
+    content: "05";
+}
+
+.how-step:nth-of-type(6)::before {
+    content: "06";
+}
+
+
+/* Titles */
+.how-step h2 {
+    margin: 0 0 8px;
+
+    font-size: 20px;
+    font-weight: 600;
+}
+
+
+/* Description */
+.how-step p {
+    margin: 0;
+
+    font-size: 16px;
+    line-height: 1.5;
+
+    color: #666;
+}
+
+.how-step:nth-of-type(1) {
+    top: 20px;
+    right: 300px;
+}
+/* .how-step:nth-child(1) {
+    top: 20px;
+    left: 300px;
+} */
+
+.how-step:nth-of-type(2) {
+    top: 130px;
+    right: 0;
+}
+
+.how-step:nth-of-type(3) {
+    bottom: -50px;
+    right: 30px;
+}
+
+.how-step:nth-of-type(4) {
+    bottom: -70px;
+    left: 265px;
+}
+
+.how-step:nth-of-type(5) {
+    bottom: 50px;
+    left: -30px;
+}
+
+.how-step:nth-of-type(6) {
+    top: 170px;
+    left: 0;
+}
+
+
+.how-step::after {
+    position: absolute;
+
+    content: "→";
+
+    font-size: 35px;
+    font-weight: bold;
+
+    color: #f5cac3;
+}
+
+
+/* 01 → 02 */
+.how-step:nth-of-type(1)::after {
+    right: -100px;
+    bottom: 100px;
+    transform: rotate(45deg);
+}
+
+
+/* 02 → 03 */
+.how-step:nth-of-type(2)::after {
+    right: 90px;
+    bottom: -50px;
+    transform: rotate(90deg);
+}
+
+
+/* 03 → 04 */
+.how-step:nth-of-type(3)::after {
+    left: -95px;
+    bottom: 20px;
+    transform: rotate(155deg);
+}
+
+
+/* 04 → 05 */
+.how-step:nth-of-type(4)::after {
+    left: -95px;
+    top: 140px;
+    transform: rotate(225deg);
+}
+
+
+/* 05 → 06 */
+.how-step:nth-of-type(5)::after {
+    left: 70px;
+    top: -80px;
+    transform: rotate(275deg);
+}
+
+
+/* 06 → 01 */
+.how-step:nth-of-type(6)::after {
+    right: -55px;
+    top: -20px;
+    transform: rotate(325deg);
+}

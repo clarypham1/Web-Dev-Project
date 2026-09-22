@@ -10,6 +10,7 @@ import Signup from './pages/Signup-page/SignupPage.jsx';
 import HomePage from "./pages/Home/HomePage.jsx";
 import ForgotPassword from "./pages/forgotpassword-page/ForgotPassword.jsx";
 import StartPage from "./pages/Start-Page/StartPage.jsx";
+import How from "./pages/How/How.jsx";
 
 
 import "./pages/login-page/LoginPage.css";
@@ -60,6 +61,11 @@ import "./pages/Home/HomePage.css";
                 <Route 
                     path="/forgot-password" 
                     element={<ForgotPassword />} 
+                />
+
+                <Route
+                    path="/how"
+                    element = {<How />}
                 />
 
             </Routes>
