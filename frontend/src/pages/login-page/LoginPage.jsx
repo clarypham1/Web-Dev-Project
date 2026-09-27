@@ -17,7 +17,7 @@ function Login ({setIsLoggedIn}) {
 
 
 
-
+    // remove this part later to connect backend and replace with localstorage
     const handleSubmit = (event) => {
         event.preventDefault (); // prevent the page form refreshing when the form is submitted
 

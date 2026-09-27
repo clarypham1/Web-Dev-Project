@@ -1,6 +1,6 @@
 
 import {useState} from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 import Header from "./Components/Header/Header.jsx";
 import Footer from "./Components/Footer/Footer.jsx";
@@ -9,8 +9,8 @@ import Login from './pages/login-page/LoginPage.jsx';
 import Signup from './pages/Signup-page/SignupPage.jsx';
 import HomePage from "./pages/Home/HomePage.jsx";
 import ForgotPassword from "./pages/forgotpassword-page/ForgotPassword.jsx";
-import StartPage from "./pages/Start-Page/StartPage.jsx";
 import How from "./pages/How/How.jsx";
+import History from "./pages/History/History.jsx";
 
 
 import "./pages/login-page/LoginPage.css";
@@ -20,14 +20,13 @@ import "./pages/forgotpassword-page/ForgotPassword.css";
 import "./Components/Footer/Footer.css";
 import "./Components/Header/Header.css";
 import "./pages/Home/HomePage.css";
+import "./App.css";
 
 
 
  function App() {
-
-    const [isLoggedIn, setIsLoggedIn] = useState (false);
-    // const [isLoggedIn, setIsLoggedIn] = useState (
-    //     localStorage.getItem("isLoggedIn") === "true");
+    const [isLoggedIn, setIsLoggedIn] = useState (
+        localStorage.getItem("isLoggedIn") === "true");
     return (
         <BrowserRouter>
 
@@ -35,40 +34,41 @@ import "./pages/Home/HomePage.css";
                 isLoggedIn={isLoggedIn}
                 setIsLoggedIn= {setIsLoggedIn}
             />
+            <div className = "app-content">
+                <Routes>
 
-            <Routes>
+                    <Route 
+                        path="/" 
+                        element = {<HomePage isLoggedIn={isLoggedIn} />} 
+                    />
 
-                <Route 
-                    path="/" 
-                    element = {<HomePage />} 
-                />
+                    <Route 
+                        path="/login" 
+                        element= {<Login setIsLoggedIn={setIsLoggedIn}/>}
+                    />
 
-                <Route 
-                    path="/login" 
-                    element= {<Login setIsLoggedIn={setIsLoggedIn}/>}
-                />
+                    <Route 
+                        path="/signup" 
+                        element={<Signup setIsLoggedIn={setIsLoggedIn} />} 
+                    />
 
-                <Route 
-                    path="/start" 
-                    element={<StartPage />} 
-                />
+                    <Route 
+                        path="/forgot-password" 
+                        element={<ForgotPassword />} 
+                    />
 
-                <Route 
-                    path="/signup" 
-                    element={<Signup />} 
-                />
+                    <Route
+                        path="/how"
+                        element = {<How />}
+                    />
 
-                <Route 
-                    path="/forgot-password" 
-                    element={<ForgotPassword />} 
-                />
+                    <Route
+                        path="/history"
+                        element = {isLoggedIn ? <History />: <Navigate to="/login"/>}
+                    />
 
-                <Route
-                    path="/how"
-                    element = {<How />}
-                />
-
-            </Routes>
+                </Routes>
+            </div>
 
             <Footer />
 

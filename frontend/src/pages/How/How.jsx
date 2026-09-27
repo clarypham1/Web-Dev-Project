@@ -1,7 +1,9 @@
 
 import "./How.css";
+import ClosisLogo from "../../assets/Closis_Logo.jpeg";
 
 function How() {
+    
     return (
         <main className="how">
 
@@ -14,36 +16,11 @@ function How() {
 
             </section>
 
-            <section className="who-is-closis-for">
-
-                <h2>Who is Closis for?</h2>
-
-                <div className="user-types">
-
-                    <div className="user-type-card">
-                        <h3> Busy Professionals</h3>
-
-                        <p>
-                            People who limited time who want to spend less time managing their outfits and more time focusing on their day.
-                        </p>
-
-                    </div>
-
-                    <div className="user-type-card">
-                        <h3>Large Wardrobes</h3>
-
-                        <p>
-                            People with lots of clothes and accessories who want to keep their wardrobe organised and make better use of what they already own.
-                        </p>
-
-                    </div>
-
-                </div>
-
-            </section>
-
             <section className="how-steps">
-                <h2> How to use? </h2>
+
+                <span className="how-logo">
+                    <img src={ClosisLogo} alt="Closis logo"/>
+                </span>
 
                 <div className="how-step">
                     <h2> 1. Create an account</h2>

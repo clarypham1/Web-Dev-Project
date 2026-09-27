@@ -1,6 +1,5 @@
 
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 import "./Profile.css";
 
@@ -9,8 +8,6 @@ function Profile({ setIsLoggedIn }) {
     const [profileMenu, setProfileMenu] = useState(false);
 
     const [confirmation, setConfirmation] = useState(null);
-
-    const navigate = useNavigate();
 
     const handleProfileClick = () => {
         setProfileMenu(!profileMenu);
@@ -48,11 +45,10 @@ function Profile({ setIsLoggedIn }) {
     const handleLogout = () => {
         localStorage.removeItem("isLoggedIn"); //remove login information
 
-        setIsLoggedIn(false); //change react authentication state
-
         setConfirmation(null);
-
-        navigate("/login"); // go to login page
+        setIsLoggedIn(false); //change react authentication state
+        window.location.replace("/");
+        
     };
 
     // confirm delete account
@@ -60,12 +56,9 @@ function Profile({ setIsLoggedIn }) {
     const handleDeleteAccount = () => {
 
         localStorage.removeItem("isLoggedIn"); // remove the login information
-
-        setIsLoggedIn(false);
-
         setConfirmation(null);
-
-        navigate("/"); // go to the home page
+        setIsLoggedIn(false);
+        window.location.replace("/");
     };
 
     return (

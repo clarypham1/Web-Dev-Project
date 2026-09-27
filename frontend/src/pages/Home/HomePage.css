@@ -1,42 +1,171 @@
 
-.home-page {
-    font-family: Arial, sans-serif;
-    width: 800px;
-    height: 400px;
-    margin: 50px auto;
-    text-align: center;
-    border: 1px solid pink;
-    border-radius: 10px;
-    background-color: pink;
 
+.home-page {
+    width: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #fff8f7;
+    color: #333;
 }
 
-.home-page h1 {
-    font-size: 40px;
-    color:deeppink;
-    margin-bottom: 60px;
-    padding: 20px;
+.home-section {
+    min-height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 20px;
+    background-color: #f5cac3;
+}
 
+.home-content {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.home-content h1 {
+    margin: 0 0 15px;
+    font-size: 52px;
+    font-weight: 700;
+    color:#7a3e48;
+    padding: 20px;
+}
+
+.home-content h2 {
+    margin: 0 0 30px;
+    font-size: 32px;
+    font-weight: 500;
+    color: #5b3138;
 }
 
 .home-page button {
-    padding: 10px 30px;
-    border: 1px solid pink;
-    border-radius: 10px;
-    background-color: deeppink;
-    color: black;
-    font-size: 18px;
+    padding: 13px 32px;
+    border: none;
+    border-radius: 25px;
+    background-color: #d86f7c;
+    color: white;
+    font-size: 17px;
+    font-weight: bold;
     cursor: pointer;
+    transition: all 0.3s ease;
 }
 
-.home-page p {
+.home-page button:hover {
+    background-color: #b95765;
+    transform: translateY(-2px);
+}
+
+.what-is-closis-section {
+    padding: 80px 30px;
+    background-color: white;
+}
+
+.what-is-closis-section > h2 {
+    margin: 0 0 20px;
+    font-size: 36px;
+    color: #333;
+}
+
+.what-is-closis-section > p {
+    max-width: 700px;
+    margin: 0 auto 45px;
+    font-size: 18px;
+    line-height: 1.6;
+    color: #666;
+}
+
+.closis-features {
+    max-width: 1100px;
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin: 0 auto;
+}
+
+.feature-card {
+    flex: 1;
+    padding: 30px;
+    border: 1px solid #f5cac3;
+    border-radius: 15px;
+    background-color: #fff8f7;
+    transition: all 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(122, 62, 72, 0.12);
+}
+
+.feature-card h3 {
+    margin: 0 0 15px;
+    font-size: 22px;
+    color: #7a3e48;
+}
+
+.feature-card p {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #666;
+}
+
+.why-closis-section {
+    padding: 80px 30px;
+    background-color: #fdf0ee;
+}
+
+.why-closis-section > h2 {
+    margin: 0 0 40px;
+    font-size: 36px;
+    color: #333;
+}
+
+.benefits {
+    max-width: 1100px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+    margin: 0 auto;
+}
+
+.benefit-card {
+    padding: 30px;
+    border: 1px solid #f5cac3;
+    border-radius: 15px;
+    background-color: white;
+    transition: all 0.3s ease;
+}
+
+.benefit-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(122, 62, 72, 0.12);
+}
+
+.benefit-card h3 {
+    margin: 0 0 15px;
+    font-size: 21px;
+    color: #7a3e48;
+}
+
+.benefit-card p {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.how-preview-section {
+    padding: 60px 30px;
+}
+
+.how-preview-section h2 {
+    margin: 0 0 20px;
     font-size: 30px;
-    color: hotpink;
-    padding: 20px;
-    margin-bottom: 50px;
-    font-family:Georgia, serif;
-    font-style: italic;
+    color:#b95765;
 }
 
-.home-page button:hover { 
-    background-color: #e8aaa2; }
+.how-preview-section p{
+    margin: 0 auto 30px;
+    font-size: 18px;
+    line-height: 1.5;
+    color:#666;
+}

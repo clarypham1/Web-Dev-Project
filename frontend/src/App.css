@@ -182,3 +182,13 @@
     border-right-color: var(--border);
   }
 }
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-content {
+  flex: 1;
+}
