@@ -8,12 +8,12 @@ import useHistory from "../../hooks/useHistory";
 const History = () => {
 
     const [selectedOutfit, setSelectedOutfit] = useState(null);
-    const {getHistory,
+    const { getHistory,
         outfitHistory,
         isLoading,
-        error} = useHistory("/api/outfits/history");
+        error } = useHistory("/api/outfits/history");
 
-    useEffect (() => {
+    useEffect(() => {
         getHistory();
     }, []);
 
@@ -22,8 +22,8 @@ const History = () => {
         <main className="history-page">
 
             <h2>History</h2>
-            {error && <p className = "error-message">{error}</p>}
-            
+            {error && <p className="error-message">{error}</p>}
+
 
             {selectedOutfit ? (
 
@@ -53,37 +53,54 @@ const History = () => {
                         <p className="empty-history">There is no outfit history yet.</p>
                     )}
 
-                
+
 
                     {outfitHistory.map((outfit) => (
 
-                            <div className="outfit-card" key={outfit.id}>
+                        <div className="outfit-card" key={outfit.id}>
 
-                                <img
-                                    src={outfit.image}
-                                    alt={outfit.name}
-                                    onClick={() => setSelectedOutfit(outfit)}
-                                />
+                            <img
+                                src={outfit.image}
+                                alt={outfit.name}
+                                onClick={() => setSelectedOutfit(outfit)}
+                            />
 
-                                <button
-                                    onClick={() => setSelectedOutfit(outfit)}
-                                >
-                                    {outfit.name}
-                                </button>
+                            <button
+                                onClick={() => setSelectedOutfit(outfit)}
+                            >
+                                {outfit.name}
+                            </button>
 
-                                <p>{outfit.weather}</p>
+                            <div className="usage-info">
+
+                            <span className="usage-tag">
+                                {outfit.usageCount === 0
+                                    ? "Never used"
+                                    : `${outfit.usageCount} ${outfit.usageCount === 1 ? "time" : "times"}`
+                                }
+                            </span>
+
+                            {outfit.usageCount >= 10 && (
+                                <span className="popular-tag">
+                                    ⭐ Popular item
+                                </span>
+                            )}
 
                             </div>
 
-                        ))}
+                            <p>{outfit.weather}</p>
 
                         </div>
 
-                    )}
+                    ))}
 
-                </main>
+                </div>
 
-            );
-        };
+            )}
+
+        </main>
+
+    );
+};
 
 export default History;
