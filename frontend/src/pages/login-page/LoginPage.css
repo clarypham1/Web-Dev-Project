@@ -38,7 +38,7 @@
     cursor: pointer;
 }
 
-.log-in button hover {
+.log-in button:hover {
     background-color:antiquewhite;
 }
 

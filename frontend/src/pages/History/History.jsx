@@ -1,52 +1,29 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./History.css";
-import Outfit1 from "../../assets/outfit1.jpeg";
-import Outfit2 from "../../assets/outfit2.webp";
+import useHistory from "../../hooks/useHistory";
+
+// import Outfit1 from "../../assets/outfit1.jpeg";
+// import Outfit2 from "../../assets/outfit2.webp";
 
 const History = () => {
 
     const [selectedOutfit, setSelectedOutfit] = useState(null);
+    const {getHistory,
+        outfitHistory,
+        isLoading,
+        error} = useHistory("/api/outfits/history");
 
-    const outfitHistory = [
-        {
-            id: 1,
-            name: "Casual Outfit",
-            image: Outfit1,
-            weather: "12 degree C, Cloudy",
-            destination: "Center",
-            style: "Casual"
-        },
+    useEffect (() => {
+        getHistory();
+    }, []);
 
-        {
-            id: 2,
-            name: "Coffee Date Outfit",
-            image: Outfit2,
-            weather: "18 degree C, Sunny",
-            destination: "Cafe",
-            style: "Comfortable"
-        },
-        {
-            id: 3,
-            name: "Coffee Date Outfit",
-            image: Outfit2,
-            weather: "18 degree C, Sunny",
-            destination: "Cafe",
-            style: "Comfortable"
-        },
-        {
-            id: 4,
-            name: "Casual Outfit",
-            image: Outfit1,
-            weather: "12 degree C, Cloudy",
-            destination: "Center",
-            style: "Casual"
-        }
-    ];
 
     return (
         <main className="history-page">
 
             <h2>History</h2>
+            {error && <p className = "error-message">{error}</p>}
+            
 
             {selectedOutfit ? (
 
@@ -72,16 +49,13 @@ const History = () => {
             ) : (
 
                 <div className="history-list">
+                    {!isLoading && outfitHistory.length === 0 && (
+                        <p className="empty-history">There is no outfit history yet.</p>
+                    )}
 
-                    {outfitHistory.length === 0 ? (
+                
 
-                        <p className="empty-history">
-                            There is no outfit history yet.
-                        </p>
-
-                    ) : (
-
-                        outfitHistory.map((outfit) => (
+                    {outfitHistory.map((outfit) => (
 
                             <div className="outfit-card" key={outfit.id}>
 
@@ -101,16 +75,15 @@ const History = () => {
 
                             </div>
 
-                        ))
+                        ))}
+
+                        </div>
 
                     )}
 
-                </div>
+                </main>
 
-            )}
-
-        </main>
-    );
-};
+            );
+        };
 
 export default History;

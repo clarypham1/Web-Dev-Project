@@ -1,46 +1,37 @@
 
-
-import {useState} from "react";
-import { Link } from "react-router-dom";
-// import Header from "./Header";
-// import Footer from "./Footer";
+import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import useSignup from "../../hooks/useSignup";
 
 
-function SignUp () {
 
-    // store the username typed by user
+const SignUp = ({setIsAuthenticated}) => {
+
     const [username, setUserName] = useState ("");
-    // store the email typed by user
     const [email, setEmail] = useState ("");
-    // store the password typed by user
     const [password, setPassword] = useState ("");
-    // store the confirm password typed by user
     const [confirmpassword, setConfirmPassword] = useState ("");
-    // store the error message
-    // It is empty when there is no error
-    const [error, setError] = useState("");
+    const [passwordError, setPasswordError] = useState ("");
 
-    const handleSubmit = (event) => {
-        event.preventDefault (); // Prevent the page from refreshing when the form is submitted
+    const navigate = useNavigate();
 
-        setError(""); // clear the previous error
+    const { signup, isLoading, error } = useSignup ("/api/users/signup");
 
-        // check the password and confirm password are the same or not
-        if (password !==confirmpassword) {
-            setError("!Password do not match");
+    const handleSubmit = async (event) => {
+        event.preventDefault (); 
+
+        if (password !== confirmpassword) {
+            setPasswordError("Your confirm password do not match");
             return;
         }
+        setPasswordError("");
 
-        // store the signup information
-        const SignUpInformation = {
-            UserName: username,
-            Email: email,
-            Password: password,
-            ConfirmPassword: confirmpassword
+        const user = await signup ({ name: username, email, password });
 
-        };
-
-        console.log (SignUpInformation); // show the sign up information in the console
+        if (user) {
+            setIsAuthenticated(true);
+            navigate("/");
+        }
     };
 
     return (
@@ -58,6 +49,7 @@ function SignUp () {
                     type = "text"
                     value = {username}
                     onChange = {(event) => setUserName (event.target.value)} // update the username when tye user type
+                    required
                 />
                 <br/>
 
@@ -65,9 +57,10 @@ function SignUp () {
                 <input
                     name = "email"
                     placeholder = "✉️ email"
-                    type = "text"
+                    type = "email"
                     value = {email}
                     onChange = {(event) => setEmail (event.target.value)} // update the email when the user types
+                    required
                 />
                 <br />
 
@@ -97,6 +90,11 @@ function SignUp () {
                 />
                 <br />
 
+                
+
+                {/* submit the sign up form */}
+                <button type="submit" disabled = {isLoading}> Sign Up </button>
+
                 {/* display error message only when there is error */}
                 {error && (
                     <p className="error-message">
@@ -105,8 +103,12 @@ function SignUp () {
                     </p>
                 )}
 
-                {/* submit the sign up form */}
-                <button type= "submit"> Sign Up </button>
+                {passwordError && (
+                    <p className = "error-message">
+                        {passwordError}
+
+                    </p>
+                )}
 
                 <p>
                     {/* link to the log in page */}

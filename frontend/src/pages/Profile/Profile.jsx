@@ -1,65 +1,20 @@
 
-import { useState } from "react";
 
 import "./Profile.css";
+import useProfile from "../../hooks/useProfile";
 
-function Profile({ setIsLoggedIn }) {
+const Profile = ({ setIsAuthenticated}) => {
 
-    const [profileMenu, setProfileMenu] = useState(false);
-
-    const [confirmation, setConfirmation] = useState(null);
-
-    const handleProfileClick = () => {
-        setProfileMenu(!profileMenu);
-
-        setConfirmation(null); // close confirmation when opening/ closing profile menu
-    };
-
-    // click the log out button
-    const handleLogoutClick = () => {
-        console.log("logout button clicked");
-
-        setProfileMenu(false);
-
-        setConfirmation("logout");
-    };
-
-    // click the delete account button
-
-    const handleDeleteAccountClick = () => {
-        console.log("delete account button clicked");
-        
-        setProfileMenu(false);
-
-        setConfirmation("delete");
-
-    };
-
-    // cancel click
-
-    const handleCancel = () => {
-        setConfirmation(null);
-    };
-
-    //confirm log out
-    const handleLogout = () => {
-        localStorage.removeItem("isLoggedIn"); //remove login information
-
-        setConfirmation(null);
-        setIsLoggedIn(false); //change react authentication state
-        window.location.replace("/");
-        
-    };
-
-    // confirm delete account
-
-    const handleDeleteAccount = () => {
-
-        localStorage.removeItem("isLoggedIn"); // remove the login information
-        setConfirmation(null);
-        setIsLoggedIn(false);
-        window.location.replace("/");
-    };
+    const {
+        profileMenu,
+        confirmation,
+        handleProfileClick,
+        handleLogoutClick,
+        handleDeleteAccountClick,
+        handleCancel,
+        handleLogout,
+        handleDeleteAccount
+    } = useProfile(setIsAuthenticated, "/api/users/profile");
 
     return (
         <div className="profile">
@@ -154,6 +109,6 @@ function Profile({ setIsLoggedIn }) {
 
         </div >
     );
-}
+};
 
 export default Profile;

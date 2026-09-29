@@ -1,5 +1,5 @@
 
-import {useState} from "react";
+import { useState } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 import Header from "./Components/Header/Header.jsx";
@@ -24,55 +24,84 @@ import "./App.css";
 
 
 
- function App() {
-    const [isLoggedIn, setIsLoggedIn] = useState (
-        localStorage.getItem("isLoggedIn") === "true");
+function App() {
+    const [isAuthenticated, setIsAuthenticated] = useState(() => {
+        const user = JSON.parse(localStorage.getItem("user"));
+        return user && user.token ? true : false;
+    });
+
     return (
-        <BrowserRouter>
+        <div className="App">
 
-            <Header 
-                isLoggedIn={isLoggedIn}
-                setIsLoggedIn= {setIsLoggedIn}
-            />
-            <div className = "app-content">
-                <Routes>
+            <BrowserRouter>
 
-                    <Route 
-                        path="/" 
-                        element = {<HomePage isLoggedIn={isLoggedIn} />} 
-                    />
+                <Header
+                    isAuthenticated={isAuthenticated}
+                    setIsAuthenticated={setIsAuthenticated}
+                />
+                <div className="app-content">
+                    <Routes>
 
-                    <Route 
-                        path="/login" 
-                        element= {<Login setIsLoggedIn={setIsLoggedIn}/>}
-                    />
+                        <Route
+                            path="/"
+                            element={<HomePage isAuthenticated={isAuthenticated} />}
+                        />
 
-                    <Route 
-                        path="/signup" 
-                        element={<Signup setIsLoggedIn={setIsLoggedIn} />} 
-                    />
+                        <Route
+                            path="/login"
+                            element={
+                            isAuthenticated? (
+                            <Navigate to="/" />)
+                            : ( <Login setIsAuthenticated={setIsAuthenticated} />
 
-                    <Route 
-                        path="/forgot-password" 
-                        element={<ForgotPassword />} 
-                    />
+                            )
+                        }
+                        />
 
-                    <Route
-                        path="/how"
-                        element = {<How />}
-                    />
+                        <Route
+                            path="/signup"
+                            element={
+                            isAuthenticated? (
+                            <Navigate to="/" />)
+                            : ( <Signup setIsAuthenticated={setIsAuthenticated} />
 
-                    <Route
-                        path="/history"
-                        element = {isLoggedIn ? <History />: <Navigate to="/login"/>}
-                    />
+                            )
+                        }
+                        />
 
-                </Routes>
-            </div>
+                        <Route
+                            path="/forgot-password"
+                            element={<ForgotPassword />}
+                        />
 
-            <Footer />
+                        <Route
+                            path="/how"
+                            element={<How />}
+                        />
 
-        </BrowserRouter>
+                        <Route
+                            path="/history"
+                            element={
+                                isAuthenticated ? (
+                                    <History />
+                                ) : (
+                                    <Navigate to="/login" />
+                                )
+                            }
+                        />
+
+                        <Route
+                            path="*"
+                            element={<Navigate to="/"/>}
+                        />
+
+                    </Routes>
+                </div>
+
+                <Footer />
+
+            </BrowserRouter>
+        </div>
     );
 }
 
