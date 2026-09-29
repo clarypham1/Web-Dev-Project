@@ -1,17 +1,15 @@
 
 import {Link} from "react-router-dom";
 import {useState} from "react";
+import useForgotPassword from "../../hooks/useForgetPassword";
 
-function ForgotPassword () {
+const ForgotPassword = () => {
     const [email, setEmail] = useState ("");
-    const [message, setMessage] = useState ("");
+    const {forgotPassword, isLoading, error, message} = useForgotPassword("/api/users/forgot-password");
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
-
-        setMessage (
-            "password reset information will be sent to this email."
-        );
+        await forgotPassword(email);
     };
 
     return (
@@ -34,19 +32,25 @@ function ForgotPassword () {
                 />
                 <br />
 
-                <button type="submit">
+                <button type="submit" disabled={isLoading}>
                     Enter
                 </button>
 
             </form>
 
+            {error && ( 
+                <p className="error-message"> {error} </p> )}
+
             {message && (
-                <p> {message}</p>
+                <p className="success-message"> 
+                    {message}
+                </p>
             )}
 
             <p>
                 <Link to="/login">
-                ⬅️ back to login </Link>
+                    ⬅️ back to login 
+                </Link>
             </p>
 
         </main>
