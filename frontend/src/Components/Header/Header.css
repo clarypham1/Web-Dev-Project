@@ -37,8 +37,9 @@ header {
 }
 
 .auth-links a {
-    color: inherit;
+    color: #7e1414;
     font-weight: 500;
+    font-size: 18px;
 }
 
 .auth-links a:hover {

@@ -8,9 +8,10 @@
 }
 
 .navbar > * {
-    color: blue;
+    color: #7a3e48;
+    font-size: 18px;
 }
 
 .header nav > *:hover {
-    color: deeppink;
+    color: #b95765;
 }

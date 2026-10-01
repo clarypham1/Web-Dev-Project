@@ -4,7 +4,7 @@ import Navbar from "../Navbar/Navbar.jsx";
 import {Link} from "react-router-dom";
 import ClosisLogo from "../../assets/Closis_Logo.jpeg";
 
-function Header({isLoggedIn, setIsLoggedIn}){
+function Header({isAuthenticated, setIsAuthenticated}) {
 
     return (
         <header className="header">
@@ -18,8 +18,8 @@ function Header({isLoggedIn, setIsLoggedIn}){
             
             <Navbar />
 
-            {isLoggedIn ?  (
-                <Profile setIsLoggedIn={setIsLoggedIn} />
+            {isAuthenticated ?  (
+                <Profile setIsAuthenticated={setIsAuthenticated} />
             ) : (
                 <div className = "auth-links">
                     <Link to= "/login">Log in</Link>

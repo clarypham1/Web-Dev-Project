@@ -1,3 +1,4 @@
+
 /* Profile container */
 .profile {
     position: relative;
@@ -11,6 +12,7 @@
     font-size: 15px;
     cursor: pointer;
     padding: 5px 10px;
+    color: #974956;
 }
 
 .profile-button:hover {
@@ -29,10 +31,10 @@
 
     background-color: white;
 
-    border: 1px solid #ccc;
+    border: 1px solid #f5cac3;
     border-radius: 8px;
 
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 4px 10px rgba(122, 62, 72, 0.15);
 
     z-index: 1000;
 }
@@ -42,7 +44,7 @@
     padding: 8px 0 12px;
 
     font-size: 15px;
-    color: #555;
+    color: #5b3138;
 }
 
 .profile-dropdown button {
@@ -57,11 +59,13 @@
     text-align: left;
     font-size: 15px;
 
+    color: #7a3e48;
+
     cursor: pointer;
 }
 
 .profile-dropdown button:hover {
-    color: deeppink;
+    color: #b95765;
 }
 
 /* Dark background covering the whole screen */
@@ -71,32 +75,40 @@
     top: 0;
     left: 0;
 
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
 
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(122, 62, 72, 0.4);
 
     display: flex;
     justify-content: center;
     align-items: center;
 
     z-index: 9999;
+
+    padding: 20px;
+    box-sizing: border-box;
 }
 
 
 /* White popup box */
 .confirmation-box {
     width: 350px;
+    max-width: 100%;
 
     padding: 30px;
 
+    box-sizing: border-box;
+
     background-color: white;
+
+    border: 1px solid #f5cac3;
 
     border-radius: 12px;
 
     text-align: center;
 
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 20px rgba(122, 62, 72, 0.2);
 }
 
 
@@ -106,6 +118,8 @@
     margin-bottom: 25px;
 
     font-size: 18px;
+
+    color: #7a3e48;
 }
 
 
@@ -118,6 +132,10 @@
     border: none;
     border-radius: 6px;
 
+    background-color: #d86f7c;
+
+    color: white;
+
     cursor: pointer;
 
     font-size: 14px;
@@ -127,4 +145,70 @@
 /* Button hover */
 .confirmation-box button:hover {
     transform: scale(1.05);
+
+    background-color: #b95765;
+}
+
+
+/* Mobile */
+@media (max-width: 600px) {
+
+    .profile-dropdown {
+
+        right: 0;
+
+        width: 160px;
+
+        padding: 12px;
+
+    }
+
+    .confirmation-box {
+
+        width: 100%;
+
+        max-width: 350px;
+
+        padding: 25px 20px;
+
+    }
+
+    .confirmation-box button {
+
+        margin: 5px;
+
+    }
+
+}
+
+
+/* Small mobile */
+@media (max-width: 400px) {
+
+    .confirmation-overlay {
+
+        padding: 15px;
+
+    }
+
+    .confirmation-box {
+
+        padding: 20px 15px;
+
+    }
+
+    .confirmation-box p {
+
+        font-size: 16px;
+
+    }
+
+    .confirmation-box button {
+
+        padding: 10px 15px;
+
+        font-size: 14px;
+
+    }
+
 }

@@ -27,6 +27,7 @@ const Login = ({ setIsAuthenticated }) => {
         return (
             <>
                 <div className="log-in">
+                    
                     <h3> Welcome your Closis! </h3>
 
                     {/* log in form   */}
