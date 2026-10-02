@@ -1,4 +1,4 @@
-// we chose open-meteo for the free sources
+// i chose open-meteo for the free sources hihi 
 function getWeatherCategory(code) {
     if (code === 0 || code === 1) { // wmo weather interpretation codes
         return "sunny";
