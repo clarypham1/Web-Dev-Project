@@ -1,0 +1,190 @@
+
+.history-page {
+    min-height: 100vh;
+    padding: 60px 40px;
+    background-color: #fffaf9;
+    font-family: "Nunito", sans-serif;
+    color: #333;
+}
+
+.history-page > h2 {
+    max-width: 1200px;
+    margin: 0 auto 40px;
+    font-family: "Quicksand", sans-serif;
+    font-size: 32px;
+    color: #7a3e48;
+}
+
+
+.history-list {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+}
+
+
+.outfit-card {
+    background-color: white;
+    border: 1px solid #f5cac3;
+    border-radius: 20px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 5px 18px rgba(122, 62, 72, 0.08);
+}
+
+.outfit-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: contain;
+    background-color: #fff8f7;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.outfit-card button {
+    display: block;
+    margin: 15px auto 0;
+    border: none;
+    background: none;
+    color: #7a3e48;
+    font-family: "Quicksand", sans-serif;
+    font-size: 22px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.outfit-card button:hover {
+    color: #b95765;
+}
+
+.outfit-card p {
+    margin-top: 10px;
+    color: #666;
+    font-size: 16px;
+}
+
+.usage-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    margin-top: 10px;
+    flex-wrap: wrap;
+}
+
+.usage-tag {
+    display: inline-block;
+    padding: 5px 12px;
+    border-radius: 20px;
+    background-color: #fce4e0;
+    color: #7a3e48;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.popular-tag {
+    display: inline-block;
+    padding: 5px 12px;
+    border-radius: 20px;
+    background-color: #fff3cd;
+    color: #856404;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+
+
+.empty-history {
+    grid-column: 1 / -1;
+    margin: 60px auto;
+    text-align: center;
+    color: #7a3e48;
+    font-size: 20px;
+}
+
+
+.outfit-detail {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.outfit-detail h1 {
+    color: #7a3e48;
+    font-family: "Quicksand", sans-serif;
+    font-size: 40px;
+    margin-bottom: 30px;
+}
+
+.outfit-detail img {
+    display: block;
+    width: 100%;
+    max-width: 500px;
+    height: 500px;
+    margin: 0 auto 25px;
+    object-fit: contain;
+    background-color: #fff8f7;
+    border-radius: 20px;
+}
+
+.outfit-detail p {
+    max-width: 500px;
+    margin: 15px auto;
+    padding: 15px 20px;
+    background-color: white;
+    border-radius: 10px;
+    color: #555;
+}
+
+.outfit-detail button {
+    display: block;
+    margin: 25px auto 0;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 25px;
+    background-color: #d86f7c;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.outfit-detail button:hover {
+    background-color: #b95765;
+}
+
+
+@media (max-width: 1000px) {
+
+    .history-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .history-page {
+        padding: 40px 20px;
+    }
+
+    .history-list {
+        grid-template-columns: 1fr;
+    }
+
+    .outfit-card img {
+        height: 300px;
+    }
+
+    .outfit-detail h1 {
+        font-size: 32px;
+    }
+
+    .outfit-detail img {
+        height: 400px;
+    }
+
+}
