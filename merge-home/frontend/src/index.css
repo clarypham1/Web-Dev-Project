@@ -1,0 +1,130 @@
+/* =========================================================
+   CLOSIS – GLOBAL STYLES
+   1. Fonts
+   2. Colour + design tokens (change colours here only)
+   3. Base elements
+   4. Shared helpers (buttons, messages)
+   ========================================================= */
+
+/* ---------- 1. Fonts (Quicksand for headings, Nunito for text) ---------- */
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Quicksand:wght@500;600;700&display=swap");
+
+/* ---------- 2. Design tokens ---------- */
+:root {
+  /* the 3 brand colours */
+  --white: #ffffff;
+  --peach: #ffb7a5;
+  --plum: #1a0b2e;
+
+  /* lighter / darker versions made from the brand colours */
+  --peach-soft: #fff5f2;   /* very light peach for section backgrounds */
+  --peach-light: #ffe2da;  /* light peach for tags + hover */
+  --peach-deep: #ff9c84;   /* stronger peach for hover on peach buttons */
+  --plum-soft: #2e1a4a;    /* slightly lighter plum for hover on plum buttons */
+
+  /* text colours (plum with transparency so everything matches) */
+  --text: rgba(26, 11, 46, 0.78);
+  --text-muted: rgba(26, 11, 46, 0.6);
+
+  /* borders + shadows */
+  --border: rgba(26, 11, 46, 0.1);
+  --shadow-sm: 0 2px 8px rgba(26, 11, 46, 0.06);
+  --shadow-md: 0 12px 30px rgba(26, 11, 46, 0.1);
+
+  /* shapes */
+  --radius: 16px;
+  --radius-sm: 10px;
+  --radius-pill: 999px;
+
+  /* fonts */
+  --font-body: "Nunito", system-ui, sans-serif;
+  --font-heading: "Quicksand", system-ui, sans-serif;
+
+  /* always light theme (white background) */
+  color-scheme: light;
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text);
+  background: var(--white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ---------- 3. Base elements ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--white);
+}
+
+/* the whole app fills the screen; footer sits at the bottom */
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-heading);
+  color: var(--plum);
+  line-height: 1.2;
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  color: var(--plum);
+}
+
+img {
+  max-width: 100%;
+}
+
+/* inputs and buttons use the same font as the page */
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+}
+
+/* clear keyboard focus ring in brand colour */
+:focus-visible {
+  outline: 3px solid var(--peach);
+  outline-offset: 2px;
+}
+
+/* ---------- 4. Shared helpers ---------- */
+
+/* error box used on login, signup, history ... */
+.error-message {
+  margin: 12px 0;
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  background-color: #fdeaea;
+  color: #9b2c2c;
+  font-size: 14px;
+  text-align: center;
+}
+
+/* success box (forgot password) */
+.success-message {
+  margin: 12px 0;
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  background-color: var(--peach-light);
+  color: var(--plum);
+  font-size: 14px;
+  text-align: center;
+}

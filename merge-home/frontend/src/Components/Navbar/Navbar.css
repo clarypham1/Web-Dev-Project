@@ -1,0 +1,43 @@
+/* =========================================================
+   NAVBAR (links in the middle of the header)
+   ========================================================= */
+
+/* 1. links centred in the header */
+.navbar {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+/* 2. each link is a soft pill */
+.navbar a {
+  padding: 8px 14px;
+  border-radius: var(--radius-pill);
+  color: var(--plum);
+  font-weight: 600;
+  font-size: 15px;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+/* 3. hover = light peach pill */
+.navbar a:hover {
+  background-color: var(--peach-light);
+}
+
+/* 4. current page (react-router adds .active only with NavLink;
+      with Link this simply does nothing) */
+.navbar a.active {
+  background-color: var(--peach);
+}
+
+/* 5. on small screens the navbar takes its own full row */
+@media (max-width: 900px) {
+  .navbar {
+    order: 3;
+    flex-basis: 100%;
+  }
+}

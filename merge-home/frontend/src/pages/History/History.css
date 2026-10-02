@@ -1,0 +1,213 @@
+/* =========================================================
+   HISTORY PAGE
+   1. Page + title
+   2. Grid of outfit cards
+   3. Tags (usage + popular)
+   4. Empty state
+   5. Outfit detail view
+   6. Responsive
+   ========================================================= */
+
+/* ---------- 1. Page + title ---------- */
+.history-page {
+  min-height: 100vh;
+  padding: 56px 40px 80px;
+  background-color: var(--white);
+}
+
+.history-page > h2 {
+  max-width: 1200px;
+  margin: 0 auto 36px;
+  font-size: 34px;
+  text-align: left;
+}
+
+/* ---------- 2. Grid of outfit cards ---------- */
+.history-list {
+  display: grid;
+  /* as many 220px columns as fit */
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.outfit-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px 16px 20px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background-color: var(--white);
+  box-shadow: var(--shadow-sm);
+  text-align: center;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.outfit-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--peach);
+  box-shadow: var(--shadow-md);
+}
+
+/* picture area with soft peach background */
+.outfit-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: contain;
+  border-radius: var(--radius-sm);
+  background-color: var(--peach-soft);
+  cursor: pointer;
+}
+
+/* outfit name (it's a <button> in the JSX) */
+.outfit-card button {
+  margin-top: 14px;
+  padding: 0;
+  border: none;
+  background: none;
+  color: var(--plum);
+  font-family: var(--font-heading);
+  font-size: 19px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.outfit-card button:hover {
+  text-decoration: underline;
+  text-decoration-color: var(--peach);
+  text-decoration-thickness: 3px;
+  text-underline-offset: 4px;
+}
+
+/* weather text */
+.outfit-card p {
+  margin-top: 8px;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+/* ---------- 3. Tags ---------- */
+.usage-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+/* "3 times" */
+.usage-tag {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+  background-color: var(--peach-light);
+  color: var(--plum);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/* "⭐ Popular item" */
+.popular-tag {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+  background-color: var(--plum);
+  color: var(--peach);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/* ---------- 4. Empty state ---------- */
+.empty-history {
+  grid-column: 1 / -1;
+  margin: 40px auto;
+  padding: 48px 24px;
+  width: 100%;
+  border: 2px dashed var(--peach);
+  border-radius: var(--radius);
+  background-color: var(--peach-soft);
+  color: var(--plum);
+  font-size: 18px;
+  text-align: center;
+}
+
+/* ---------- 5. Outfit detail view ---------- */
+.outfit-detail {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 32px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+  text-align: center;
+}
+
+.outfit-detail h1 {
+  margin-bottom: 24px;
+  font-size: 36px;
+}
+
+.outfit-detail img {
+  display: block;
+  width: 100%;
+  height: 420px;
+  margin: 0 auto 24px;
+  object-fit: contain;
+  border-radius: var(--radius);
+  background-color: var(--peach-soft);
+}
+
+/* weather / destination / style rows */
+.outfit-detail p {
+  margin: 10px auto;
+  padding: 12px 18px;
+  border-left: 4px solid var(--peach);
+  border-radius: var(--radius-sm);
+  background-color: var(--peach-soft);
+  color: var(--plum);
+  text-align: left;
+}
+
+/* back button = plum pill */
+.outfit-detail button {
+  margin-top: 24px;
+  padding: 12px 28px;
+  border: none;
+  border-radius: var(--radius-pill);
+  background-color: var(--plum);
+  color: var(--white);
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.outfit-detail button:hover {
+  background-color: var(--plum-soft);
+}
+
+/* ---------- 6. Responsive ---------- */
+@media (max-width: 600px) {
+  .history-page {
+    padding: 36px 20px 60px;
+  }
+
+  .history-page > h2 {
+    font-size: 28px;
+  }
+
+  .outfit-detail {
+    padding: 20px;
+  }
+
+  .outfit-detail h1 {
+    font-size: 28px;
+  }
+
+  .outfit-detail img {
+    height: 320px;
+  }
+}

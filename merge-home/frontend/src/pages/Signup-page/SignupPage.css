@@ -1,0 +1,120 @@
+/* =========================================================
+   SIGN UP PAGE  (same card style as Log in)
+   ========================================================= */
+
+/* 1. white card centred on the page with a peach top border */
+.Sign-up {
+  width: 420px;
+  max-width: calc(100% - 40px);
+  margin: 64px auto;
+  padding: 40px 36px;
+  border: 1px solid var(--border);
+  border-top: 6px solid var(--peach);
+  border-radius: var(--radius);
+  background-color: var(--white);
+  box-shadow: var(--shadow-md);
+  text-align: center;
+}
+
+/* 2. title */
+.Sign-up h3 {
+  margin: 0 0 28px;
+  font-family: var(--font-heading);
+  font-size: 28px;
+  color: var(--plum);
+}
+
+/* 3. form = vertical column */
+.Sign-up form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* the <br /> tags in the JSX are not needed with flex + margins */
+.Sign-up br {
+  display: none;
+}
+
+/* 4. inputs */
+.Sign-up input {
+  width: 100%;
+  margin-bottom: 14px;
+  padding: 13px 16px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  background-color: var(--peach-soft);
+  color: var(--plum);
+  font-size: 16px;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.Sign-up input::placeholder {
+  color: var(--text-muted);
+}
+
+/* focus = peach border + glow */
+.Sign-up input:focus {
+  border-color: var(--peach);
+  background-color: var(--white);
+  box-shadow: 0 0 0 4px rgba(255, 183, 165, 0.35);
+}
+
+/* 5. main button = plum pill */
+.Sign-up button {
+  width: 100%;
+  margin-top: 8px;
+  padding: 13px;
+  border: none;
+  border-radius: var(--radius-pill);
+  background-color: var(--plum);
+  color: var(--white);
+  font-size: 17px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.Sign-up button:hover {
+  background-color: var(--plum-soft);
+  transform: translateY(-1px);
+}
+
+.Sign-up button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* 6. small text + links under the button */
+.Sign-up p {
+  margin-top: 16px;
+  font-size: 15px;
+  color: var(--text-muted);
+  overflow-wrap: break-word;
+}
+
+.Sign-up a {
+  color: var(--plum);
+  font-weight: 700;
+  text-decoration: none;
+  /* peach underline */
+  border-bottom: 2px solid var(--peach);
+}
+
+.Sign-up a:hover {
+  background-color: var(--peach-light);
+}
+
+/* 7. mobile */
+@media (max-width: 500px) {
+  .Sign-up {
+    margin: 32px auto;
+    padding: 32px 22px;
+  }
+
+  .Sign-up h3 {
+    font-size: 24px;
+  }
+}

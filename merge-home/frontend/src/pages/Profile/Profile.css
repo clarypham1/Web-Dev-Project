@@ -1,0 +1,144 @@
+/* =========================================================
+   PROFILE (button + dropdown + confirmation popup in the header)
+   ========================================================= */
+
+/* 1. wrapper so the dropdown can be placed under the button */
+.profile {
+  position: relative;
+}
+
+/* 2. "👤 Profile" button = peach pill */
+.profile-button {
+  padding: 8px 18px;
+  border: none;
+  border-radius: var(--radius-pill);
+  background-color: var(--peach);
+  color: var(--plum);
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.profile-button:hover {
+  background-color: var(--peach-deep);
+}
+
+/* 3. dropdown menu */
+.profile-dropdown {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  z-index: 1000;
+
+  width: 190px;
+  padding: 8px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background-color: var(--white);
+  box-shadow: var(--shadow-md);
+}
+
+.profile-dropdown p {
+  padding: 8px 10px;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.profile-dropdown button {
+  display: block;
+  width: 100%;
+  padding: 10px 12px;
+  border: none;
+  border-radius: 8px;
+  background-color: transparent;
+  color: var(--plum);
+  font-size: 15px;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+}
+
+.profile-dropdown button:hover {
+  background-color: var(--peach-soft);
+}
+
+/* "Delete Account" (2nd button) in red so it stands out */
+.profile-dropdown button:last-child {
+  color: #b42318;
+}
+
+/* 4. dark see-through layer behind the popup */
+.confirmation-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+
+  background-color: rgba(26, 11, 46, 0.55);
+}
+
+/* 5. white popup box */
+.confirmation-box {
+  width: 360px;
+  max-width: 100%;
+  padding: 32px 28px;
+  border-top: 6px solid var(--peach);
+  border-radius: var(--radius);
+  background-color: var(--white);
+  box-shadow: var(--shadow-md);
+  text-align: center;
+}
+
+.confirmation-box p {
+  margin-bottom: 24px;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--plum);
+}
+
+/* 6. popup buttons: first = Cancel (outline), second = confirm (plum) */
+.confirmation-box button {
+  margin: 0 6px;
+  padding: 10px 22px;
+  border-radius: var(--radius-pill);
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.confirmation-box button:first-of-type {
+  border: 1.5px solid var(--plum);
+  background-color: var(--white);
+  color: var(--plum);
+}
+
+.confirmation-box button:first-of-type:hover {
+  background-color: var(--peach-soft);
+}
+
+.confirmation-box button:last-of-type {
+  border: 1.5px solid var(--plum);
+  background-color: var(--plum);
+  color: var(--white);
+}
+
+.confirmation-box button:last-of-type:hover {
+  background-color: var(--plum-soft);
+}
+
+/* 7. mobile */
+@media (max-width: 400px) {
+  .confirmation-box {
+    padding: 24px 18px;
+  }
+
+  .confirmation-box button {
+    margin: 6px 4px;
+  }
+}

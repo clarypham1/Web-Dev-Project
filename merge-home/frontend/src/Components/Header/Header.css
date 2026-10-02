@@ -1,0 +1,78 @@
+/* =========================================================
+   HEADER  (logo | navbar | log in / profile)
+   ========================================================= */
+
+/* 1. white bar that stays at the top when scrolling */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+
+  display: flex;
+  align-items: center;
+  gap: 24px;
+
+  padding: 14px 40px;
+  background-color: var(--white);
+  border-bottom: 1px solid var(--border);
+}
+
+/* the <hr /> in Header.jsx is replaced by the border above */
+.header hr {
+  display: none;
+}
+
+/* 2. logo */
+.closis-logo {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+  border-radius: 50%;
+}
+
+/* 3. log in / sign up links (guests only) */
+.auth-links {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.auth-links a {
+  padding: 8px 18px;
+  border-radius: var(--radius-pill);
+  font-weight: 700;
+  font-size: 15px;
+  text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* "Log in" = outline button */
+.auth-links a:first-child {
+  color: var(--plum);
+  border: 1.5px solid var(--plum);
+}
+
+.auth-links a:first-child:hover {
+  background-color: var(--peach-light);
+}
+
+/* "Sign up" = filled plum button */
+.auth-links a:last-child {
+  color: var(--white);
+  background-color: var(--plum);
+  border: 1.5px solid var(--plum);
+}
+
+.auth-links a:last-child:hover {
+  background-color: var(--plum-soft);
+}
+
+/* 4. smaller screens: stack logo / nav / links */
+@media (max-width: 900px) {
+  .header {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 12px 20px;
+    gap: 12px;
+  }
+}
