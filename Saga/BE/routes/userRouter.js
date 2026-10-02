@@ -9,7 +9,7 @@ import {
   updateUser,
   deleteUser,
   // patchUser
-} from "../controllers/userController";
+} from "../controllers/userController.js";
  
 // GET /users
 router.get("/", getAllUsers);
