@@ -1,6 +1,6 @@
-
 import {Link} from "react-router-dom";
-import "./components/Navbar.css";
+// FIX: Navbar.css is in the same folder as this file
+import "./Navbar.css";
 
 function Navbar () {
     return (

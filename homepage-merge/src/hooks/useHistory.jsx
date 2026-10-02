@@ -1,5 +1,5 @@
-
-import { useState, useEffect } from "react";
+// FIX: removed unused useEffect import (lint error)
+import { useState } from "react";
 
 export default function useHistory (url) {
     const [outfitHistory, setoutfitHistory] = useState ([]);
@@ -19,7 +19,6 @@ export default function useHistory (url) {
         }
 
         try {
-
             const response = await fetch (url, {
                 method: "GET",
                 headers: {
@@ -39,10 +38,9 @@ export default function useHistory (url) {
             setIsLoading(false);
 
             return data;
-        }catch (err) {
+        } catch (err) {
             setError(err.message);
             setIsLoading(false);
-
             return null;
         }
     };

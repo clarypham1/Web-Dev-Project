@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import useLogin from "../../hooks/useLogin";
+import useLogin from "../hooks/useLogin";
 
 
 const Login = ({ setIsAuthenticated }) => {

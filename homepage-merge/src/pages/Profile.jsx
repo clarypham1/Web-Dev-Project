@@ -1,7 +1,7 @@
 
 
 import "./Profile.css";
-import useProfile from "./hooks/useProfile";
+import useProfile from "../hooks/useProfile";
 
 const Profile = ({ setIsAuthenticated}) => {
 

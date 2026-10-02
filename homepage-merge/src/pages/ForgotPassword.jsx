@@ -1,7 +1,7 @@
 
 import {Link} from "react-router-dom";
 import {useState} from "react";
-import useForgotPassword from "../../hooks/useForgetPassword";
+import useForgotPassword from "../hooks/useForgetPassword";
 
 const ForgotPassword = () => {
     const [email, setEmail] = useState ("");

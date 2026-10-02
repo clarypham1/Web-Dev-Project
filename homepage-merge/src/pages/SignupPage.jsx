@@ -1,7 +1,7 @@
 
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import useSignup from "../../hooks/useSignup";
+import useSignup from "../hooks/useSignup";
 
 
 

@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 
 export default function useProfile(setIsAuthenticated, deleteUrl) {
@@ -10,20 +9,13 @@ export default function useProfile(setIsAuthenticated, deleteUrl) {
     };
 
     const handleLogoutClick = () => {
-        console.log("logout button clicked");
-
         setProfileMenu(false);
-
         setConfirmation("logout");
     };
 
     const handleDeleteAccountClick = () => {
-        console.log("delete account button clicked");
-
         setProfileMenu(false);
-
         setConfirmation("delete");
-
     };
 
     const handleCancel = () => {
@@ -31,12 +23,11 @@ export default function useProfile(setIsAuthenticated, deleteUrl) {
     };
 
     const handleLogout = () => {
-        localStorage.removeItem("user"); //remove login information
+        localStorage.removeItem("user"); // remove login information
 
         setConfirmation(null);
-        setIsAuthenticated(false); //change react authentication state
+        setIsAuthenticated(false); // change react authentication state
         window.location.replace("/");
-
     };
 
     const handleDeleteAccount = async () => {
@@ -48,7 +39,6 @@ export default function useProfile(setIsAuthenticated, deleteUrl) {
         }
 
         try {
-
             const response = await fetch(deleteUrl, {
                 method: "DELETE",
                 headers: {
@@ -63,14 +53,14 @@ export default function useProfile(setIsAuthenticated, deleteUrl) {
                 return;
             }
 
-            localStorage.removeItem("isLoggedIn"); // remove the login information
+            // FIX: login saves under "user", so remove "user" (was "isLoggedIn")
+            localStorage.removeItem("user");
             setConfirmation(null);
             setIsAuthenticated(false);
             window.location.replace("/");
-        }   catch (error) {
+        } catch (error) {
             console.error ("Delete account failed: ", error);
         }
-
     };
 
     return {

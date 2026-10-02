@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
@@ -17,8 +16,9 @@ import "./pages/LoginPage.css";
 import "./pages/SignupPage.css";
 import "./pages/ForgotPassword.css";
 
-import "./Components/Footer.css";
-import "./Components/Header.css";
+// FIX: folder is "components" (lowercase), not "Components"
+import "./components/Footer.css";
+import "./components/Header.css";
 import "./pages/HomePage.css";
 import "./App.css";
 

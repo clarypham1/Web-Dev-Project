@@ -1,9 +1,7 @@
 import { useState, useEffect } from "react";
 import "./History.css";
-import useHistory from "../../hooks/useHistory";
-
-// import Outfit1 from "../../assets/outfit1.jpeg";
-// import Outfit2 from "../../assets/outfit2.webp";
+// FIX: hooks folder is one level up from pages
+import useHistory from "../hooks/useHistory";
 
 const History = () => {
 
@@ -23,7 +21,6 @@ const History = () => {
 
             <h2>History</h2>
             {error && <p className="error-message">{error}</p>}
-
 
             {selectedOutfit ? (
 
@@ -53,11 +50,10 @@ const History = () => {
                         <p className="empty-history">There is no outfit history yet.</p>
                     )}
 
-
-
                     {outfitHistory.map((outfit) => (
 
-                        <div className="outfit-card" key={outfit.id}>
+                        // FIX: MongoDB documents use _id, so fall back to it for the key
+                        <div className="outfit-card" key={outfit._id || outfit.id}>
 
                             <img
                                 src={outfit.image}
@@ -73,33 +69,30 @@ const History = () => {
 
                             <div className="usage-info">
 
-                            <span className="usage-tag">
-                                {outfit.usageCount === 0
-                                    ? "Never used"
-                                    : `${outfit.usageCount} ${outfit.usageCount === 1 ? "time" : "times"}`
-                                }
-                            </span>
-
-                            {outfit.usageCount >= 10 && (
-                                <span className="popular-tag">
-                                    ⭐ Popular item
+                                <span className="usage-tag">
+                                    {outfit.usageCount === 0
+                                        ? "Never used"
+                                        : `${outfit.usageCount} ${outfit.usageCount === 1 ? "time" : "times"}`
+                                    }
                                 </span>
-                            )}
+
+                                {outfit.usageCount >= 10 && (
+                                    <span className="popular-tag">
+                                        ⭐ Popular item
+                                    </span>
+                                )}
 
                             </div>
 
                             <p>{outfit.weather}</p>
 
                         </div>
-
                     ))}
 
                 </div>
-
             )}
 
         </main>
-
     );
 };
 

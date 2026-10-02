@@ -1,10 +1,9 @@
-
 import { Link } from "react-router-dom";
 
-function HomePage ({ isLoggedIn }) {
+// FIX: App.jsx passes "isAuthenticated", not "isLoggedIn"
+function HomePage ({ isAuthenticated }) {
     
     return (
-
         <main className="home-page">
 
             <section className="home-section">
@@ -14,15 +13,14 @@ function HomePage ({ isLoggedIn }) {
 
                     <h2> Your wardrobe, your style, your day</h2>
 
-                    <Link to= {isLoggedIn ? "/start" : "/login"} >
-
+                    {/* FIX: use isAuthenticated here too */}
+                    <Link to= {isAuthenticated ? "/start" : "/login"} >
                         <button>
                             Let's start
                         </button>
                     </Link>
 
                 </div>
-
             </section>
 
             <section className="what-is-closis-section">
@@ -36,36 +34,21 @@ function HomePage ({ isLoggedIn }) {
                 <div className="closis-features">
 
                     <div className="feature-card">
-                        <h3>
-                            👗 Your Wardrobe
-                        </h3>
-
-                        <p>
-                            Keep your clothes and accessories organised in one digital wardrobe.
-                        </p>
-
+                        <h3>👗 Your Wardrobe</h3>
+                        <p>Keep your clothes and accessories organised in one digital wardrobe.</p>
                     </div>
 
                     <div className = "feature-card">
                         <h3> 🎨 Your Style</h3>
-
-                        <p>
-                            Tell Closis about your preferred colors, styles, and materials.
-                        </p>
-
+                        <p>Tell Closis about your preferred colors, styles, and materials.</p>
                     </div>
 
                     <div className = "feature-card">
                         <h3> 🌤️ Your Weather </h3>
-
-                        <p>
-                            Closis considers the weather when helping you choose an outfit.
-                        </p>
-
+                        <p>Closis considers the weather when helping you choose an outfit.</p>
                     </div>
 
                 </div>
-
             </section>
 
             <section className = "why-closis-section">
@@ -74,45 +57,26 @@ function HomePage ({ isLoggedIn }) {
                 <div className = "benefits">
 
                     <div className = "benefit-card">
-
                         <h3> ⏰ Save Time </h3>
-
-                        <p>
-                            Spend less time deciding what to wear and more time focusing on your day.
-                        </p>
-
+                        <p>Spend less time deciding what to wear and more time focusing on your day.</p>
                     </div>
 
                     <div className = "benefit-card">
                         <h3> 👗 🪎 Use What you own</h3>
-
-                        <p>
-                            Make better use of the clothes and accessories already in your wardrobe.
-                        </p>
-
+                        <p>Make better use of the clothes and accessories already in your wardrobe.</p>
                     </div>
 
                     <div className = "benefit-card">
                         <h3> 🌤️ Dress for the Weather </h3>
-
-                        <p>
-                            Get outfit ideas that take the day's weather into consideration.
-                        </p>
-
+                        <p>Get outfit ideas that take the day's weather into consideration.</p>
                     </div>
 
                     <div className = "benefit-card">
-
                         <h3> ✨ Make It Personal </h3>
-
-                        <p>
-                            Get suggestions based on your own style and preferences.
-                        </p>
-
+                        <p>Get suggestions based on your own style and preferences.</p>
                     </div>
 
                 </div>
-
             </section>
 
             <section className = "how-preview-section">
@@ -123,17 +87,13 @@ function HomePage ({ isLoggedIn }) {
                 </p>
 
                 <Link to="/how">
-                    
                     <button>
                         Learn more
                     </button>
-
                 </Link>
-
             </section>
 
         </main>
-
     );
 }
 
