@@ -1,0 +1,16 @@
+/* =========================================================
+   APP LAYOUT
+   (the old Vite starter styles were removed – they were not used)
+   ========================================================= */
+
+/* main area between header and footer grows to push the footer down */
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-content {
+  flex: 1;
+  background: var(--white);
+}

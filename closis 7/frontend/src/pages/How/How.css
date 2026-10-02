@@ -1,0 +1,211 @@
+/* =========================================================
+   HOW PAGE
+   1. Page + intro
+   2. Circle of 6 steps around the logo (desktop)
+   3. Step numbers 01-06
+   4. Step positions
+   5. Arrows between steps
+   6. Responsive: simple grid on smaller screens
+   ========================================================= */
+
+/* ---------- 1. Page + intro ---------- */
+.how {
+  padding: 56px 40px 200px;
+  background-color: var(--white);
+  overflow: hidden;
+}
+
+.how-introduction {
+  max-width: 720px;
+  margin: 0 auto 80px;
+  text-align: center;
+}
+
+.how-introduction h1 {
+  margin-bottom: 18px;
+  font-size: 44px;
+}
+
+.how-introduction p {
+  font-size: 19px;
+  line-height: 1.7;
+  color: var(--text-muted);
+}
+
+/* ---------- 2. Circle layout ---------- */
+.how-steps {
+  position: relative;
+  width: 800px;
+  height: 850px;
+  margin: 0 auto;
+}
+
+/* logo in the middle: plum ring with a peach glow */
+.how-logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 170px;
+  height: 170px;
+  border-radius: 50%;
+  background-color: var(--white);
+  border: 6px solid var(--plum);
+  box-shadow: 0 0 0 14px var(--peach-light), var(--shadow-md);
+}
+
+.how-logo img {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+  border-radius: 50%;
+}
+
+/* one step */
+.how-step {
+  position: absolute;
+  width: 180px;
+  min-height: 150px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.how-step h2 {
+  margin-bottom: 8px;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.how-step p {
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--text-muted);
+}
+
+/* ---------- 3. Step numbers (peach circle with plum number) ---------- */
+.how-step::before {
+  content: "";
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 84px;
+  height: 84px;
+  margin-bottom: 14px;
+  border-radius: 50%;
+  background-color: var(--peach);
+  color: var(--plum);
+  font-family: var(--font-heading);
+  font-size: 24px;
+  font-weight: 700;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.25s ease, background-color 0.25s ease, color 0.25s ease;
+}
+
+/* hover a step: number turns plum */
+.how-step:hover::before {
+  transform: scale(1.08);
+  background-color: var(--plum);
+  color: var(--peach);
+}
+
+.how-step:nth-of-type(1)::before { content: "01"; }
+.how-step:nth-of-type(2)::before { content: "02"; }
+.how-step:nth-of-type(3)::before { content: "03"; }
+.how-step:nth-of-type(4)::before { content: "04"; }
+.how-step:nth-of-type(5)::before { content: "05"; }
+.how-step:nth-of-type(6)::before { content: "06"; }
+
+/* ---------- 4. Step positions (around the circle) ---------- */
+.how-step:nth-of-type(1) { top: 20px;     right: 300px; }
+.how-step:nth-of-type(2) { top: 130px;    right: 0; }
+.how-step:nth-of-type(3) { bottom: -50px; right: 30px; }
+.how-step:nth-of-type(4) { bottom: -70px; left: 265px; }
+.how-step:nth-of-type(5) { bottom: 50px;  left: -30px; }
+.how-step:nth-of-type(6) { top: 170px;    left: 0; }
+
+/* ---------- 5. Arrows between steps ---------- */
+.how-step::after {
+  content: "→";
+  position: absolute;
+  font-size: 34px;
+  font-weight: bold;
+  color: var(--peach-deep);
+}
+
+/* 01 → 02 */
+.how-step:nth-of-type(1)::after { right: -100px; bottom: 100px; transform: rotate(45deg); }
+/* 02 → 03 */
+.how-step:nth-of-type(2)::after { right: 90px;   bottom: -50px; transform: rotate(90deg); }
+/* 03 → 04 */
+.how-step:nth-of-type(3)::after { left: -95px;   bottom: 20px;  transform: rotate(155deg); }
+/* 04 → 05 */
+.how-step:nth-of-type(4)::after { left: -95px;   top: 140px;    transform: rotate(225deg); }
+/* 05 → 06 */
+.how-step:nth-of-type(5)::after { left: 70px;    top: -80px;    transform: rotate(275deg); }
+/* 06 → 01 */
+.how-step:nth-of-type(6)::after { right: -55px;  top: -20px;    transform: rotate(325deg); }
+
+/* ---------- 6. Responsive: circle → grid of cards ---------- */
+@media (max-width: 900px) {
+  .how {
+    padding: 40px 20px 80px;
+  }
+
+  .how-introduction {
+    margin-bottom: 40px;
+  }
+
+  .how-introduction h1 {
+    font-size: 34px;
+  }
+
+  /* steps become a normal 2-column grid */
+  .how-steps {
+    width: 100%;
+    height: auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  /* logo sits on top, spanning both columns */
+  .how-logo {
+    position: static;
+    transform: none;
+    grid-column: 1 / -1;
+    justify-self: center;
+    margin-bottom: 24px;
+  }
+
+  /* reset the absolute positions so steps flow in the grid */
+  .how-step,
+  .how-step:nth-of-type(n) {
+    position: static;
+    width: auto;
+    padding: 24px 18px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background-color: var(--white);
+    box-shadow: var(--shadow-sm);
+  }
+
+  /* arrows only make sense in the circle */
+  .how-step::after {
+    display: none;
+  }
+}
+
+@media (max-width: 520px) {
+  .how-steps {
+    grid-template-columns: 1fr;
+  }
+}

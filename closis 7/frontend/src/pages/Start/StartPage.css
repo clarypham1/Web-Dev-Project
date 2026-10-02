@@ -1,0 +1,456 @@
+/* =========================================================
+   START PAGE
+   1. Weather hero (photo / gradient per weather)
+   2. Form cards (destination + style)
+   3. Generate button
+   4. Loading spinner
+   5. Results (outfit cards)
+   6. Responsive
+   ========================================================= */
+
+.start-page {
+  background-color: var(--white);
+  padding-bottom: 80px;
+}
+
+/* ---------- 1. Weather hero ---------- */
+.start-hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 380px;
+  padding: 60px 20px;
+  text-align: center;
+
+  /* default while the weather loads */
+  background: linear-gradient(135deg, var(--plum) 0%, #3a2160 100%);
+
+  /* when a real photo is set (style={{ backgroundImage }}) */
+  background-size: cover;
+  background-position: center;
+  transition: background 0.6s ease;
+}
+
+/* dark layer so white text is always readable */
+.start-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(26, 11, 46, 0.35);
+}
+
+/* gradient per weather (used until real photos are added in utils/weatherPhotos.js) */
+.start-hero.weather-sunny  { background-image: linear-gradient(135deg, #ffb7a5 0%, #ffd59e 55%, #ffe9b8 100%); }
+.start-hero.weather-cloudy { background-image: linear-gradient(135deg, #8e8aa3 0%, #b9b4c9 60%, #dcd8e6 100%); }
+.start-hero.weather-rainy  { background-image: linear-gradient(135deg, #2f3e5c 0%, #51658a 60%, #7f93b5 100%); }
+.start-hero.weather-snowy  { background-image: linear-gradient(135deg, #a9c3dc 0%, #d6e4f0 60%, #f4f8fb 100%); }
+.start-hero.weather-stormy { background-image: linear-gradient(135deg, #1a0b2e 0%, #33284d 60%, #4f4a6b 100%); }
+.start-hero.weather-foggy  { background-image: linear-gradient(135deg, #a7a3ad 0%, #c9c6cf 60%, #e4e2e8 100%); }
+
+.start-hero-content {
+  position: relative; /* above the dark layer */
+  z-index: 1;
+  max-width: 720px;
+}
+
+.start-hero h1 {
+  margin: 18px 0 12px;
+  font-family: var(--font-display);
+  font-size: 52px;
+  color: var(--white);
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+}
+
+.heads-up {
+  font-size: 19px;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+/* "☀️ 18°C · Clear sky · 📍 Helsinki  change city" */
+.weather-chip {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  padding: 8px 10px 8px 18px;
+  border-radius: var(--radius-pill);
+  background-color: rgba(255, 255, 255, 0.92);
+  color: var(--plum);
+  font-weight: 600;
+  font-size: 15px;
+  box-shadow: var(--shadow-sm);
+}
+
+.change-city-button {
+  padding: 4px 12px;
+  border: none;
+  border-radius: var(--radius-pill);
+  background-color: var(--peach-light);
+  color: var(--plum);
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.change-city-button:hover {
+  background-color: var(--peach);
+}
+
+.city-form {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.city-form input {
+  width: 200px;
+  padding: 9px 14px;
+  border: none;
+  border-radius: var(--radius-pill);
+  font-size: 15px;
+}
+
+.city-form button {
+  padding: 9px 18px;
+  border: none;
+  border-radius: var(--radius-pill);
+  background-color: var(--peach);
+  color: var(--plum);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* ---------- 2. Form cards ---------- */
+.start-form {
+  max-width: 760px;
+  margin: -50px auto 0; /* cards overlap the hero a little */
+  padding: 0 20px;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.start-card {
+  padding: 28px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background-color: var(--white);
+  box-shadow: var(--shadow-md);
+  text-align: left;
+}
+
+.start-card h2 {
+  margin-bottom: 8px;
+  font-size: 21px;
+}
+
+.start-card p {
+  margin-bottom: 14px;
+  color: var(--text-muted);
+  font-size: 15px;
+}
+
+/* School / Work / Gym / Cafe */
+.place-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 14px 0 16px;
+}
+
+.place-button {
+  padding: 10px 22px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-pill);
+  background-color: var(--white);
+  color: var(--plum);
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.place-button:hover {
+  border-color: var(--peach);
+  background-color: var(--peach-soft);
+}
+
+/* selected place */
+.place-button.active {
+  border-color: var(--plum);
+  background-color: var(--plum);
+  color: var(--white);
+}
+
+.start-input {
+  width: 100%;
+  padding: 13px 16px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  background-color: var(--peach-soft);
+  color: var(--plum);
+  font-size: 16px;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.start-input:focus {
+  border-color: var(--peach);
+  background-color: var(--white);
+  box-shadow: 0 0 0 4px rgba(255, 183, 165, 0.35);
+}
+
+.start-hint {
+  text-align: center;
+}
+
+.start-hint a {
+  font-weight: 700;
+  border-bottom: 2px solid var(--peach);
+  text-decoration: none;
+}
+
+/* ---------- 3. Generate button ---------- */
+.generate-button {
+  align-self: center;
+  padding: 16px 40px;
+  border: none;
+  border-radius: var(--radius-pill);
+  background-color: var(--plum);
+  color: var(--white);
+  font-size: 17px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: var(--shadow-md);
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.generate-button:hover {
+  background-color: var(--plum-soft);
+  transform: translateY(-2px);
+}
+
+.generate-button:disabled {
+  opacity: 0.6;
+  cursor: wait;
+  transform: none;
+}
+
+/* ---------- 4. Loading ---------- */
+.start-loading {
+  margin-top: 48px;
+  text-align: center;
+  color: var(--text-muted);
+}
+
+.spinner {
+  width: 48px;
+  height: 48px;
+  margin: 0 auto 16px;
+  border: 5px solid var(--peach-light);
+  border-top-color: var(--plum);
+  border-radius: 50%;
+  animation: spin 0.9s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ---------- 5. Results ---------- */
+.start-results {
+  max-width: 1200px;
+  margin: 48px auto 0;
+  padding: 0 24px;
+}
+
+.results-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 24px;
+  text-align: left;
+}
+
+.results-header h2 {
+  font-size: 30px;
+}
+
+.results-header p {
+  color: var(--text-muted);
+}
+
+.source-badge {
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  background-color: var(--peach-light);
+  color: var(--plum);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.outfit-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 22px;
+}
+
+/* one outfitItem = 2-3 pieces */
+.outfit-item-card {
+  display: flex;
+  flex-direction: column;
+  padding: 18px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background-color: var(--white);
+  box-shadow: var(--shadow-sm);
+  text-align: left;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.outfit-item-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--peach);
+  box-shadow: var(--shadow-md);
+}
+
+.outfit-pieces {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.outfit-piece {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 120px;
+  padding: 10px 6px;
+  border-radius: var(--radius-sm);
+  background-color: var(--peach-soft);
+  text-align: center;
+}
+
+.outfit-piece img {
+  width: 100%;
+  height: 90px;
+  object-fit: contain;
+}
+
+.piece-emoji {
+  font-size: 40px;
+}
+
+.outfit-piece small {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--plum);
+  line-height: 1.3;
+}
+
+.outfit-item-card h3 {
+  margin-bottom: 6px;
+  font-size: 19px;
+}
+
+.outfit-item-card p {
+  flex: 1;
+  margin-bottom: 14px;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.save-button {
+  align-self: flex-start;
+  padding: 9px 18px;
+  border: 1.5px solid var(--plum);
+  border-radius: var(--radius-pill);
+  background-color: var(--white);
+  color: var(--plum);
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.save-button:hover {
+  background-color: var(--peach-soft);
+}
+
+.save-button:disabled {
+  border-color: var(--peach);
+  background-color: var(--peach);
+  cursor: default;
+}
+
+.results-actions {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 36px;
+}
+
+.regenerate-button {
+  padding: 14px 30px;
+  border: none;
+  border-radius: var(--radius-pill);
+  background-color: var(--plum);
+  color: var(--white);
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.regenerate-button:hover {
+  background-color: var(--plum-soft);
+}
+
+.back-button {
+  padding: 14px 30px;
+  border: 1.5px solid var(--plum);
+  border-radius: var(--radius-pill);
+  background-color: var(--white);
+  color: var(--plum);
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.back-button:hover {
+  background-color: var(--peach-soft);
+}
+
+/* ---------- 6. Responsive ---------- */
+@media (max-width: 600px) {
+  .start-hero {
+    min-height: 320px;
+  }
+
+  .start-hero h1 {
+    font-size: 34px;
+  }
+
+  .heads-up {
+    font-size: 16px;
+  }
+
+  .start-card {
+    padding: 22px 18px;
+  }
+
+  .results-header h2 {
+    font-size: 24px;
+  }
+}
