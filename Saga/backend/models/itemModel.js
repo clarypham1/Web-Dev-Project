@@ -50,6 +50,17 @@ const itemSchema = new mongoose.Schema(
     season: {
       type: String,
       required: true
+    },
+
+    //added from FE
+    brand: {
+      type: String,
+      required: false
+    },
+
+    details: {
+      type: String,
+      required: false
     }
   },
   {
