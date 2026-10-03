@@ -1,0 +1,66 @@
+.results-page {
+  min-height: 80vh;
+  background-color: #fff8fa;
+  padding: 50px 20px;
+}
+
+.results-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.results-preferences {
+  margin: 30px auto;
+  padding: 15px;
+  background-color: #f7e8ed;
+  border-radius: 12px;
+}
+
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 25px;
+  margin-top: 35px;
+}
+
+.results-card {
+  background-color: white;
+  padding: 20px;
+  border-radius: 16px;
+}
+
+.results-image,
+.results-placeholder {
+  width: 100%;
+  height: 240px;
+  border-radius: 12px;
+  object-fit: contain;
+}
+
+.results-placeholder {
+  background-color: #f2dce4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 70px;
+}
+
+.recommendation-reason {
+  background-color: #f7e8ed;
+  padding: 25px;
+  border-radius: 15px;
+  margin-top: 40px;
+}
+
+.results-back-button {
+  margin-top: 30px;
+  padding: 12px 24px;
+  cursor: pointer;
+}
+
+@media (max-width: 600px) {
+  .results-grid {
+    grid-template-columns: 1fr;
+  }
+}
