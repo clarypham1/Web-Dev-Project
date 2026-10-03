@@ -1,31 +1,20 @@
-
 import React, { useState, useEffect } from "react";
-
+import "./Animations.css";
 import "./GeneratingPage.css";
-
 import { buildMockRecommendation } from "../data/mockRecommendation.js";
 
 function GeneratingPage({ request, onBack, onComplete }) {
-
   const [error, setError] = useState("");
   const [attempt, setAttempt] = useState(0);
 
   useEffect(() => {
-
     setError("");
 
     const timer = setTimeout(() => {
-
       try {
-
-        // Read wardrobe data from localStorage
         const savedItems = localStorage.getItem("wardrobeItems");
+        const wardrobeItems = savedItems ? JSON.parse(savedItems) : [];
 
-        const wardrobeItems = savedItems
-          ? JSON.parse(savedItems)
-          : [];
-
-        // Check wardrobe data
         if (!Array.isArray(wardrobeItems)) {
           throw new Error("Invalid wardrobe data.");
         }
@@ -34,84 +23,55 @@ function GeneratingPage({ request, onBack, onComplete }) {
           throw new Error("Missing outfit preferences.");
         }
 
-        // Generate mock recommendation
-        const result = buildMockRecommendation(
-          request,
-          wardrobeItems
-        );
-
-        // Send recommendation to parent component
+        const result = buildMockRecommendation(request, wardrobeItems);
         onComplete(result);
-
       } catch (err) {
-
-        setError(
-          err.message || "Something went wrong. Please try again."
-        );
-
+        setError(err.message || "Something went wrong. Please try again.");
       }
-
     }, 1500);
 
-    // Cleanup timer when component unmounts
     return () => clearTimeout(timer);
-
   }, [request, onComplete, attempt]);
 
-
   return (
+    <div className="generating-screen">
+      <main className="generating-page">
+        <section className="generating-container" aria-live="polite">
+          <h1>Generating your outfit.</h1>
 
-    <main className="generating-page">
+          {!error ? (
+            <>
+              <div className="spinner-float" aria-hidden="true">
+                <div className="loading-spinner"></div>
+              </div>
+              <p className="generating-message">
+                Finding the perfect combination for your day!
+              </p>
+            </>
+          ) : (
+            <div className="generating-error" role="alert">
+              <p>{error}</p>
+              <button
+                className="generate-button"
+                type="button"
+                onClick={() => setAttempt((prev) => prev + 1)}
+              >
+                Retry
+              </button>
+            </div>
+          )}
 
-      <div className="generating-container">
+          <button
+            className="generate-button generating-back-button"
+            type="button"
+            onClick={onBack}
+          >
+            Go back
+          </button>
+        </section>
+      </main>
 
-        <h1>Creating your perfect outfit...</h1>
-
-        {!error ? (
-
-          <>
-            <div className="loading-spinner"></div>
-
-            <p>
-              Finding the perfect combination for your day!
-            </p>
-          </>
-
-        ) : (
-
-          <div role="alert">
-
-            <p>{error}</p>
-
-            <button
-              onClick={() => setAttempt((prev) => prev + 1)}
-            >
-              Retry
-            </button>
-
-          </div>
-
-        )}
-
-        <p>
-          Occasion: {request?.occasion}
-        </p>
-
-        <p>
-          Style: {request?.stylePreferences || "Surprise me!"}
-        </p>
-
-        <p className="demo-notice">
-          Demo recommendation – AI integration coming soon.
-        </p>
-
-        <button onClick={onBack}>
-          ← Go Back
-        </button>
-
-      </div>
-
-    </main>
+    </div>
   );
 }
 

@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
+import "./Animations.css";
+import useScrollReveal from "../hooks/useScrollReveal";
 import "./Wardrobe.css";
 
 const defaultItems = [
@@ -8,6 +10,7 @@ const defaultItems = [
 ];
 
 function Wardrobe() {
+  useScrollReveal();
   const [search, setSearch] = useState("");
 
 // categories must be state because we add categories
@@ -51,29 +54,51 @@ const [categories, setCategories] = useState(() => {
 
   // upload form states
   const [showUploadForm, setShowUploadForm] = useState(false);
+  const [showCategoryForm, setShowCategoryForm] = useState(false);
+  const [categoryDraft, setCategoryDraft] = useState("");
+  const [categoryFormError, setCategoryFormError] = useState("");
   const [uploadedImage, setUploadedImage] = useState("");
+  const imageInputRef = useRef(null);
   const [clothingName, setClothingName] = useState("");
-  const [clothingCategory, setClothingCategory] = useState("Hoodie");
-  const [clothingColor, setClothingColor] = useState("");
-  const [clothingBrand, setClothingBrand] = useState("");
+  const [clothingCategory, setClothingCategory] = useState(categories[0] || "");
   const [clothingDetails, setClothingDetails] = useState("");
+  const [nameError, setNameError] = useState("");
+  const [categoryError, setCategoryError] = useState("");
 
-  function addCategory() {
-    const newCategory = window.prompt("Enter a new category:");
+  function openCategoryForm() {
+    setCategoryDraft("");
+    setCategoryFormError("");
+    setShowCategoryForm(true);
+  }
 
-    if (
-      newCategory &&
-      !categories.some(
-        (category) =>
-          category.toLowerCase() === newCategory.trim().toLowerCase()
-      )
-    ) {
-      const cleanCategory = newCategory.trim();
-      setCategories([...categories, cleanCategory]);
-      setClothingCategory(cleanCategory);
+  function cancelCategoryForm() {
+    setShowCategoryForm(false);
+    setCategoryDraft("");
+    setCategoryFormError("");
+  }
+
+  function addCategory(event) {
+    event.preventDefault();
+    const cleanCategory = categoryDraft.trim();
+
+    if (!cleanCategory) {
+      setCategoryFormError("Please fill this blank");
+      return;
     }
 
-    
+    if (
+      categories.some(
+        (category) => category.toLowerCase() === cleanCategory.toLowerCase()
+      )
+    ) {
+      setCategoryFormError("This category already exists");
+      return;
+    }
+
+    setCategories((previousCategories) => [...previousCategories, cleanCategory]);
+    setClothingCategory(cleanCategory);
+    setCategoryError("");
+    cancelCategoryForm();
   }
 
   function handleImageUpload(event) {
@@ -96,9 +121,10 @@ const [categories, setCategories] = useState(() => {
     setUploadedImage("");
     setClothingName("");
     setClothingCategory(categories[0] || "");
-    setClothingColor("");
-    setClothingBrand("");
     setClothingDetails("");
+    setNameError("");
+    setCategoryError("");
+    if (imageInputRef.current) imageInputRef.current.value = "";
   }
 
   function cancelUpload() {
@@ -107,17 +133,18 @@ const [categories, setCategories] = useState(() => {
   }
 
   function confirmUpload() {
-    if (clothingName.trim() === "" || clothingCategory === "") {
-      alert("Please enter a clothing name and choose a category.");
-      return;
-    }
+    const missingName = clothingName.trim() === "";
+    const missingCategory = clothingCategory === "";
+
+    setNameError(missingName ? "Please fill this blank" : "");
+    setCategoryError(missingCategory ? "Please fill this blank" : "");
+
+    if (missingName || missingCategory) return;
 
     const newItem = {
       id: Date.now(),
       name: clothingName.trim(),
       category: clothingCategory,
-      color: clothingColor.trim(),
-      brand: clothingBrand.trim(),
       details: clothingDetails.trim(),
       image: uploadedImage,
       icon: "👕",
@@ -145,7 +172,7 @@ const [categories, setCategories] = useState(() => {
 
     const matchesCategory =
     selectedCategory === "All" ||
-    (selectedCategory === "Favorites" && item.favorite) ||
+    (selectedCategory === "Favorite" && item.favorite) ||
     item.category === selectedCategory;
 
     return matchesSearch && matchesCategory;
@@ -163,17 +190,17 @@ const [categories, setCategories] = useState(() => {
 }
 
   return (
-    <main className="wardrobe-page">
+    <main className="wardrobe-page page-center">
       <section className="wardrobe-container">
         <p className="wardrobe-small-title">
           TIME TO LOOK THROUGH YOUR CLOSET.
         </p>
 
-        <div className="wardrobe-controls">
+        <div className="wardrobe-controls scroll-reveal">
           <input
             className="wardrobe-search"
             type="text"
-            placeholder="🔍 Search for items..."
+            placeholder="Search for items..."
             value={search}
             onChange={(event) => setSearch(event.target.value)}
           />
@@ -194,16 +221,29 @@ const [categories, setCategories] = useState(() => {
             {/* FAVORITES BUTTON */}
           <button
           className={
-            selectedCategory === "Favorites"
+            selectedCategory === "Favorite"
             ? "category-button selected-category"
             : "category-button"
               }
-            onClick={() => setSelectedCategory("Favorites")}
+            onClick={() => setSelectedCategory("Favorite")}
             >
-            ❤️ Favorites
+            Favorite
           </button>
 
-            {/* EXISTING CATEGORY BUTTONS */}
+              {/* ADD CLOTHING */}
+            <button
+              className="add-item-button"
+              onClick={() => setShowUploadForm(true)}
+            >
+              + Add Clothing
+            </button>
+
+            {/* ADD CATEGORY */}
+            <button className="add-category-button" onClick={openCategoryForm}>
+              + Add Category
+            </button>
+
+            {/* REMAINING CATEGORIES */}
             {categories.map((category) => (
               <button
                 key={category}
@@ -217,22 +257,10 @@ const [categories, setCategories] = useState(() => {
                 {category}
               </button>
             ))}
-              {/* ADD CATEGORY */}
-            <button className="add-category-button" onClick={addCategory}>
-              +
-            </button>
-
-              {/* ADD CLOTHING */}
-            <button
-              className="add-item-button"
-              onClick={() => setShowUploadForm(true)}
-            >
-              Add Clothing
-            </button>
           </div>
         </div>
 
-        <div className="wardrobe-grid">
+        <div className="wardrobe-grid scroll-reveal">
   {filteredItems.map((item) => (
     <div className="wardrobe-card-wrap" key={item.id}>
 
@@ -283,8 +311,8 @@ const [categories, setCategories] = useState(() => {
         )}
 
         {showUploadForm && (
-          <div className="upload-overlay">
-            <div className="upload-box">
+          <div className="upload-overlay modal-overlay-center">
+            <div className="upload-box modal-content-center">
               <div className="upload-box-header">
                 <h2>Upload Clothing</h2>
 
@@ -297,13 +325,24 @@ const [categories, setCategories] = useState(() => {
               </div>
 
               <div className="upload-form-section">
-                <h3>Clothing image</h3>
-
+                <div className="upload-image-heading">
+                  <h3>Clothing image</h3>
+                  <button
+                    className="add-image-button"
+                    type="button"
+                    onClick={() => imageInputRef.current?.click()}
+                  >
+                    Add image
+                  </button>
+                </div>
                 <input
+                  ref={imageInputRef}
                   type="file"
                   accept="image/*"
                   onChange={handleImageUpload}
-                  className="file-input"
+                  className="visually-hidden-file"
+                  tabIndex={-1}
+                  aria-hidden="true"
                 />
 
                 {uploadedImage && (
@@ -319,46 +358,39 @@ const [categories, setCategories] = useState(() => {
                   type="text"
                   placeholder="Example: White summer shirt"
                   value={clothingName}
-                  onChange={(event) => setClothingName(event.target.value)}
+                  aria-invalid={Boolean(nameError)}
+                  aria-describedby={nameError ? "clothing-name-error" : undefined}
+                  onChange={(event) => {
+                    setClothingName(event.target.value);
+                    if (event.target.value.trim()) setNameError("");
+                  }}
                 />
+                {nameError && <p className="field-error" id="clothing-name-error" role="alert">{nameError}</p>}
               </div>
 
               <div className="form-field">
                 <p>Category *</p>
                 <select
                   value={clothingCategory}
-                  onChange={(event) => setClothingCategory(event.target.value)}
+                  aria-invalid={Boolean(categoryError)}
+                  aria-describedby={categoryError ? "clothing-category-error" : undefined}
+                  onChange={(event) => {
+                    setClothingCategory(event.target.value);
+                    if (event.target.value) setCategoryError("");
+                  }}
                 >
+                  <option value="">Select a category</option>
                   {categories.map((category) => (
                     <option key={category} value={category}>
                       {category}
                     </option>
                   ))}
                 </select>
+                {categoryError && <p className="field-error" id="clothing-category-error" role="alert">{categoryError}</p>}
               </div>
 
               <div className="form-field">
-                <p>Color</p>
-                <input
-                  type="text"
-                  placeholder="Example: Black"
-                  value={clothingColor}
-                  onChange={(event) => setClothingColor(event.target.value)}
-                />
-              </div>
-
-              <div className="form-field">
-                <p>Brand</p>
-                <input
-                  type="text"
-                  placeholder="Example: Nike"
-                  value={clothingBrand}
-                  onChange={(event) => setClothingBrand(event.target.value)}
-                />
-              </div>
-
-              <div className="form-field">
-                <p>Other details</p>
+                <p>Other details (optional)</p>
                 <textarea
                   placeholder="Example: Oversized, cotton, long sleeve..."
                   value={clothingDetails}
@@ -385,9 +417,61 @@ const [categories, setCategories] = useState(() => {
           </div>
         )}
 
+        {showCategoryForm && (
+          <div className="upload-overlay modal-overlay-center">
+            <form className="upload-box modal-content-center" onSubmit={addCategory}>
+              <div className="upload-box-header">
+                <h2>Add Category</h2>
+                <button
+                  className="close-upload-button"
+                  type="button"
+                  onClick={cancelCategoryForm}
+                  aria-label="Close add category dialog"
+                >
+                  ×
+                </button>
+              </div>
+
+              <div className="form-field">
+                <p id="category-question">What category do you want to add?</p>
+                <input
+                  autoFocus
+                  type="text"
+                  value={categoryDraft}
+                  aria-labelledby="category-question"
+                  aria-invalid={Boolean(categoryFormError)}
+                  aria-describedby={categoryFormError ? "category-form-error" : undefined}
+                  onChange={(event) => {
+                    setCategoryDraft(event.target.value);
+                    setCategoryFormError("");
+                  }}
+                />
+                {categoryFormError && (
+                  <p className="field-error" id="category-form-error" role="alert">
+                    {categoryFormError}
+                  </p>
+                )}
+              </div>
+
+              <div className="upload-form-buttons">
+                <button
+                  className="cancel-upload-button"
+                  type="button"
+                  onClick={cancelCategoryForm}
+                >
+                  Cancel
+                </button>
+                <button className="confirm-upload-button" type="submit">
+                  OK
+                </button>
+              </div>
+            </form>
+          </div>
+        )}
+
         {selectedItem && (
-          <div className="item-overlay">
-            <div className="item-information-box">
+          <div className="item-overlay modal-overlay-enter">
+            <div className="item-information-box modal-content-enter">
               <button
                 className="close-button"
                 onClick={() => setSelectedItem(null)}

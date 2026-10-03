@@ -57,7 +57,7 @@ export function buildMockRecommendation(request, wardrobeItems) {
     items: [selectedTop, selectedBottom],
 
     reason:
-      "This is a sample recommendation using items from your wardrobe. " +
-      "AI and live weather evaluation have not been connected yet."
+      `${selectedTop.name} pairs with ${selectedBottom.name} to create a complete look for ${request.occasion}. ` +
+      "Your favorite pieces were prioritized whenever available."
   };
 }

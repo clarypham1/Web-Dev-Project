@@ -29,29 +29,34 @@
   box-sizing: border-box;
 }
 
-body {
-  margin: 0;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-}
-
-
 /* =========================
    PAGE
 ========================= */
 
 .wardrobe-page {
-  background: linear-gradient(180deg, #fff8fa 0%, #f8eef1 100%);
-  min-height: 100vh;
-  padding: 40px 20px 60px;
+  background: var(--cream);
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  padding: clamp(28px, 4vw, 56px) clamp(18px, 4vw, 72px) 64px;
+  font-family: "Arbutus Slab", Georgia, serif;
+}
+
+.wardrobe-page button,
+.wardrobe-page input,
+.wardrobe-page select,
+.wardrobe-page textarea {
+  font-family: inherit;
 }
 
 .wardrobe-container {
-  width: min(1100px, 100%);
-  margin: 0 auto;
-  background: #f7dce3;
-  border-radius: 30px;
-  padding: 42px 40px 50px;
-  box-shadow: 0 18px 45px rgba(147, 95, 114, 0.12);
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  background: transparent;
+  border-radius: 0;
+  padding: 0;
+  box-shadow: none;
 }
 
 .wardrobe-small-title {
@@ -60,7 +65,7 @@ body {
   margin-bottom: 32px;
   font-size: 14px;
   letter-spacing: 2px;
-  color: #7c5b66;
+  color: var(--dark-70);
   font-weight: 500;
 }
 
@@ -74,34 +79,48 @@ body {
 }
 
 .wardrobe-search {
-  width: 260px;
+  width: 460px;
   max-width: 100%;
-  padding: 13px 18px;
-  border: 1px solid #ddc0c9;
+  padding: 16px 21px;
+  border: 1px solid var(--dark-15);
   border-radius: 999px;
-  background: #fffafb;
-  color: #5f4a51;
-  font-size: 14px;
+  background: #ffffff;
+  color: var(--dark);
+  font-size: 15px;
   outline: none;
-  box-shadow: 0 6px 16px rgba(130, 90, 105, 0.08);
-  transition: 0.2s ease;
+  box-shadow: 0 6px 16px var(--dark-08);
+  transition:
+    border-color 0.22s ease,
+    box-shadow 0.22s ease,
+    transform 0.22s ease;
+}
+
+.wardrobe-search:hover {
+  transform: translateY(-2px);
+  border-color: var(--peach);
+  box-shadow: 0 10px 22px var(--dark-15);
 }
 
 .wardrobe-search:focus {
-  border-color: #c98fa1;
-  box-shadow: 0 0 0 4px rgba(201, 143, 161, 0.14);
+  border-color: var(--peach);
+  box-shadow: 0 0 0 4px var(--peach-20);
 }
 
 .wardrobe-search::placeholder {
-  color: #968189;
+  color: var(--dark-60);
 }
 
 .category-row {
   margin-top: 22px;
   display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
+  flex-wrap: nowrap;
+  gap: 14px;
   align-items: center;
+  width: 100%;
+  overflow-x: auto;
+  padding: 4px 2px 14px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--peach) var(--dark-08);
 }
 
 
@@ -112,48 +131,49 @@ body {
 .category-button,
 .add-category-button,
 .add-item-button {
+  flex: 0 0 auto;
   border: none;
-  background: #8f5a6c;
+  background: var(--dark);
   color: white;
-  padding: 11px 18px;
+  padding: 14px 24px;
   border-radius: 999px;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 500;
   transition: 0.22s ease;
-  box-shadow: 0 5px 12px rgba(120, 70, 90, 0.14);
+  box-shadow: 0 5px 12px var(--dark-15);
 }
 
 .category-button:hover,
 .add-category-button:hover,
 .add-item-button:hover {
-  background: #a76d81;
+  background: var(--peach);
+  color: var(--dark);
   transform: translateY(-2px);
 }
 
 .selected-category {
-  background: #c98fa1;
-  color: white;
+  background: var(--peach);
+  color: var(--dark);
 }
 
 .add-category-button {
-  width: 42px;
-  height: 42px;
-  padding: 0;
-  font-size: 24px;
-  font-weight: 600;
+  padding: 14px 24px;
+  font-size: 16px;
+  font-weight: 500;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .add-item-button {
-  background: #6c3045;
-  padding: 11px 20px;
+  background: var(--dark);
+  padding: 14px 24px;
 }
 
 .add-item-button:hover {
-  background: #84455c;
+  background: var(--peach);
+  color: var(--dark);
 }
 
 
@@ -163,8 +183,8 @@ body {
 
 .wardrobe-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 28px 24px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 36px 30px;
   align-items: start;
 }
 
@@ -188,25 +208,25 @@ body {
 }
 
 .selected-card {
-  border-color: #c98fa1;
-  box-shadow: 0 12px 25px rgba(164, 107, 130, 0.16);
+  border-color: var(--peach);
+  box-shadow: 0 12px 25px var(--dark-15);
 }
 
 .clothing-image,
 .clothing-placeholder {
   width: 100%;
-  height: 250px;
+  height: 340px;
   border-radius: 20px;
-  background: linear-gradient(135deg, #d6cbb3 0%, #cfc5af 100%);
+  background: linear-gradient(135deg, var(--peach-30) 0%, var(--cream) 100%);
   display: flex;
   justify-content: center;
   align-items: center;
   object-fit: cover;
-  box-shadow: 0 10px 20px rgba(110, 95, 85, 0.08);
+  box-shadow: 0 10px 20px var(--dark-08);
 }
 
 .clothing-placeholder {
-  font-size: 78px;
+  font-size: 96px;
 }
 
 .clothing-information {
@@ -214,20 +234,20 @@ body {
 }
 
 .clothing-information h3 {
-  margin: 0 0 4px;
-  color: #2f2830;
-  font-size: 17px;
+  margin: 0 0 6px;
+  color: var(--dark);
+  font-size: 20px;
   font-weight: 700;
 }
 
 .clothing-information span {
-  color: #7c6e74;
-  font-size: 14px;
+  color: var(--dark-70);
+  font-size: 15px;
 }
 
 .no-items {
   text-align: center;
-  color: #7a6c72;
+  color: var(--dark-70);
   margin-top: 40px;
   font-size: 15px;
 }
@@ -241,7 +261,7 @@ body {
 .item-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(40, 26, 32, 0.58);
+  background: rgba(26, 11, 46, 0.58);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -259,10 +279,10 @@ body {
   width: min(560px, 100%);
   max-height: 90vh;
   overflow-y: auto;
-  background: #fffafb;
+  background: var(--cream);
   border-radius: 24px;
   padding: 28px;
-  box-shadow: 0 24px 50px rgba(80, 45, 60, 0.2);
+  box-shadow: 0 24px 50px var(--dark-15);
 }
 
 .item-information-box {
@@ -280,15 +300,15 @@ body {
 .upload-box-header h2,
 .item-details h2 {
   margin: 0;
-  color: #6c3045;
-  font-family: Georgia, "Times New Roman", serif;
+  color: var(--dark);
+  font-family: inherit;
 }
 
 .close-upload-button,
 .close-button {
   border: none;
   background: transparent;
-  color: #6d5a60;
+  color: var(--dark-70);
   font-size: 28px;
   cursor: pointer;
 }
@@ -309,34 +329,81 @@ body {
   margin-bottom: 18px;
 }
 
+.upload-image-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.upload-image-heading h3 {
+  margin: 0;
+  color: var(--dark-70);
+  font-weight: 600;
+}
+
+.add-image-button {
+  border: 0;
+  border-radius: 999px;
+  padding: 10px 18px;
+  background: var(--dark);
+  color: var(--cream);
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.add-image-button:hover {
+  transform: translateY(-2px);
+  background: var(--peach);
+  color: var(--dark);
+}
+
+.visually-hidden-file {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 .upload-form-section h3,
 .form-field p {
   margin-top: 0;
   margin-bottom: 8px;
-  color: #68424f;
+  color: var(--dark-70);
   font-weight: 600;
 }
 
-.file-input,
 .form-field input,
 .form-field select,
 .form-field textarea {
   width: 100%;
   padding: 12px 14px;
-  border: 1px solid #dbc2ca;
+  border: 1px solid var(--dark-15);
   border-radius: 12px;
   background: white;
   font-size: 14px;
-  color: #4d3f45;
+  color: var(--dark);
   outline: none;
   transition: 0.2s ease;
+}
+
+.form-field .field-error {
+  margin: 7px 0 0;
+  color: #9c2638;
+  font-size: 12px;
+  line-height: 1.45;
 }
 
 .form-field input:focus,
 .form-field select:focus,
 .form-field textarea:focus {
-  border-color: #c98fa1;
-  box-shadow: 0 0 0 4px rgba(201, 143, 161, 0.13);
+  border-color: var(--peach);
+  box-shadow: 0 0 0 4px var(--peach-20);
 }
 
 .form-field textarea {
@@ -354,7 +421,7 @@ body {
   height: 180px;
   object-fit: cover;
   border-radius: 16px;
-  box-shadow: 0 10px 20px rgba(100, 70, 80, 0.12);
+  box-shadow: 0 10px 20px var(--dark-15);
 }
 
 
@@ -382,32 +449,34 @@ body {
 }
 
 .cancel-upload-button {
-  background: #ece4e7;
-  color: #4d3f45;
+  background: var(--dark-08);
+  color: var(--dark);
 }
 
 .cancel-upload-button:hover {
-  background: #dfd5d9;
+  background: var(--dark-15);
 }
 
 .confirm-upload-button {
-  background: #8f5a6c;
+  background: var(--dark);
   color: white;
 }
 
 .confirm-upload-button:hover {
-  background: #a76d81;
+  background: var(--peach);
+  color: var(--dark);
 }
 
 .delete-item-button {
   width: 100%;
   margin-top: 22px;
-  background: #a64d5b;
+  background: var(--dark);
   color: white;
 }
 
 .delete-item-button:hover {
-  background: #923d4d;
+  background: var(--peach);
+  color: var(--dark);
 }
 
 
@@ -418,7 +487,7 @@ body {
 .item-information-image {
   width: 100%;
   height: 320px;
-  background: #f3e8eb;
+  background: var(--peach-20);
   border-radius: 18px;
   display: flex;
   justify-content: center;
@@ -439,7 +508,7 @@ body {
 
 .item-details p {
   margin: 10px 0;
-  color: #67575d;
+  color: var(--dark-70);
   line-height: 1.6;
 }
 
@@ -453,8 +522,15 @@ body {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .wardrobe-container {
-    padding: 30px 24px 40px;
+  .clothing-image,
+  .clothing-placeholder {
+    height: 300px;
+  }
+}
+
+@media (min-width: 1500px) {
+  .wardrobe-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 }
 
@@ -464,7 +540,7 @@ body {
   }
 
   .category-row {
-    gap: 10px;
+    gap: 12px;
   }
 
   .wardrobe-search {
@@ -473,11 +549,30 @@ body {
 
   .clothing-image,
   .clothing-placeholder {
-    height: 220px;
+    height: 260px;
   }
 
   .upload-box,
   .item-information-box {
     padding: 22px;
   }
+}
+
+.favorite-button {
+  transition:
+    transform 0.25s
+      cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.25s ease;
+}
+
+.favorite-button:hover {
+  transform: scale(1.1);
+
+  box-shadow:
+    0 6px 16px
+    rgba(26, 11, 46, 0.12);
+}
+
+.favorite-button:active {
+  transform: scale(0.92);
 }

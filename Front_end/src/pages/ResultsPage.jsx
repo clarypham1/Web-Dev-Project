@@ -1,100 +1,64 @@
-
 import React from "react";
 import "./ResultsPage.css";
+import "./Animations.css";
+import useScrollReveal from "../hooks/useScrollReveal";
 
 function ResultsPage({ result, onBack }) {
-
-  if (!result) {
-    return (
-      <main className="results-page">
-        <h2>No outfit found.</h2>
-
-        <button onClick={onBack}>
-          Try Again
-        </button>
-      </main>
-    );
-  }
+  useScrollReveal();
 
   return (
-    <main className="results-page">
+    <div className="results-screen">
+      <main className="results-page">
+        {result ? (
+          <div className="results-container">
+            <section className="results-panel scroll-reveal">
+              <h1>Your Outfit is ready.</h1>
 
-      <div className="results-container">
+              <div className="results-grid">
+                {(result.items || []).slice(0, 2).map((item) => (
+                  <article className="results-card soft-card" key={item.id}>
+                    {item.image ? (
+                      <img
+                        src={item.image}
+                        alt={item.name}
+                        className="results-image"
+                      />
+                    ) : (
+                      <div className="results-placeholder" aria-hidden="true">
+                        {item.icon || "👕"}
+                      </div>
+                    )}
+                    <h2>{item.name}</h2>
+                    <p className="results-category">{item.category}</p>
+                    {item.color && <p className="results-color">Color: {item.color}</p>}
+                  </article>
+                ))}
+              </div>
+            </section>
 
-        <h1>Your Outfit Is Ready!</h1>
+            <section className="recommendation-reason scroll-reveal">
+              <p>{result.reason}</p>
+            </section>
 
-        <p>
-          Here is your outfit recommendation.
-        </p>
+            <button
+              className="generate-button results-back-button"
+              type="button"
+              onClick={onBack}
+            >
+              Generate another Outfit
+            </button>
+          </div>
+        ) : (
+          <section className="results-panel results-empty">
+            <h1>No outfit found.</h1>
+            <button className="generate-button" type="button" onClick={onBack}>
+              Try again
+            </button>
+          </section>
+        )}
+      </main>
 
-        {/* User preferences */}
-        <div className="results-preferences">
-
-          <p>
-            <strong>Occasion:</strong> {result.occasion}
-          </p>
-
-          <p>
-            <strong>Style:</strong>{" "}
-            {result.stylePreferences || "Surprise me!"}
-          </p>
-
-        </div>
-
-        {/* Recommended outfit */}
-        <h2>{result.title}</h2>
-
-        <div className="results-grid">
-
-          {result.items.map((item) => (
-
-            <div className="results-card" key={item.id}>
-
-              {item.image ? (
-                <img
-                  src={item.image}
-                  alt={item.name}
-                  className="results-image"
-                />
-              ) : (
-                <div className="results-placeholder">
-                  {item.icon || "👕"}
-                </div>
-              )}
-
-              <h3>{item.name}</h3>
-
-              <p>{item.category}</p>
-
-              {item.color && (
-                <p>Color: {item.color}</p>
-              )}
-
-            </div>
-
-          ))}
-
-        </div>
-
-        {/* Explanation */}
-        <div className="recommendation-reason">
-
-          <h2>Why this outfit?</h2>
-
-          <p>{result.reason}</p>
-
-        </div>
-
-        <button
-          className="results-back-button"
-          onClick={onBack}
-        >
-          ← Generate Another Outfit
-        </button>
-
-      </div>
-
-    </main>
+    </div>
   );
 }
 

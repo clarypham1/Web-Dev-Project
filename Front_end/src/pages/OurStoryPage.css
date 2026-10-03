@@ -1,0 +1,58 @@
+.story-page {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  background: var(--cream);
+  color: var(--dark);
+  font-family: "Arbutus Slab", Georgia, serif;
+}
+
+.story-section {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(54px, 8vw, 100px) 8%;
+  background: var(--cream);
+}
+
+.story-content {
+  width: min(900px, 100%);
+  margin: 0 auto;
+  text-align: center;
+}
+
+.story-section h2 {
+  margin: 0 auto 24px;
+  color: var(--dark);
+  font-family: inherit;
+  font-size: clamp(32px, 4.5vw, 48px);
+  line-height: 1.18;
+}
+
+.story-section p {
+  max-width: 760px;
+  margin: 16px auto;
+  color: var(--dark-70);
+  font-size: 15px;
+  line-height: 1.85;
+}
+
+.story-reveal {
+  opacity: 0;
+  transform: translateY(36px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.story-reveal.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .story-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
