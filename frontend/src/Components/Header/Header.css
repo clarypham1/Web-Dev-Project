@@ -1,34 +1,49 @@
-
-
 header {
     padding: 20px 40px;
-
     display: flex;
-    align-items: center;
+    align-items: center;;
+    border-bottom: 1px solid #1A0B2E;
+    min-height: 100px;
 }
 
 .closis-logo {
     width: 80px;
     height: 80px;
     object-fit: contain;
+
+}
+
+.closis-logo:hover {
+    transform: scale(1.05);
 }
 
 .header nav {
     flex: 1;
-
     display: flex;
-
     justify-content: center;
-
     align-items: center;
+    gap: 10px;
+}
 
-    gap: 30px;
+.header nav a {
+    color:#1A0B2E;
+    font-size: 18px;
+    text-decoration: none;
+    font-weight: 500;
+    border-radius: 20px;
+    padding: 5px 10px;
+    transition: background-color 0.2s ease;
+
+}
+
+.header nav a:hover {
+    background-color: #FFB7A5;
+    text-decoration: none;
 }
 
 .profile {
     position: relative;
 }
-
 
 .auth-links {
     display: flex;
@@ -37,11 +52,19 @@ header {
 }
 
 .auth-links a {
-    color: #7e1414;
+    color: #1A0B2E;
     font-weight: 500;
     font-size: 18px;
 }
 
 .auth-links a:hover {
     text-decoration: underline;
+}
+
+/* Only added */
+.header-columns {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
 }

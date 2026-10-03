@@ -2,8 +2,7 @@
 .site-footer {
 
     padding: 40px 20px 20px;
-
-    background-color: #fdf0ee;
+    background-color: #1A0B2E;
 
 }
 
@@ -43,13 +42,13 @@
 
     font-size: 1.1rem;
 
-    color: #7a3e48;
+    color: white;
 
 }
 
 .footer-col p {
 
-    color: #666;
+    color:aliceblue;
 
     font-size: 0.95rem;
 
@@ -65,9 +64,9 @@
 
     padding-top: 20px;
 
-    color: #7a3e48;
+    color: white;
 
-    font-size: 0.9rem;
+    font-size: 1rem;
 
 }
 

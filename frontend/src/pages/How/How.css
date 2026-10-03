@@ -3,7 +3,7 @@
     font-family: "Nunito", sans-serif;
 }
 
-h1, h2, h3 {
+h1, h2 {
     font-family: "Quicksand", sans-serif;
 }
 
@@ -22,13 +22,13 @@ h1, h2, h3 {
 .how-introduction h1 {
     font-size: 40px;
     margin-bottom: 20px;
-    color:brown;
+    color:#1A0B2E;
 }
 
 .how-introduction p {
     font-size: 20px;
     line-height: 1.7;
-    color:rgb(126, 77, 77);
+    color:#7a3e48;
 }
 
 .how-steps {
@@ -57,10 +57,14 @@ h1, h2, h3 {
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    background-color: white;;
+    box-shadow: 
+        0 0 0 6px #1A0B2E,          
+        0 0 0 16px #FFB7A5;
+    
     z-index: 2;
-    background-color: #f5cac3;
 }
+
 
 .how-logo img {
     width: 110px;
@@ -86,7 +90,7 @@ h1, h2, h3 {
     width: 90px;
     height: 90px;
     border-radius: 50%;
-    background-color: #f5cac3;
+    /* background-color: #f5cac3; */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -94,30 +98,43 @@ h1, h2, h3 {
     font-weight: 600;
     margin-bottom: 15px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    /* color: #1A0B2E; */
 }
 
 .how-step:nth-of-type(1)::before {
     content: "01";
+    background-color: #FFB7A5;
+    color: black;
 }
 
 .how-step:nth-of-type(2)::before {
     content: "02";
+    background-color: #1A0B2E;
+    color: white;
 }
 
 .how-step:nth-of-type(3)::before {
     content: "03";
+    background-color: #FFB7A5;
+    color: black;
 }
 
 .how-step:nth-of-type(4)::before {
     content: "04";
+    background-color: #1A0B2E;
+    color: white;
 }
 
 .how-step:nth-of-type(5)::before {
     content: "05";
+    background-color: #FFB7A5;
+    color: black;
 }
 
 .how-step:nth-of-type(6)::before {
     content: "06";
+    background-color: #1A0B2E;
+    color: white;
 }
 
 .how-step h2 {
@@ -130,7 +147,7 @@ h1, h2, h3 {
     margin: 0;
     font-size: 16px;
     line-height: 1.5;
-    color: #666;
+    color: #1A0B2E;
 }
 
 .how-step:nth-of-type(1) {
@@ -169,15 +186,16 @@ h1, h2, h3 {
     content: "→";
     font-size: 35px;
     font-weight: bold;
-    color: #f5cac3;
+    /* color: #f5cac3; */
 }
 
 
 /* 01 → 02 */
 .how-step:nth-of-type(1)::after {
     right: -100px;
-    bottom: 100px;
-    transform: rotate(45deg);
+    bottom: 165px;
+    transform: rotate(40deg);
+    color: #FFB7A5;
 }
 
 
@@ -186,6 +204,7 @@ h1, h2, h3 {
     right: 90px;
     bottom: -50px;
     transform: rotate(90deg);
+    color: #1A0B2E;
 }
 
 
@@ -194,6 +213,7 @@ h1, h2, h3 {
     left: -95px;
     bottom: 20px;
     transform: rotate(155deg);
+    color: #FFB7A5;
 }
 
 
@@ -202,6 +222,7 @@ h1, h2, h3 {
     left: -95px;
     top: 140px;
     transform: rotate(225deg);
+    color: #1A0B2E;
 }
 
 
@@ -210,6 +231,7 @@ h1, h2, h3 {
     left: 70px;
     top: -80px;
     transform: rotate(275deg);
+    color: #FFB7A5;
 }
 
 
@@ -218,4 +240,5 @@ h1, h2, h3 {
     right: -55px;
     top: -20px;
     transform: rotate(325deg);
+    color: #1A0B2E;
 }

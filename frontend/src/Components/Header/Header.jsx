@@ -1,40 +1,38 @@
 
 import Profile from "../../pages/Profile/Profile.jsx";
 import Navbar from "../Navbar/Navbar.jsx";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import ClosisLogo from "../../assets/Closis_Logo.jpeg";
 
-function Header({isAuthenticated, setIsAuthenticated}) {
+function Header({ isAuthenticated, setIsAuthenticated }) {
 
     return (
         <header className="header">
 
-            {/* <h1>{ClosisLogo}</h1> */}
-            <img
-                src={ClosisLogo}
-                alt="Closis logo"
-                className="closis-logo"
-            />
-            
-            <Navbar />
+            <div className="header-columns">
 
-            {isAuthenticated ?  (
-                <Profile setIsAuthenticated={setIsAuthenticated} />
-            ) : (
-                <div className = "auth-links">
-                    <Link to= "/login">Log in</Link>
-                    <Link to="/signup">Sign up</Link>
+                <img
+                    src={ClosisLogo}
+                    alt="Closis logo"
+                    className="closis-logo"
+                />
+                <Navbar />
 
-                </div>
+                {isAuthenticated ? (
+                    <Profile setIsAuthenticated={setIsAuthenticated} />
+                ) : (
+                    <div className="auth-links">
+                        <Link to="/login">Log in</Link>
+                        <Link to="/signup">Sign up</Link>
+                    </div>
+                )}
 
-            )}
+            </div>
 
             <hr />
-            
+
         </header>
-
     );
-
 }
 
 export default Header;

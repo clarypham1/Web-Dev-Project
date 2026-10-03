@@ -1,18 +1,15 @@
 
-/* Profile container */
 .profile {
     position: relative;
-    /* margin-left: auto; */
 }
 
-/* Profile button */
 .profile-button {
     border: none;
     background-color: transparent;
     font-size: 15px;
     cursor: pointer;
     padding: 5px 10px;
-    color: #974956;
+    color: #1A0B2E;
 }
 
 .profile-button:hover {
@@ -34,7 +31,7 @@
     border: 1px solid #f5cac3;
     border-radius: 8px;
 
-    box-shadow: 0 4px 10px rgba(122, 62, 72, 0.15);
+    box-shadow: 0 4px 10px 1A0B2E;
 
     z-index: 1000;
 }
@@ -44,7 +41,7 @@
     padding: 8px 0 12px;
 
     font-size: 15px;
-    color: #5b3138;
+    color: black;
 }
 
 .profile-dropdown button {
@@ -59,16 +56,15 @@
     text-align: left;
     font-size: 15px;
 
-    color: #7a3e48;
+    color: #1A0B2E;
 
     cursor: pointer;
 }
 
 .profile-dropdown button:hover {
-    color: #b95765;
+    color: #FFB7A5;
 }
 
-/* Dark background covering the whole screen */
 .confirmation-overlay {
     position: fixed;
 
@@ -78,7 +74,7 @@
     width: 100%;
     height: 100%;
 
-    background-color: rgba(122, 62, 72, 0.4);
+    background-color: #1A0B2E;
 
     display: flex;
     justify-content: center;
@@ -90,8 +86,6 @@
     box-sizing: border-box;
 }
 
-
-/* White popup box */
 .confirmation-box {
     width: 350px;
     max-width: 100%;
@@ -102,13 +96,13 @@
 
     background-color: white;
 
-    border: 1px solid #f5cac3;
+    border: 1px solid #1A0B2E;
 
     border-radius: 12px;
 
     text-align: center;
 
-    box-shadow: 0 4px 20px rgba(122, 62, 72, 0.2);
+    box-shadow: 0 4px 20px #1A0B2E;
 }
 
 
@@ -119,7 +113,7 @@
 
     font-size: 18px;
 
-    color: #7a3e48;
+    color: #1A0B2E;
 }
 
 
@@ -132,7 +126,7 @@
     border: none;
     border-radius: 6px;
 
-    background-color: #d86f7c;
+    background-color: #1A0B2E;
 
     color: white;
 
@@ -146,7 +140,7 @@
 .confirmation-box button:hover {
     transform: scale(1.05);
 
-    background-color: #b95765;
+    background-color: #FFB7A5;
 }
 
 

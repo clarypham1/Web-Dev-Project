@@ -6,7 +6,7 @@
     font-family: Arial, sans-serif;
     text-align: center;
     background-color: #fff8f7;
-    color: #333;
+    color:#333;    
 }
 
 .home-section {
@@ -15,34 +15,38 @@
     justify-content: center;
     align-items: center;
     padding: 60px 20px;
-    background-color: #f5cac3;
+    background: url("../../assets/wardrobe1.jpg") no-repeat center center;
+    background-size: cover;
 }
 
 .home-content {
-    max-width: 500px;
+    max-width: 700px;
     margin: 0 auto;
 }
 
 .home-content h1 {
+    font-family: "Playfair Display", serif;
+    text-transform: uppercase;
     margin: 0 0 15px;
     font-size: 52px;
     font-weight: 700;
-    color:#7a3e48;
+    color:#fff8f7;
     padding: 20px;
 }
 
 .home-content h2 {
+    font-family: "Playfair Display", serif;
     margin: 0 0 30px;
     font-size: 32px;
     font-weight: 500;
-    color: #5b3138;
+    color: #fff8f7;
 }
 
 .home-page button {
     padding: 13px 32px;
     border: none;
     border-radius: 25px;
-    background-color: #d86f7c;
+    background-color: #1A0B2E;
     color: white;
     font-size: 17px;
     font-weight: bold;
@@ -51,8 +55,9 @@
 }
 
 .home-page button:hover {
-    background-color: #b95765;
+    background-color: #FFB7A5;
     transform: translateY(-2px);
+    color: #1A0B2E;
 }
 
 .what-is-closis-section {
@@ -71,7 +76,7 @@
     margin: 0 auto 45px;
     font-size: 18px;
     line-height: 1.6;
-    color: #666;
+    color: #1A0B2E;
 }
 
 .closis-features {
@@ -106,7 +111,7 @@
     margin: 0;
     font-size: 16px;
     line-height: 1.6;
-    color: #666;
+    color: #1A0B2E;
 }
 
 .why-closis-section {
@@ -160,12 +165,12 @@
 .how-preview-section h2 {
     margin: 0 0 20px;
     font-size: 30px;
-    color:#b95765;
+    color:#1A0B2E;
 }
 
 .how-preview-section p{
     margin: 0 auto 30px;
     font-size: 18px;
     line-height: 1.5;
-    color:#666;
+    color:#1A0B2E;
 }
