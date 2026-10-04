@@ -1,7 +1,3 @@
-import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import useSignup from "../../hooks/useSignup";
-
 const fashionDoodles = [
     { kind: "hanger", left: 3, top: 1, color: "#91b2c4", size: 40, rotate: -12 },
     { kind: "skirt", left: 13, top: 5, color: "#a4bbc7", size: 43, rotate: 5 },
@@ -24,7 +20,7 @@ const fashionDoodles = [
     { kind: "skirt", left: 80, top: 91, color: "#a9bfcc", size: 42, rotate: 4 },
 ];
 
-function FashionDoodles() {
+export function FashionDoodles() {
     return (
         <div className="signup-doodles" aria-hidden="true">
             {fashionDoodles.map((doodle, index) => (
@@ -57,7 +53,7 @@ function FashionDoodles() {
     );
 }
 
-function FieldIcon({ kind }) {
+export function FieldIcon({ kind }) {
     if (kind === "name") {
         return (
             <svg className="signup-field-icon" viewBox="0 0 28 28" aria-hidden="true">
@@ -84,94 +80,3 @@ function FieldIcon({ kind }) {
         </svg>
     );
 }
-
-const SignUp = ({ setIsAuthenticated }) => {
-    const [username, setUserName] = useState("");
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const navigate = useNavigate();
-    const { signup, isLoading, error } = useSignup("/api/users/signup");
-
-    const handleSubmit = async (event) => {
-        event.preventDefault();
-        const user = await signup({ name: username, email, password });
-
-        if (user) {
-            setIsAuthenticated(true);
-            navigate("/");
-        }
-    };
-
-    return (
-        <main className="Sign-up">
-            <section className="signup-card" aria-labelledby="signup-title">
-                <div className="signup-card__wash" aria-hidden="true" />
-                <FashionDoodles />
-
-                <div className="signup-content">
-                    <h1 id="signup-title">Create Account</h1>
-
-                    <form className="signup-form" onSubmit={handleSubmit}>
-                        <label className="signup-field">
-                            <FieldIcon kind="name" />
-                            <input
-                                name="username"
-                                type="text"
-                                placeholder="Full Name"
-                                aria-label="Full Name"
-                                autoComplete="name"
-                                value={username}
-                                onChange={(event) => setUserName(event.target.value)}
-                                required
-                            />
-                        </label>
-
-                        <label className="signup-field">
-                            <FieldIcon kind="email" />
-                            <input
-                                name="email"
-                                type="email"
-                                placeholder="Enter Email"
-                                aria-label="Enter Email"
-                                autoComplete="email"
-                                value={email}
-                                onChange={(event) => setEmail(event.target.value)}
-                                required
-                            />
-                        </label>
-
-                        <label className="signup-field">
-                            <FieldIcon kind="password" />
-                            <input
-                                name="password"
-                                type="password"
-                                placeholder="Create Password"
-                                aria-label="Create Password"
-                                autoComplete="new-password"
-                                minLength={8}
-                                value={password}
-                                onChange={(event) => setPassword(event.target.value)}
-                                required
-                            />
-                        </label>
-
-                        <div className="signup-account-row">
-                            <span>Already have an account? <span aria-hidden="true">→</span></span>
-                            <Link to="/login">Log in</Link>
-                        </div>
-
-                        {error && (
-                            <p className="signup-error" role="alert">{error}</p>
-                        )}
-
-                        <button className="signup-submit" type="submit" disabled={isLoading}>
-                            {isLoading ? "Creating account…" : "Sign up"}
-                        </button>
-                    </form>
-                </div>
-            </section>
-        </main>
-    );
-};
-
-export default SignUp;

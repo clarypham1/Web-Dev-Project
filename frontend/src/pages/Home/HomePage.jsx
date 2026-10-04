@@ -1,7 +1,9 @@
 
 import { Link } from "react-router-dom";
+import useScrollReveal from "../../hooks/useScrollReveal";
 
 function HomePage () {
+    useScrollReveal();
     
     return (
 
@@ -16,7 +18,7 @@ function HomePage () {
 
                     <Link to="/start">
 
-                        <button>
+                        <button className="home-start-button">
                             Let's start
                         </button>
                     </Link>
@@ -35,7 +37,7 @@ function HomePage () {
 
                 <div className="closis-features">
 
-                    <div className="feature-card">
+                    <div className="feature-card scroll-reveal">
                         <h3>
                             👗 Your Wardrobe
                         </h3>
@@ -46,7 +48,7 @@ function HomePage () {
 
                     </div>
 
-                    <div className = "feature-card">
+                    <div className = "feature-card scroll-reveal">
                         <h3> 🎨 Your Style</h3>
 
                         <p>
@@ -55,7 +57,7 @@ function HomePage () {
 
                     </div>
 
-                    <div className = "feature-card">
+                    <div className = "feature-card scroll-reveal">
                         <h3> 🌤️ Your Weather </h3>
 
                         <p>
@@ -73,7 +75,7 @@ function HomePage () {
 
                 <div className = "benefits">
 
-                    <div className = "benefit-card">
+                    <div className = "benefit-card scroll-reveal">
 
                         <h3> ⏰ Save Time </h3>
 
@@ -83,7 +85,7 @@ function HomePage () {
 
                     </div>
 
-                    <div className = "benefit-card">
+                    <div className = "benefit-card scroll-reveal">
                         <h3> 👗 🪎 Use What you own</h3>
 
                         <p>
@@ -92,7 +94,7 @@ function HomePage () {
 
                     </div>
 
-                    <div className = "benefit-card">
+                    <div className = "benefit-card scroll-reveal">
                         <h3> 🌤️ Dress for the Weather </h3>
 
                         <p>
@@ -101,7 +103,7 @@ function HomePage () {
 
                     </div>
 
-                    <div className = "benefit-card">
+                    <div className = "benefit-card scroll-reveal">
 
                         <h3> ✨ Make It Personal </h3>
 

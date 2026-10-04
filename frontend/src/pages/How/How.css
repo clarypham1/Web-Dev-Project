@@ -80,6 +80,43 @@
 
 }
 
+.how .scroll-reveal {
+    opacity: 0;
+    transform: translateY(45px);
+    transition:
+        opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+        box-shadow 0.25s ease;
+}
+
+.how .scroll-reveal.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.how .how-step.show::before {
+    animation-name: how-number-pop;
+    animation-duration: 0.55s;
+    animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes how-number-pop {
+    0% {
+        opacity: 0;
+        transform: scale(0.55);
+    }
+
+    72% {
+        opacity: 1;
+        transform: scale(1.12);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
 .how-step::before {
     content: "";
     width: 90px;
@@ -101,36 +138,42 @@
     content: "01";
     background-color: #FFB7A5;
     color: black;
+    animation-delay: 0s;
 }
 
 .how-step:nth-of-type(2)::before {
     content: "02";
     background-color: #1A0B2E;
     color: white;
+    animation-delay: 0.08s;
 }
 
 .how-step:nth-of-type(3)::before {
     content: "03";
     background-color: #FFB7A5;
     color: black;
+    animation-delay: 0.16s;
 }
 
 .how-step:nth-of-type(4)::before {
     content: "04";
     background-color: #1A0B2E;
     color: white;
+    animation-delay: 0.24s;
 }
 
 .how-step:nth-of-type(5)::before {
     content: "05";
     background-color: #FFB7A5;
     color: black;
+    animation-delay: 0.32s;
 }
 
 .how-step:nth-of-type(6)::before {
     content: "06";
     background-color: #1A0B2E;
     color: white;
+    animation-delay: 0.4s;
 }
 
 .how-step h2 {
@@ -149,31 +192,37 @@
 .how-step:nth-of-type(1) {
     top: 20px;
     right: 300px;
+    transition-delay: 0s;
 }
 
 .how-step:nth-of-type(2) {
     top: 130px;
     right: 0;
+    transition-delay: 0.08s;
 }
 
 .how-step:nth-of-type(3) {
     bottom: -50px;
     right: 30px;
+    transition-delay: 0.16s;
 }
 
 .how-step:nth-of-type(4) {
     bottom: -70px;
     left: 265px;
+    transition-delay: 0.24s;
 }
 
 .how-step:nth-of-type(5) {
     bottom: 50px;
     left: -30px;
+    transition-delay: 0.32s;
 }
 
 .how-step:nth-of-type(6) {
     top: 170px;
     left: 0;
+    transition-delay: 0.4s;
 }
 
 
@@ -313,5 +362,17 @@
     .how-logo {
         grid-column: 1;
         width: min(220px, 100%);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .how .scroll-reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+
+    .how .how-step.show::before {
+        animation: none;
     }
 }

@@ -56,21 +56,6 @@
 
 }
 
-.footer-bottom {
-
-    text-align: center;
-
-    border-top: 1px solid var(--peach);
-
-    padding-top: 20px;
-
-    color: white;
-
-    font-size: 1rem;
-
-}
-
-
 /* Tablet */
 
 @media (max-width: 900px) {
@@ -130,11 +115,4 @@
         font-size: 0.9rem;
 
     }
-
-    .footer-bottom {
-
-        font-size: 0.85rem;
-
-    }
-
 }

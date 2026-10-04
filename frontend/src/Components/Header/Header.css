@@ -49,17 +49,47 @@ header {
 .auth-links {
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 10px;
 }
 
 .auth-links a {
-    color: #1A0B2E;
-    font-weight: 500;
-    font-size: 18px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 88px;
+    min-height: 44px;
+    padding: 10px 16px;
+    border: 1px solid transparent;
+    border-radius: 999px;
+    color: var(--dark);
+    font-weight: 700;
+    font-size: 16px;
+    text-decoration: none;
+    transition: background-color 0.25s ease, color 0.25s ease,
+        box-shadow 0.25s ease, transform 0.25s ease;
 }
 
-.auth-links a:hover {
-    text-decoration: underline;
+.auth-links a:first-child {
+    background-color: var(--peach);
+}
+
+.auth-links a:last-child {
+    background-color: var(--dark);
+    color: var(--cream);
+}
+
+.auth-links a:first-child:hover,
+.auth-links a:first-child:focus-visible {
+    background-color: #ffc8ba;
+    box-shadow: 0 6px 16px var(--peach-30);
+    transform: translateY(-2px);
+}
+
+.auth-links a:last-child:hover,
+.auth-links a:last-child:focus-visible {
+    background-color: #352044;
+    box-shadow: 0 6px 16px var(--dark-15);
+    transform: translateY(-2px);
 }
 
 /* Only added */

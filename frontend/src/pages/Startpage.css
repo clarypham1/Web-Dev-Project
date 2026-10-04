@@ -149,17 +149,17 @@ html {
 ========================= */
 
 .hero {
-  min-height: 570px;
+  min-height: var(--intro-hero-height);
 
   display: flex;
 
   justify-content: center;
 
-  align-items: center;
+  align-items: flex-start;
 
   text-align: center;
 
-  padding: 80px 20px;
+  padding: var(--hero-copy-top) 20px 80px;
 
   color: var(--cream);
 
@@ -358,7 +358,7 @@ html {
 
   flex-wrap: wrap;
 
-  gap: 12px;
+  gap: 14px;
 
   margin-bottom: 24px;
 }
@@ -378,7 +378,7 @@ html {
 
   color: var(--cream);
 
-  padding: 12px 24px;
+  padding: 15px 30px;
 
   border-radius: 999px;
 
@@ -386,7 +386,7 @@ html {
 
   font-family: inherit;
 
-  font-size: 14px;
+  font-size: 16px;
 
   font-weight: 700;
 
@@ -483,11 +483,11 @@ html {
 ========================= */
 
 .custom-input {
-  width: 380px;
+  width: 480px;
 
   max-width: 92%;
 
-  padding: 15px 18px;
+  padding: 18px 22px;
 
   border:
     1px solid
@@ -504,7 +504,7 @@ html {
 
   font-family: inherit;
 
-  font-size: 13px;
+  font-size: 16px;
 
   font-weight: 500;
 
@@ -1056,7 +1056,7 @@ html {
 @media (max-width: 900px) {
 
   .hero {
-    min-height: 540px;
+    min-height: var(--intro-hero-height);
   }
 
 
@@ -1113,9 +1113,9 @@ html {
   /* hero */
 
   .hero {
-    min-height: 610px;
+    min-height: var(--intro-hero-height);
 
-    padding: 150px 20px 70px;
+    padding: var(--hero-copy-top) 20px 70px;
   }
 
 
@@ -1140,14 +1140,14 @@ html {
   /* occasion buttons */
 
   .place-buttons {
-    gap: 9px;
+    gap: 10px;
   }
 
 
   .place-button {
-    padding: 10px 18px;
+    padding: 12px 22px;
 
-    font-size: 13px;
+    font-size: 14px;
   }
 
 
@@ -1155,6 +1155,10 @@ html {
 
   .custom-input {
     width: 100%;
+
+    padding: 16px 18px;
+
+    font-size: 15px;
   }
 
 

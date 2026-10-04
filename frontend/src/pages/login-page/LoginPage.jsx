@@ -1,16 +1,13 @@
-
-
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import useLogin from "../../hooks/useLogin";
-
+import { FashionDoodles, FieldIcon } from "../../Components/AuthVisuals.jsx";
 
 const Login = ({ setIsAuthenticated }) => {
-
     const navigate = useNavigate();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const { login, isLoading, error} = useLogin("/api/users/login");
+    const { login, isLoading, error } = useLogin("/api/users/login");
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -19,73 +16,68 @@ const Login = ({ setIsAuthenticated }) => {
 
         if (user) {
             setIsAuthenticated(true);
-            navigate ("/");
+            navigate("/");
         }
-
     };
 
-        return (
-            <>
-                <div className="log-in">
-                    
-                    <h3> Welcome your Closis! </h3>
+    return (
+        <main className="log-in">
+            <section className="signup-card login-card" aria-labelledby="login-title">
+                <div className="signup-card__wash" aria-hidden="true" />
+                <FashionDoodles />
 
-                    {/* log in form   */}
-                    <form onSubmit={handleSubmit}>
+                <div className="signup-content">
+                    <h1 id="login-title">Welcome back!</h1>
 
-                        {/* email input  */}
-                        <input
-                            name="email"
-                            placeholder="✉️ email"
-                            type="email"
-                            value={email}
-                            onChange={(event) => setEmail(event.target.value)} // update the email state when the user types
-                            required // the user must enter email 
-                        />
-                        <br />
+                    <form className="signup-form login-form" onSubmit={handleSubmit}>
+                        <label className="signup-field">
+                            <FieldIcon kind="email" />
+                            <input
+                                name="email"
+                                type="email"
+                                placeholder="Email"
+                                aria-label="Email"
+                                autoComplete="email"
+                                value={email}
+                                onChange={(event) => setEmail(event.target.value)}
+                                required
+                            />
+                        </label>
 
-                        {/* password input  */}
-                        <input
-                            name="password"
-                            placeholder="🗝️ password"
-                            type="password"
-                            value={password}
-                            onChange={(event) => setPassword(event.target.value)} //update the password state when the user types
-                            required // the user must enter the password
+                        <label className="signup-field">
+                            <FieldIcon kind="password" />
+                            <input
+                                name="password"
+                                type="password"
+                                placeholder="Password"
+                                aria-label="Password"
+                                autoComplete="current-password"
+                                value={password}
+                                onChange={(event) => setPassword(event.target.value)}
+                                required
+                            />
+                        </label>
 
-                        />
-                        <br />
+                        <Link className="login-forgot-link" to="/forgot-password">
+                            Forgot your password?
+                        </Link>
 
-                        {/* display the error message only when the error state is not empty */}
                         {error && (
-                            <p className="error-message">
-                                {error}
-                            </p>
+                            <p className="signup-error" role="alert">{error}</p>
                         )}
 
-                        {/* submit log in form */}
-                        <button type="submit" disabled={isLoading}> log in </button>
+                        <button className="signup-submit" type="submit" disabled={isLoading}>
+                            {isLoading ? "Logging in…" : "Log in"}
+                        </button>
 
-                        {/* link forget password  */}
-                        <p>
-                            <Link to="/forgot-password">
-                                Forgot your password?
-                            </Link>
+                        <p className="login-signup-prompt">
+                            Don’t have an account yet? <Link to="/signup">Sign up here</Link>
                         </p>
-
-                        {/* link to the sign up page */}
-                        <p>
-                            Don't have an account? {" "}
-                            <Link to="/signup">Sign up</Link>
-                        </p>
-
                     </form>
-
                 </div>
-            </>
-        );
+            </section>
+        </main>
+    );
+};
 
-
-    }
-
-    export default Login;
+export default Login;

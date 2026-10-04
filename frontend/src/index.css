@@ -13,6 +13,8 @@
   --peach-30: rgba(255, 183, 165, 0.3);
   --peach-20: rgba(255, 183, 165, 0.2);
   --peach-12: rgba(255, 183, 165, 0.12);
+  --intro-hero-height: clamp(540px, calc(100svh - 110px), 680px);
+  --hero-copy-top: clamp(170px, 22vh, 210px);
 
   color: var(--dark);
   background: var(--cream);
@@ -122,6 +124,12 @@ img {
 .App :is(.feature-card, .benefit-card, .outfit-card, .results-card):hover {
   transform: translateY(-4px);
   box-shadow: 0 14px 30px var(--dark-15);
+}
+
+@media (max-width: 700px) {
+  :root {
+    --intro-hero-height: 610px;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

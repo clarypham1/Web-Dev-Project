@@ -1,8 +1,10 @@
 
 import "./How.css";
 import ClosisLogo from "../../assets/closis-logo-peach.png";
+import useScrollReveal from "../../hooks/useScrollReveal";
 
 function How() {
+    useScrollReveal();
     
     return (
         <main className="how">
@@ -22,7 +24,7 @@ function How() {
                     <img src={ClosisLogo} alt="Closis logo"/>
                 </span>
 
-                <div className="how-step">
+                <div className="how-step scroll-reveal">
                     <h2> 1. Create an account</h2>
 
                     <p>
@@ -31,7 +33,7 @@ function How() {
 
                 </div>
 
-                <div className="how-step">
+                <div className="how-step scroll-reveal">
                     <h2> 2. Add the Category and your Clothes</h2>
 
                     <p>
@@ -40,7 +42,7 @@ function How() {
 
                 </div>
 
-                <div className="how-step">
+                <div className="how-step scroll-reveal">
                     <h2> 3. Choose your destination</h2>
 
                     <p>
@@ -50,7 +52,7 @@ function How() {
 
                 </div>
 
-                <div className="how-step">
+                <div className="how-step scroll-reveal">
                     <h2> 4. Add your preferences</h2>
 
                     <p>
@@ -59,7 +61,7 @@ function How() {
 
                 </div>
 
-                <div className="how-step">
+                <div className="how-step scroll-reveal">
                     <h2> 5. Discover outfits</h2>
 
                     <p>
@@ -68,7 +70,7 @@ function How() {
 
                 </div>
 
-                <div className="how-step">
+                <div className="how-step scroll-reveal">
                     <h2> 6. Save your favourites</h2>
 
                     <p>

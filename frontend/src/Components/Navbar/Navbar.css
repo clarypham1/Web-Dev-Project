@@ -7,10 +7,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 6px;
+    gap: 7px;
     position: static;
     background-color: var(--cream);
-    padding: 7px;
+    padding: 8px;
     border-radius: 999px;
     box-shadow: none;
 }
@@ -20,11 +20,12 @@
     align-items: center;
     justify-content: center;
     color: var(--dark);
-    font-size: 17px;
-    font-weight: 700;
+    font-size: 18px;
+    font-weight: 800;
+    font-synthesis: weight;
     white-space: nowrap;
     text-decoration: none;
-    padding: 10px 16px;
+    padding: 11px 17px;
     border-radius: 999px;
     transition: background-color 0.25s ease, color 0.25s ease, transform 0.25s ease;
 }
@@ -49,8 +50,8 @@
     }
 
     .header .navbar > a {
-        padding: 9px 12px;
-        font-size: 15px;
+        padding: 10px 13px;
+        font-size: 16px;
     }
 }
 
@@ -68,7 +69,7 @@
 
 @media (max-width: 520px) {
     .header .navbar > a {
-        padding: 8px 10px;
-        font-size: 14px;
+        padding: 9px 11px;
+        font-size: 15px;
     }
 }

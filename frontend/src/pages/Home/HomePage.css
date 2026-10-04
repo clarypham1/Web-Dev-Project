@@ -12,17 +12,17 @@
 }
 
 .home-section {
-    min-height: clamp(420px, calc(100svh - 110px), 760px);
+    min-height: var(--intro-hero-height);
     display: flex;
     justify-content: center;
-    align-items: center;
-    padding: 60px 20px;
+    align-items: flex-start;
+    padding: var(--hero-copy-top) 40px 60px;
     background: url("../../assets/wardrobe1.jpg") no-repeat center center;
     background-size: cover;
 }
 
 .home-content {
-    max-width: 700px;
+    width: min(760px, 100%);
     margin: 0 auto;
 }
 
@@ -33,7 +33,7 @@
     font-size: 52px;
     font-weight: 700;
     color: var(--cream);
-    padding: 20px;
+    line-height: 1.08;
 }
 
 .home-content h2 {
@@ -56,6 +56,10 @@
     transition: all 0.3s ease;
 }
 
+.home-page .home-start-button {
+    font-size: 30px;
+}
+
 .home-page button:hover {
     background-color: var(--peach);
     transform: translateY(-2px);
@@ -63,21 +67,21 @@
 }
 
 .what-is-closis-section {
-    padding: 80px 30px;
+    padding: 96px 40px;
     background-color: var(--cream);
 }
 
 .what-is-closis-section > h2 {
     margin: 0 0 20px;
-    font-size: 36px;
+    font-size: 40px;
     color: var(--dark);
 }
 
 .what-is-closis-section > p {
     max-width: 700px;
     margin: 0 auto 45px;
-    font-size: 18px;
-    line-height: 1.6;
+    font-size: 20px;
+    line-height: 1.65;
     color: var(--dark);
 }
 
@@ -105,25 +109,25 @@
 
 .feature-card h3 {
     margin: 0 0 15px;
-    font-size: 22px;
+    font-size: 24px;
     color: var(--dark);
 }
 
 .feature-card p {
     margin: 0;
-    font-size: 16px;
+    font-size: 18px;
     line-height: 1.6;
     color: var(--dark);
 }
 
 .why-closis-section {
-    padding: 80px 30px;
+    padding: 96px 40px;
     background-color: var(--peach-12);
 }
 
 .why-closis-section > h2 {
     margin: 0 0 40px;
-    font-size: 36px;
+    font-size: 40px;
     color: var(--dark);
 }
 
@@ -150,29 +154,49 @@
 
 .benefit-card h3 {
     margin: 0 0 15px;
-    font-size: 21px;
+    font-size: 24px;
     color: var(--dark);
 }
 
 .benefit-card p {
     margin: 0;
-    font-size: 16px;
+    font-size: 18px;
     line-height: 1.6;
 }
 
+.home-page .scroll-reveal {
+    opacity: 0;
+    transform: translateY(45px);
+    transition:
+        opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+        box-shadow 0.25s ease;
+}
+
+.home-page .scroll-reveal.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.home-page .scroll-reveal.show:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 14px 30px var(--dark-15);
+}
+
 .how-preview-section {
-    padding: 60px 30px;
+    padding: 96px 40px;
 }
 
 .how-preview-section h2 {
     margin: 0 0 20px;
-    font-size: 30px;
+    font-size: 40px;
     color: var(--dark);
 }
 
 .how-preview-section p{
+    max-width: 700px;
     margin: 0 auto 30px;
-    font-size: 18px;
+    font-size: 20px;
     line-height: 1.5;
     color: var(--dark);
 }
@@ -187,13 +211,26 @@
     }
 }
 
-@media (max-width: 520px) {
+@media (max-width: 900px) {
+    .home-content h1 {
+        font-size: 50px;
+    }
+}
+
+@media (max-width: 700px) {
     .home-section {
-        padding: 48px 20px;
+        padding: var(--hero-copy-top) 20px 48px;
     }
 
     .home-content h1 {
-        font-size: clamp(34px, 10vw, 46px);
+        font-size: 40px;
+        line-height: 1.1;
+    }
+}
+
+@media (max-width: 520px) {
+    .home-content h1 {
+        font-size: 40px;
     }
 
     .home-content h2 {
@@ -206,7 +243,48 @@
         padding: 56px 20px;
     }
 
+    .what-is-closis-section > h2 {
+        font-size: 32px;
+    }
+
+    .what-is-closis-section > p {
+        font-size: 17px;
+    }
+
+    .why-closis-section > h2,
+    .how-preview-section h2 {
+        font-size: 32px;
+    }
+
+    .how-preview-section p {
+        font-size: 17px;
+    }
+
+    .feature-card h3 {
+        font-size: 21px;
+    }
+
+    .feature-card p {
+        font-size: 16px;
+    }
+
+    .benefit-card h3 {
+        font-size: 21px;
+    }
+
+    .benefit-card p {
+        font-size: 16px;
+    }
+
     .benefits {
         grid-template-columns: 1fr;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .home-page .scroll-reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
     }
 }
