@@ -209,8 +209,8 @@ const getAllItems = async (req, res) => {
 
 const createItem = async (req, res) => { 
   try {
-    const { name, type, image, colour, times_used, style, size, comfy_level, season } = req.body;
-    const newItem = await Item.create({name, type, image, colour, times_used, style, size, comfy_level, season});
+    const { name, type, image, colour, times_used, style, brand, details, size, comfy_level, season } = req.body;
+    const newItem = await Item.create({name, type, image, colour, times_used, style, brand, details, size, comfy_level, season});
 
     //then we senddd to postman/fe
     res.status(201).json(newItem);

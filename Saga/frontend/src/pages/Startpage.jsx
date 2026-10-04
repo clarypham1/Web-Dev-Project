@@ -1,4 +1,4 @@
-﻿import React, { useState, useCallback } from "react";
+﻿import React, { useState, useCallback, useEffect } from "react";
 import Wardrobe from "./Wardrobe";
 import GeneratingPage from "./GeneratingPage";
 import ResultsPage from "./ResultsPage";
@@ -16,7 +16,14 @@ function App() {
   
 
 // home page
-  const [currentPage, setCurrentPage] = useState("home");
+//added: if i update on ex. wardrobe i don't fly tohome
+  const [currentPage, setCurrentPage] = useState(() => {
+    return localStorage.getItem("currentPage") || "home";
+  });
+  useEffect(() => {
+    localStorage.setItem("currentPage", currentPage);
+  }, [currentPage]);
+
 // suggest places
   const places = ["School", "Work", "Gym", "Cafe"];
 

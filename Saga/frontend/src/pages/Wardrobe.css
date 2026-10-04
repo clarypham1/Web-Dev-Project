@@ -5,6 +5,7 @@
   position: relative;
 }
 
+
 .wardrobe-card {
   width: 100%;
 }
@@ -98,13 +99,18 @@ body {
 
 .category-row {
   margin-top: 22px;
+  margin-bottom: 22px; 
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
   align-items: center;
 }
 
-
+.category-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
 /* =========================
    BUTTONS
 ========================= */

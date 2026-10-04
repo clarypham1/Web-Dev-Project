@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 
 // some of these will later be autofilled/or if needed changed to false
 const itemSchema = new mongoose.Schema(
-  {   
+  {
     name: {
       type: String,
       required: true
@@ -61,7 +61,13 @@ const itemSchema = new mongoose.Schema(
     details: {
       type: String,
       required: false
-    }
+    },
+
+    favorite: {
+      type: Boolean,
+      required: true,
+      default: false
+    },
   },
   {
     timestamps: true
