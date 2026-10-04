@@ -192,3 +192,11 @@
 .app-content {
   flex: 1;
 }
+
+body.legacy-frontend-page #root {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  text-align: initial;
+  border: 0;
+}

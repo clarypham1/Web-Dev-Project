@@ -1,6 +1,6 @@
 
-import { useState } from "react";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { Suspense, lazy, useEffect, useState } from "react";
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-router-dom";
 
 import Header from "./Components/Header/Header.jsx";
 import Footer from "./Components/Footer/Footer.jsx";
@@ -12,6 +12,9 @@ import ForgotPassword from "./pages/forgotpassword-page/ForgotPassword.jsx";
 import How from "./pages/How/How.jsx";
 import History from "./pages/History/History.jsx";
 import OurStoryPage from "./pages/OurStory/OurStoryPage.jsx";
+
+const Startpage = lazy(() => import("./pages/Startpage.jsx"));
+const ContactUsPage = lazy(() => import("./pages/ContactUsPage.jsx"));
 
 
 import "./pages/login-page/LoginPage.css";
@@ -25,27 +28,28 @@ import "./App.css";
 
 
 
-function App() {
-    const [isAuthenticated, setIsAuthenticated] = useState(() => {
-        const user = JSON.parse(localStorage.getItem("user"));
-        return user && user.token ? true : false;
-    });
+function AppRoutes({ isAuthenticated, setIsAuthenticated }) {
+    const { pathname } = useLocation();
+    const isLegacyFrontendPage = pathname === "/start" || pathname === "/wardrobe";
+
+    useEffect(() => {
+        document.body.classList.toggle("legacy-frontend-page", isLegacyFrontendPage);
+
+        return () => document.body.classList.remove("legacy-frontend-page");
+    }, [isLegacyFrontendPage]);
 
     return (
-        <div className="App">
-
-            <BrowserRouter>
-
-                <Header
-                    isAuthenticated={isAuthenticated}
-                    setIsAuthenticated={setIsAuthenticated}
-                />
-                <div className="app-content">
+        <>
+            <Header
+                isAuthenticated={isAuthenticated}
+                setIsAuthenticated={setIsAuthenticated}
+            />
+            <div className="app-content">
                     <Routes>
 
                         <Route
                             path="/"
-                            element={<HomePage isAuthenticated={isAuthenticated} />}
+                            element={<HomePage />}
                         />
 
                         <Route
@@ -97,15 +101,58 @@ function App() {
                         />
 
                         <Route
+                            path="/wardrobe"
+                            element={
+                                <Suspense fallback={<div className="route-loading">Loading...</div>}>
+                                    <Startpage key="wardrobe" initialPage="wardrobe" />
+                                </Suspense>
+                            }
+                        />
+
+                        <Route
+                            path="/contact"
+                            element={
+                                <Suspense fallback={<div className="route-loading">Loading...</div>}>
+                                    <ContactUsPage />
+                                </Suspense>
+                            }
+                        />
+
+                        <Route
+                            path="/start"
+                            element={
+                                <Suspense fallback={<div className="route-loading">Loading...</div>}>
+                                    <Startpage key="start" />
+                                </Suspense>
+                            }
+                        />
+
+                        <Route
                             path="*"
                             element={<Navigate to="/"/>}
                         />
 
                     </Routes>
-                </div>
+            </div>
 
-                <Footer />
+            {!isLegacyFrontendPage && <Footer />}
+        </>
+    );
+}
 
+function App() {
+    const [isAuthenticated, setIsAuthenticated] = useState(() => {
+        const user = JSON.parse(localStorage.getItem("user"));
+        return user && user.token ? true : false;
+    });
+
+    return (
+        <div className="App">
+            <BrowserRouter>
+                <AppRoutes
+                    isAuthenticated={isAuthenticated}
+                    setIsAuthenticated={setIsAuthenticated}
+                />
             </BrowserRouter>
         </div>
     );

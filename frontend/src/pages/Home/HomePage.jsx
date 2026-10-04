@@ -1,7 +1,7 @@
 
 import { Link } from "react-router-dom";
 
-function HomePage ({ isLoggedIn }) {
+function HomePage () {
     
     return (
 
@@ -14,7 +14,7 @@ function HomePage ({ isLoggedIn }) {
 
                     <h2> Your wardrobe, your style, your day</h2>
 
-                    <Link to= {isLoggedIn ? "/start" : "/login"} >
+                    <Link to="/start">
 
                         <button>
                             Let's start

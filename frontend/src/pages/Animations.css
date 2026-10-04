@@ -1,0 +1,116 @@
+/* PAGE ENTER */
+
+.page-enter {
+  animation:
+    pageEnter 0.7s
+    cubic-bezier(0.22, 1, 0.36, 1)
+    both;
+}
+
+@keyframes pageEnter {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* SCROLL REVEAL */
+
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(42px);
+
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s
+      cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.scroll-reveal.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* SOFT CARD HOVER */
+
+.soft-card {
+  transition:
+    transform 0.3s
+      cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.3s ease;
+}
+
+.soft-card:hover {
+  transform: translateY(-5px);
+}
+
+
+/* MODAL */
+
+.modal-overlay-enter {
+  animation: overlayEnter 0.2s ease both;
+}
+
+@keyframes overlayEnter {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+
+.modal-content-enter {
+  animation:
+    modalEnter 0.32s
+    cubic-bezier(0.22, 1, 0.36, 1)
+    both;
+}
+
+@keyframes modalEnter {
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(18px)
+      scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0)
+      scale(1);
+  }
+}
+
+
+/* ACCESSIBILITY */
+
+@media (prefers-reduced-motion: reduce) {
+  .page-enter,
+  .modal-overlay-enter,
+  .modal-content-enter {
+    animation: none !important;
+  }
+
+  .scroll-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .soft-card {
+    transition: none;
+  }
+}
