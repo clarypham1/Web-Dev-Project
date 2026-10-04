@@ -2,15 +2,17 @@
 
 .home-page {
     width: 100%;
+    min-height: 100%;
+    flex: 1 0 auto;
     margin: 0;
-    font-family: Arial, sans-serif;
+    font-family: inherit;
     text-align: center;
-    background-color: #fff8f7;
-    color:#333;    
+    background-color: var(--cream);
+    color: var(--dark);
 }
 
 .home-section {
-    min-height: 300px;
+    min-height: clamp(420px, calc(100svh - 110px), 760px);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -25,29 +27,29 @@
 }
 
 .home-content h1 {
-    font-family: "Playfair Display", serif;
+    font-family: inherit;
     text-transform: uppercase;
     margin: 0 0 15px;
     font-size: 52px;
     font-weight: 700;
-    color:#fff8f7;
+    color: var(--cream);
     padding: 20px;
 }
 
 .home-content h2 {
-    font-family: "Playfair Display", serif;
+    font-family: inherit;
     margin: 0 0 30px;
     font-size: 32px;
     font-weight: 500;
-    color: #fff8f7;
+    color: var(--cream);
 }
 
 .home-page button {
     padding: 13px 32px;
     border: none;
     border-radius: 25px;
-    background-color: #1A0B2E;
-    color: white;
+    background-color: var(--dark);
+    color: var(--cream);
     font-size: 17px;
     font-weight: bold;
     cursor: pointer;
@@ -55,20 +57,20 @@
 }
 
 .home-page button:hover {
-    background-color: #FFB7A5;
+    background-color: var(--peach);
     transform: translateY(-2px);
-    color: #1A0B2E;
+    color: var(--dark);
 }
 
 .what-is-closis-section {
     padding: 80px 30px;
-    background-color:#fff8f7;
+    background-color: var(--cream);
 }
 
 .what-is-closis-section > h2 {
     margin: 0 0 20px;
     font-size: 36px;
-    color: #333;
+    color: var(--dark);
 }
 
 .what-is-closis-section > p {
@@ -76,7 +78,7 @@
     margin: 0 auto 45px;
     font-size: 18px;
     line-height: 1.6;
-    color: #1A0B2E;
+    color: var(--dark);
 }
 
 .closis-features {
@@ -90,39 +92,39 @@
 .feature-card {
     flex: 1;
     padding: 30px;
-    border: 1px solid #f5cac3;
+    border: 1px solid var(--peach-30);
     border-radius: 15px;
-    background-color: #fff8f7;
+    background-color: var(--surface);
     transition: all 0.3s ease;
 }
 
 .feature-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(122, 62, 72, 0.12);
+    box-shadow: 0 8px 20px var(--dark-08);
 }
 
 .feature-card h3 {
     margin: 0 0 15px;
     font-size: 22px;
-    color: #7a3e48;
+    color: var(--dark);
 }
 
 .feature-card p {
     margin: 0;
     font-size: 16px;
     line-height: 1.6;
-    color: #1A0B2E;
+    color: var(--dark);
 }
 
 .why-closis-section {
     padding: 80px 30px;
-    background-color: #fdf0ee;
+    background-color: var(--peach-12);
 }
 
 .why-closis-section > h2 {
     margin: 0 0 40px;
     font-size: 36px;
-    color: #333;
+    color: var(--dark);
 }
 
 .benefits {
@@ -135,21 +137,21 @@
 
 .benefit-card {
     padding: 30px;
-    border: 1px solid #f5cac3;
+    border: 1px solid var(--peach-30);
     border-radius: 15px;
-    background-color: white;
+    background-color: var(--surface);
     transition: all 0.3s ease;
 }
 
 .benefit-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(122, 62, 72, 0.12);
+    box-shadow: 0 8px 20px var(--dark-08);
 }
 
 .benefit-card h3 {
     margin: 0 0 15px;
     font-size: 21px;
-    color: #7a3e48;
+    color: var(--dark);
 }
 
 .benefit-card p {
@@ -165,12 +167,46 @@
 .how-preview-section h2 {
     margin: 0 0 20px;
     font-size: 30px;
-    color:#1A0B2E;
+    color: var(--dark);
 }
 
 .how-preview-section p{
     margin: 0 auto 30px;
     font-size: 18px;
     line-height: 1.5;
-    color:#1A0B2E;
+    color: var(--dark);
+}
+
+@media (max-width: 800px) {
+    .closis-features {
+        flex-direction: column;
+    }
+
+    .benefits {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 520px) {
+    .home-section {
+        padding: 48px 20px;
+    }
+
+    .home-content h1 {
+        font-size: clamp(34px, 10vw, 46px);
+    }
+
+    .home-content h2 {
+        font-size: clamp(22px, 6vw, 28px);
+    }
+
+    .what-is-closis-section,
+    .why-closis-section,
+    .how-preview-section {
+        padding: 56px 20px;
+    }
+
+    .benefits {
+        grid-template-columns: 1fr;
+    }
 }

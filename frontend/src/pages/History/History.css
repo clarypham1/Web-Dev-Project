@@ -1,18 +1,20 @@
 
 .history-page {
-    min-height: 100vh;
+    width: 100%;
+    min-height: 100%;
+    flex: 1 0 auto;
     padding: 60px 40px;
-    background-color: #fffaf9;
-    font-family: "Nunito", sans-serif;
-    color: #333;
+    background-color: var(--cream);
+    font-family: inherit;
+    color: var(--dark);
 }
 
 .history-page > h2 {
     max-width: 1200px;
     margin: 0 auto 40px;
-    font-family: "Quicksand", sans-serif;
+    font-family: inherit;
     font-size: 32px;
-    color: #7a3e48;
+    color: var(--dark);
 }
 
 
@@ -27,18 +29,18 @@
 
 .outfit-card {
     background-color: white;
-    border: 1px solid #f5cac3;
+    border: 1px solid var(--peach-30);
     border-radius: 20px;
     padding: 20px;
     text-align: center;
-    box-shadow: 0 5px 18px rgba(122, 62, 72, 0.08);
+    box-shadow: 0 5px 18px var(--dark-08);
 }
 
 .outfit-card img {
     width: 100%;
     height: 200px;
     object-fit: contain;
-    background-color: #fff8f7;
+    background-color: var(--cream);
     border-radius: 15px;
     cursor: pointer;
 }
@@ -48,20 +50,20 @@
     margin: 15px auto 0;
     border: none;
     background: none;
-    color: #7a3e48;
-    font-family: "Quicksand", sans-serif;
+    color: var(--dark);
+    font-family: inherit;
     font-size: 22px;
     font-weight: bold;
     cursor: pointer;
 }
 
 .outfit-card button:hover {
-    color: #b95765;
+    color: var(--dark);
 }
 
 .outfit-card p {
     margin-top: 10px;
-    color: #666;
+    color: var(--dark-70);
     font-size: 16px;
 }
 
@@ -78,8 +80,8 @@
     display: inline-block;
     padding: 5px 12px;
     border-radius: 20px;
-    background-color: #fce4e0;
-    color: #7a3e48;
+    background-color: var(--peach-20);
+    color: var(--dark);
     font-size: 13px;
     font-weight: bold;
 }
@@ -88,8 +90,8 @@
     display: inline-block;
     padding: 5px 12px;
     border-radius: 20px;
-    background-color: #fff3cd;
-    color: #856404;
+    background-color: var(--peach-30);
+    color: var(--dark);
     font-size: 13px;
     font-weight: bold;
 }
@@ -100,7 +102,7 @@
     grid-column: 1 / -1;
     margin: 60px auto;
     text-align: center;
-    color: #7a3e48;
+    color: var(--dark-70);
     font-size: 20px;
 }
 
@@ -112,8 +114,8 @@
 }
 
 .outfit-detail h1 {
-    color: #7a3e48;
-    font-family: "Quicksand", sans-serif;
+    color: var(--dark);
+    font-family: inherit;
     font-size: 40px;
     margin-bottom: 30px;
 }
@@ -125,7 +127,7 @@
     height: 500px;
     margin: 0 auto 25px;
     object-fit: contain;
-    background-color: #fff8f7;
+    background-color: var(--cream);
     border-radius: 20px;
 }
 
@@ -133,9 +135,9 @@
     max-width: 500px;
     margin: 15px auto;
     padding: 15px 20px;
-    background-color: white;
+    background-color: var(--surface);
     border-radius: 10px;
-    color: #555;
+    color: var(--dark-70);
 }
 
 .outfit-detail button {
@@ -144,15 +146,16 @@
     padding: 12px 25px;
     border: none;
     border-radius: 25px;
-    background-color: #d86f7c;
-    color: white;
+    background-color: var(--dark);
+    color: var(--cream);
     font-size: 16px;
     font-weight: bold;
     cursor: pointer;
 }
 
 .outfit-detail button:hover {
-    background-color: #b95765;
+    background-color: var(--peach);
+    color: var(--dark);
 }
 
 

@@ -1,16 +1,17 @@
 .results-screen {
   flex: 1;
   min-height: 0;
+  width: 100%;
   display: flex;
   flex-direction: column;
-  background: var(--peach);
+  background: var(--cream);
   color: var(--dark);
   font-family: "Arbutus Slab", Georgia, serif;
 }
 
 .results-page {
   flex: 1;
-  min-height: 540px;
+  min-height: 0;
   padding: 52px 22px 64px;
   background: transparent;
 }
@@ -25,7 +26,7 @@
   padding: 42px;
   border: 1px solid rgba(145, 83, 106, 0.12);
   border-radius: 28px;
-  background: #fff0f1;
+  background: var(--surface);
   box-shadow: 0 24px 64px rgba(74, 38, 51, 0.13);
 }
 
@@ -48,7 +49,7 @@
   padding: 18px;
   border: 1px solid rgba(26, 11, 46, 0.06);
   border-radius: 20px;
-  background: #fffaf7;
+  background: var(--cream);
   box-shadow: 0 12px 30px rgba(26, 11, 46, 0.08);
   transition: box-shadow 0.3s ease;
 }
@@ -68,7 +69,7 @@
   height: 250px;
   border-radius: 14px;
   object-fit: contain;
-  background: #f8e9e7;
+  background: var(--peach-12);
 }
 
 .results-placeholder {

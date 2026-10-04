@@ -2,7 +2,7 @@
 
 .Sign-up {
 
-    font-family: arial, sans-serif;
+    font-family: inherit;
 
     width: 400px;
 
@@ -18,7 +18,7 @@
 
     border-radius: 10px;
 
-    background-color: #FBE9E6;
+    background-color: var(--peach-12);
 
 }
 
@@ -69,9 +69,9 @@
 
     border-radius: 5px;
 
-    background-color: #1A0B2E;
+    background-color: var(--dark);
 
-    color: white;
+    color: var(--cream);
 
     font-size: 18px;
 
@@ -85,7 +85,8 @@
 
 .Sign-up button:hover {
 
-    background-color: #3d1e65;
+    background-color: var(--peach);
+    color: var(--dark);
 
 }
 

@@ -28,7 +28,7 @@
 
     max-width: 350px;
 
-    border-top: 1px solid #f5cac3;
+    border-top: 1px solid var(--peach);
 
     padding-top: 15px;
 
@@ -60,7 +60,7 @@
 
     text-align: center;
 
-    border-top: 1px solid #f5cac3;
+    border-top: 1px solid var(--peach);
 
     padding-top: 20px;
 

@@ -1,16 +1,17 @@
 .generating-screen {
   flex: 1;
   min-height: 0;
+  width: 100%;
   display: flex;
   flex-direction: column;
-  background: var(--peach);
+  background: var(--cream);
   color: var(--dark);
   font-family: "Arbutus Slab", Georgia, serif;
 }
 
 .generating-page {
   flex: 1;
-  min-height: 470px;
+  min-height: 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -23,7 +24,7 @@
   padding: 48px 42px 42px;
   border: 1px solid rgba(145, 83, 106, 0.12);
   border-radius: 28px;
-  background: #fff0f1;
+  background: var(--surface);
   box-shadow: 0 24px 64px rgba(74, 38, 51, 0.13);
   text-align: center;
 }
@@ -51,7 +52,7 @@
   height: 68px;
   margin: 22px auto;
   border: 6px solid rgba(255, 248, 242, 0.9);
-  border-top-color: #8e5067;
+  border-top-color: var(--peach);
   border-radius: 50%;
   animation: spin 1s linear infinite;
 }
@@ -69,7 +70,7 @@
 
 .generating-error p {
   margin: 0 0 18px;
-  color: #7e3148;
+  color: var(--dark);
   font-size: 13px;
   line-height: 1.6;
 }

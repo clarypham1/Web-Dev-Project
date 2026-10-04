@@ -2,7 +2,7 @@
 import Profile from "../../pages/Profile/Profile.jsx";
 import Navbar from "../Navbar/Navbar.jsx";
 import { Link } from "react-router-dom";
-import ClosisLogo from "../../assets/Closis_Logo.jpeg";
+import ClosisLogo from "../../assets/closis-logo-peach.png";
 
 function Header({ isAuthenticated, setIsAuthenticated }) {
 

@@ -2,13 +2,13 @@
 
 .log-in {
 
-    font-family: arial, sans-serif;
-    width: 400px;
-    margin: 20px auto;
+    font-family: inherit;
+    width: min(400px, calc(100% - 40px));
+    margin: auto;
     padding: 30px;
     border-radius: 10px;
-    background-color: #FBE9E6;
-    cursor: pointer;
+    background-color: var(--peach-12);
+    color: var(--dark);
     border: 1px solid #1A0B2E;
     box-sizing: border-box;
 
@@ -18,7 +18,7 @@
 
     font-size: 30px;
 
-    color: #1A0B2E;
+    color: var(--dark);
 
 }
 
@@ -54,9 +54,9 @@
 
     border-radius: 5px;
 
-    background-color: #1A0B2E;
+    background-color: var(--dark);
 
-    color: white;
+    color: var(--cream);
 
     font-size: 18px;
 
@@ -66,7 +66,8 @@
 
 .log-in button:hover {
 
-    background-color: #3d1e65;
+    background-color: var(--peach);
+    color: var(--dark);
 
 }
 
@@ -80,7 +81,7 @@
 
 .log-in a {
 
-    color: #1A0B2E;
+    color: var(--dark);
 
 }
 

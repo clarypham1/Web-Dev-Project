@@ -9,19 +9,19 @@
     align-items: center;
     gap: 6px;
     position: static;
-    background-color: #1A0B2E;
+    background-color: var(--cream);
     padding: 7px;
     border-radius: 999px;
-    box-shadow: 0 8px 20px rgba(26, 11, 46, 0.12);
+    box-shadow: none;
 }
 
 .header .navbar > a {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    color: #FFF8F2;
-    font-size: 15px;
-    font-weight: 500;
+    color: var(--dark);
+    font-size: 17px;
+    font-weight: 700;
     white-space: nowrap;
     text-decoration: none;
     padding: 10px 16px;
@@ -31,14 +31,14 @@
 
 .header .navbar > a:hover,
 .header .navbar > a:focus-visible {
-    color: #FFF8F2;
-    background-color: rgba(255, 183, 165, 0.22);
+    color: var(--dark);
+    background-color: var(--peach-20);
     transform: translateY(-1px);
     outline: none;
 }
 
 .header .navbar > a:focus-visible {
-    outline: 2px solid #FFB7A5;
+    outline: 2px solid var(--peach);
     outline-offset: 2px;
 }
 
@@ -50,7 +50,7 @@
 
     .header .navbar > a {
         padding: 9px 12px;
-        font-size: 14px;
+        font-size: 15px;
     }
 }
 
@@ -69,6 +69,6 @@
 @media (max-width: 520px) {
     .header .navbar > a {
         padding: 8px 10px;
-        font-size: 13px;
+        font-size: 14px;
     }
 }

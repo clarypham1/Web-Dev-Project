@@ -1,6 +1,6 @@
 
 import "./How.css";
-import ClosisLogo from "../../assets/Closis_Logo.jpeg";
+import ClosisLogo from "../../assets/closis-logo-peach.png";
 
 function How() {
     

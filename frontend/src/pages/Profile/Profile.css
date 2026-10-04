@@ -28,7 +28,7 @@
 
     background-color: white;
 
-    border: 1px solid #f5cac3;
+    border: 1px solid var(--peach-30);
     border-radius: 8px;
 
     box-shadow: 0 4px 10px 1A0B2E;
