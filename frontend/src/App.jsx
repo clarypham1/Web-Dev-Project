@@ -11,6 +11,7 @@ import HomePage from "./pages/Home/HomePage.jsx";
 import ForgotPassword from "./pages/forgotpassword-page/ForgotPassword.jsx";
 import How from "./pages/How/How.jsx";
 import History from "./pages/History/History.jsx";
+import OurStoryPage from "./pages/OurStory/OurStoryPage.jsx";
 
 
 import "./pages/login-page/LoginPage.css";
@@ -88,6 +89,11 @@ function App() {
                                     <Navigate to="/login" />
                                 )
                             }
+                        />
+
+                        <Route
+                            path="/our-Story"
+                            element={<OurStoryPage />}
                         />
 
                         <Route
