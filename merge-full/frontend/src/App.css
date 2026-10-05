@@ -1,0 +1,14 @@
+.App {
+  width: 100%;
+  min-height: 100svh;
+  background: var(--color-cream-paper);
+}
+
+.route-loading {
+  display: grid;
+  flex: 1;
+  min-height: 50vh;
+  place-items: center;
+  color: var(--color-marker-orange);
+  font-size: var(--text-subheading);
+}

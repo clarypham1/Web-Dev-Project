@@ -1,0 +1,313 @@
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,400..600,100&family=Geist:wght@400;500&family=Patrick+Hand&display=swap");
+
+:root {
+  --color-cream-paper: #fdfbf9;
+  --color-charcoal: #171717;
+  --color-cocoa-ink: #2b1a07;
+  --color-true-black: #000000;
+  --color-dew-drop: #f7efe9;
+  --color-marker-orange: #ff6f1e;
+  --color-burnt-sienna: #ce500a;
+  --color-sky-sticker: #3b82f6;
+  --color-bubblegum-sticker: #ff66cf;
+  --color-sprout-sticker: #22c55e;
+  --color-shadow-mist: #bebcbb;
+
+  --font-gelica: "Fraunces", "Recoleta", "DM Serif Display", ui-serif, Georgia, serif;
+  --font-hand: "Patrick Hand", "Comic Neue", "Segoe Print", cursive;
+  --font-geist: "Geist", "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+  --text-caption: 16px;
+  --text-body-sm: 18px;
+  --text-body: 20px;
+  --text-subheading: 24px;
+  --text-heading-sm: 28px;
+  --text-heading: 36px;
+  --text-heading-lg: 46px;
+  --text-display: clamp(56px, 9vw, 104px);
+
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+
+  --spacing-4: 4px;
+  --spacing-8: 8px;
+  --spacing-12: 12px;
+  --spacing-16: 16px;
+  --spacing-20: 20px;
+  --spacing-24: 24px;
+  --spacing-28: 28px;
+  --spacing-32: 32px;
+  --spacing-40: 40px;
+  --spacing-48: 48px;
+  --spacing-64: 64px;
+  --spacing-116: 116px;
+
+  --page-max-width: 1200px;
+  --section-gap: 64px;
+  --card-padding: 32px;
+  --element-gap: 12px;
+  --gutter: clamp(16px, 4vw, 40px);
+
+  --radius-tags: 20px;
+  --radius-cards: 12px;
+  --radius-footer: 56px;
+  --radius-inputs: 8px;
+  --radius-buttons: 20px;
+
+  --shadow-lg: rgba(0, 0, 0, 0.06) 0px 2px 20px 0px;
+  --shadow-subtle: rgba(0, 0, 0, 0.25) 0px 1px 2px 0px;
+
+  --border: 1.5px solid var(--color-charcoal);
+  --border-thin: 1px solid var(--color-charcoal);
+
+  --sticker-bolt: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='M36 4 10 36h18l-6 24 30-36H34z' fill='%233b82f6' stroke='%23171717' stroke-width='2.5' stroke-linejoin='round'/%3E%3C/svg%3E");
+  --sticker-heart: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='M32 56S6 40 6 22a13 13 0 0 1 26-4 13 13 0 0 1 26 4c0 18-26 34-26 34z' fill='%23ff66cf' stroke='%23171717' stroke-width='2.5' stroke-linejoin='round'/%3E%3Ccircle cx='24' cy='27' r='3' fill='%23171717'/%3E%3Ccircle cx='40' cy='27' r='3' fill='%23171717'/%3E%3Cpath d='M27 35q5 4 10 0' fill='none' stroke='%23171717' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E");
+  --sticker-sparkle: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='M32 4c3 16 8 21 24 24-16 3-21 8-24 28-3-20-8-25-24-28 16-3 21-8 24-24z' fill='%2322c55e' stroke='%23171717' stroke-width='2.5' stroke-linejoin='round'/%3E%3C/svg%3E");
+  --sticker-ghost: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='M14 58V28a18 18 0 0 1 36 0v30l-6-5-6 5-6-5-6 5-6-5z' fill='%23fdfbf9' stroke='%23171717' stroke-width='2.5' stroke-linejoin='round'/%3E%3Ccircle cx='26' cy='28' r='3' fill='%23171717'/%3E%3Ccircle cx='38' cy='28' r='3' fill='%23171717'/%3E%3C/svg%3E");
+  --sticker-tee: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='M22 8 6 18l7 12 6-3v29h26V27l6 3 7-12L42 8q-10 8-20 0z' fill='%23ff6f1e' stroke='%23171717' stroke-width='2.5' stroke-linejoin='round'/%3E%3C/svg%3E");
+  --hand-arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 70'%3E%3Cpath d='M6 10c30-8 70 0 86 22 6 9 8 18 6 28M88 50l10 12 10-14' fill='none' stroke='%23171717' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  --marker-underline: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 12' preserveAspectRatio='none'%3E%3Cpath d='M3 8c40-5 90-6 194-3' fill='none' stroke='%23ff6f1e' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E");
+
+  --dark: var(--color-charcoal);
+  --peach: var(--color-marker-orange);
+  --cream: var(--color-cream-paper);
+  --surface: var(--color-cream-paper);
+
+  color: var(--color-charcoal);
+  background: var(--color-cream-paper);
+  color-scheme: light;
+  font-family: var(--font-gelica);
+  font-variation-settings: "SOFT" 100;
+  font-size: var(--text-body-sm);
+  line-height: 1.5;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-width: 320px;
+  min-height: 100%;
+  margin: 0;
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  color: var(--color-charcoal);
+  background: var(--color-cream-paper);
+  font-family: var(--font-gelica);
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0 0 var(--spacing-16);
+  color: var(--color-cocoa-ink);
+  font-family: var(--font-gelica);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: normal;
+  text-wrap: balance;
+}
+
+h1 {
+  font-size: var(--text-heading-lg);
+  line-height: 1.08;
+}
+
+h2 {
+  font-size: var(--text-heading);
+  line-height: 1.2;
+}
+
+h3 {
+  font-size: var(--text-subheading);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.4;
+}
+
+p {
+  margin: 0 0 var(--spacing-12);
+  color: var(--color-cocoa-ink);
+}
+
+strong {
+  color: var(--color-marker-orange);
+  font-weight: var(--font-weight-semibold);
+  background: var(--marker-underline) bottom / 100% 8px no-repeat;
+  padding-bottom: 4px;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  padding: 10px 28px;
+  border: var(--border);
+  border-radius: var(--radius-buttons);
+  background: var(--color-cream-paper);
+  color: var(--color-charcoal);
+  font-family: var(--font-gelica);
+  font-size: var(--text-caption);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.5;
+  box-shadow: var(--shadow-subtle);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+button:hover:not(:disabled) {
+  transform: translateY(-2px) rotate(-0.6deg);
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 3px 0px 0px;
+}
+
+button:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: var(--shadow-subtle);
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 12px 16px;
+  border: var(--border-thin);
+  border-radius: var(--radius-inputs);
+  background: var(--color-cream-paper);
+  color: var(--color-charcoal);
+  font-family: var(--font-geist);
+  font-size: var(--text-caption);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #8a827b;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--color-sprout-sticker);
+  outline: 2px solid var(--color-sprout-sticker);
+  outline-offset: 0;
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--color-sprout-sticker);
+  outline-offset: 3px;
+}
+
+a {
+  color: inherit;
+  text-underline-offset: 4px;
+}
+
+img {
+  max-width: 100%;
+}
+
+a:has(> button) {
+  text-decoration: none;
+}
+
+#root,
+.App {
+  width: 100%;
+  min-height: 100svh;
+}
+
+#root,
+.App,
+.app-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.App,
+.app-content {
+  flex: 1 0 auto;
+}
+
+.app-content > * {
+  flex: 1 0 auto;
+  width: 100%;
+}
+
+.app-content > :is(.log-in, .Sign-up, .forgot-password) {
+  flex: 0 0 auto;
+  margin: auto;
+}
+
+.header,
+.site-footer {
+  flex: 0 0 auto;
+}
+
+.error-message {
+  margin: var(--spacing-8) 0;
+  color: var(--color-burnt-sienna);
+  font-family: var(--font-geist);
+  font-size: var(--text-caption);
+}
+
+.scroll-reveal,
+.story-reveal,
+.contact-reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.scroll-reveal.show,
+.story-reveal.show,
+.contact-reveal.show {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+
+  .scroll-reveal,
+  .story-reveal,
+  .contact-reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (max-width: 700px) {
+  h1 {
+    font-size: 36px;
+  }
+
+  h2 {
+    font-size: var(--text-heading-sm);
+  }
+}

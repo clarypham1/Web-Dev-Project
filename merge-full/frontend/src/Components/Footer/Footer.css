@@ -1,0 +1,39 @@
+.site-footer {
+  margin-top: var(--section-gap);
+  padding: var(--spacing-64) var(--gutter) var(--spacing-48);
+  background: var(--color-marker-orange);
+  border-radius: var(--radius-footer) var(--radius-footer) 0 0;
+  color: var(--color-charcoal);
+}
+
+.footer-columns {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--spacing-40);
+  max-width: var(--page-max-width);
+  margin: 0 auto;
+}
+
+.footer-col h3 {
+  margin-bottom: var(--spacing-12);
+  color: var(--color-charcoal);
+  font-size: var(--text-heading-sm);
+  font-weight: var(--font-weight-semibold);
+}
+
+.footer-col p {
+  max-width: 34ch;
+  color: var(--color-charcoal);
+  font-size: var(--text-caption);
+}
+
+@media (max-width: 760px) {
+  .site-footer {
+    border-radius: 32px 32px 0 0;
+  }
+
+  .footer-columns {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-24);
+  }
+}

@@ -1,0 +1,68 @@
+.navbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-8);
+}
+
+.navbar a {
+  padding: 6px 16px;
+  border: 2px solid var(--color-cocoa-ink);
+  border-radius: 999px;
+  background: var(--color-cream-paper);
+  box-shadow: 2px 3px 0 var(--color-cocoa-ink);
+  color: var(--color-cocoa-ink);
+  font-family: var(--font-gelica);
+  font-size: var(--text-caption);
+  font-weight: var(--font-weight-medium);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: translate 0.2s ease, rotate 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.navbar a:nth-child(6n + 1):hover { background: #ffe27a; }
+.navbar a:nth-child(6n + 2):hover { background: #ffb3d9; }
+.navbar a:nth-child(6n + 3):hover { background: #a9d4ff; }
+.navbar a:nth-child(6n + 4):hover { background: #b8efc4; }
+.navbar a:nth-child(6n + 5):hover { background: #ffe27a; }
+.navbar a:nth-child(6n + 6):hover { background: #ffb3d9; }
+
+.navbar a:hover {
+  translate: 0 -2px;
+  rotate: -3deg;
+  box-shadow: 3px 5px 0 var(--color-cocoa-ink);
+}
+
+.navbar a:nth-child(even):hover {
+  rotate: 3deg;
+}
+
+.navbar a:active {
+  translate: 2px 3px;
+  box-shadow: 0 0 0 var(--color-cocoa-ink);
+}
+
+.navbar a.active {
+  background: var(--color-marker-orange);
+  color: var(--color-cocoa-ink);
+}
+
+.navbar a.active:hover {
+  background: var(--color-marker-orange);
+}
+
+@media (max-width: 900px) {
+  .navbar {
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    overflow-x: auto;
+    padding: 4px 4px 8px;
+    scrollbar-width: none;
+  }
+
+  .navbar::-webkit-scrollbar {
+    display: none;
+  }
+}

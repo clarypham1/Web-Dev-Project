@@ -1,0 +1,8 @@
+.login-forgot-link {
+  align-self: flex-end;
+  margin-top: calc(var(--spacing-4) * -1);
+}
+
+.login-signup-prompt {
+  margin-top: var(--spacing-12);
+}

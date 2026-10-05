@@ -1,0 +1,311 @@
+.story-page {
+  width: 100%;
+  max-width: var(--page-max-width);
+  margin: 0 auto;
+  padding: var(--spacing-64) var(--gutter) 0;
+}
+
+.story-hero h1 {
+  margin-bottom: var(--spacing-8);
+  font-size: clamp(56px, 9vw, 104px);
+}
+
+.story-hero-caption {
+  display: inline-block;
+  color: var(--color-marker-orange);
+  font-family: var(--font-hand);
+  font-size: 28px;
+  rotate: -2deg;
+}
+
+.story-path {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-64);
+  margin-top: var(--spacing-64);
+  padding: var(--spacing-24) 0;
+}
+
+.story-path::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  border-left: 4px dashed var(--color-cocoa-ink);
+  translate: -50% 0;
+  opacity: 0.35;
+}
+
+.story-chapter {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: var(--spacing-64);
+}
+
+.story-chapter:nth-child(even) .story-panel {
+  order: 2;
+}
+
+.story-number {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 54px;
+  height: 54px;
+  translate: -50% -50%;
+  border: 3px solid var(--color-cocoa-ink);
+  border-radius: 50%;
+  background: var(--chapter-color);
+  box-shadow: 3px 4px 0 var(--color-cocoa-ink);
+  font-size: var(--text-subheading);
+  font-weight: var(--font-weight-semibold);
+  scale: 0;
+  transition: scale 0.5s 0.3s cubic-bezier(0.34, 1.8, 0.64, 1);
+}
+
+.story-panel {
+  padding: var(--spacing-24);
+  border: 3px solid var(--color-cocoa-ink);
+  border-radius: 24px;
+  background-color: var(--chapter-color);
+  background-image: radial-gradient(rgba(43, 26, 7, 0.12) 2px, transparent 2.5px);
+  background-size: 20px 20px;
+  box-shadow: 7px 8px 0 var(--color-cocoa-ink);
+  rotate: -2deg;
+  opacity: 0;
+  translate: -60px 0;
+  transition: opacity 0.5s ease, translate 0.7s cubic-bezier(0.34, 1.4, 0.64, 1), rotate 0.3s ease;
+}
+
+.story-chapter:nth-child(even) .story-panel {
+  rotate: 2deg;
+  translate: 60px 0;
+}
+
+.story-panel:hover {
+  rotate: 0deg;
+}
+
+.story-bubble {
+  position: relative;
+  padding: var(--spacing-32);
+  border: 3px solid var(--color-cocoa-ink);
+  border-radius: 28px;
+  background: var(--color-cream-paper);
+  box-shadow: 5px 6px 0 var(--color-cocoa-ink);
+  opacity: 0;
+  translate: 0 40px;
+  transition: opacity 0.5s 0.15s ease, translate 0.7s 0.15s cubic-bezier(0.34, 1.4, 0.64, 1);
+}
+
+.story-bubble h2 {
+  font-size: var(--text-heading);
+}
+
+.story-bubble h2::after {
+  content: "";
+  display: block;
+  width: 120px;
+  height: 10px;
+  margin-top: var(--spacing-8);
+  background: var(--marker-underline) left center / 100% 100% no-repeat;
+}
+
+.story-bubble p {
+  font-size: var(--text-body-sm);
+  line-height: 1.6;
+}
+
+.story-bubble p:last-child {
+  margin-bottom: 0;
+}
+
+.story-chapter.show .story-panel,
+.story-chapter.show .story-bubble {
+  opacity: 1;
+  translate: 0 0;
+}
+
+.story-chapter.show .story-number {
+  scale: 1;
+}
+
+.story-art {
+  display: block;
+  width: 100%;
+  max-height: 260px;
+  overflow: visible;
+}
+
+.story-art * {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.art-question text {
+  fill: var(--color-cocoa-ink);
+  font-family: var(--font-gelica);
+  font-size: 44px;
+  font-weight: 600;
+}
+
+.art-question {
+  animation: question-float 2.4s ease-in-out infinite;
+}
+
+.art-question-2 {
+  animation-delay: 0.6s;
+}
+
+.art-question-3 {
+  animation-delay: 1.2s;
+}
+
+.art-confused {
+  animation: confused-tilt 3s ease-in-out infinite;
+}
+
+.art-bulb {
+  animation: bulb-glow 1.6s ease-in-out infinite;
+}
+
+.art-rays {
+  animation: rays-pulse 1.6s ease-in-out infinite;
+}
+
+.art-card {
+  animation: card-scroll 3s ease-in-out infinite;
+}
+
+.art-card-2 {
+  animation-delay: 0.2s;
+}
+
+.art-card-3 {
+  animation-delay: 0.4s;
+}
+
+.art-spark,
+.art-stars path {
+  animation: spark-spin 2s ease-in-out infinite;
+}
+
+.art-stars path:nth-child(2) {
+  animation-delay: 0.5s;
+}
+
+.art-stars path:nth-child(3) {
+  animation-delay: 1s;
+}
+
+.art-flag {
+  transform-origin: 0% 50%;
+  animation: flag-wave 1.2s ease-in-out infinite;
+}
+
+.story-closing {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--spacing-12) var(--spacing-24);
+  margin: var(--section-gap) 0;
+  padding: var(--spacing-48) var(--spacing-24);
+  border: 3px solid var(--color-cocoa-ink);
+  border-radius: 32px;
+  background: var(--color-marker-orange);
+  box-shadow: 7px 8px 0 var(--color-cocoa-ink);
+}
+
+.story-closing-word {
+  display: inline-block;
+  color: var(--color-cocoa-ink);
+  font-size: clamp(36px, 6vw, 64px);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.1;
+  opacity: 0;
+  scale: 0.4;
+  rotate: -10deg;
+}
+
+.story-closing.show .story-closing-word {
+  animation: word-pop 0.6s var(--word-delay) cubic-bezier(0.34, 1.8, 0.64, 1) forwards;
+}
+
+.story-closing-word:nth-child(2) {
+  color: var(--color-cream-paper);
+}
+
+@keyframes question-float {
+  0%, 100% { translate: 0 0; rotate: -8deg; opacity: 0.6; }
+  50% { translate: 0 -12px; rotate: 8deg; opacity: 1; }
+}
+
+@keyframes confused-tilt {
+  0%, 100% { rotate: -3deg; }
+  50% { rotate: 3deg; }
+}
+
+@keyframes bulb-glow {
+  0%, 100% { fill: #ffe27a; }
+  50% { fill: #fff6c4; }
+}
+
+@keyframes rays-pulse {
+  0%, 100% { scale: 1; opacity: 1; }
+  50% { scale: 1.12; opacity: 0.5; }
+}
+
+@keyframes card-scroll {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 -6px; }
+}
+
+@keyframes spark-spin {
+  0%, 100% { rotate: 0deg; scale: 1; }
+  50% { rotate: 90deg; scale: 0.7; }
+}
+
+@keyframes flag-wave {
+  0%, 100% { scale: 1 1; }
+  50% { scale: 0.85 1.05; }
+}
+
+@keyframes word-pop {
+  to { opacity: 1; scale: 1; rotate: 0deg; }
+}
+
+@media (max-width: 860px) {
+  .story-path::before {
+    left: 26px;
+  }
+
+  .story-chapter {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-24);
+    padding-left: 64px;
+  }
+
+  .story-chapter:nth-child(even) .story-panel {
+    order: 0;
+  }
+
+  .story-number {
+    top: 0;
+    left: 26px;
+    translate: -50% 0;
+  }
+
+  .story-panel,
+  .story-chapter:nth-child(even) .story-panel {
+    translate: 0 40px;
+  }
+}
+

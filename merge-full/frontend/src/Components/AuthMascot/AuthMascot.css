@@ -1,0 +1,205 @@
+.auth-side {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--spacing-12);
+  padding: var(--spacing-40) var(--spacing-24) var(--spacing-24);
+  background-color: #ffe27a;
+  background-image: radial-gradient(rgba(43, 26, 7, 0.12) 2px, transparent 2.5px);
+  background-size: 22px 22px;
+  border-right: 3px solid var(--color-cocoa-ink);
+}
+
+.mascot-bubble {
+  position: relative;
+  max-width: 230px;
+  margin: 0;
+  padding: var(--spacing-12) var(--spacing-20);
+  border: 2.5px solid var(--color-cocoa-ink);
+  border-radius: 20px;
+  background: var(--color-cream-paper);
+  box-shadow: 3px 4px 0 var(--color-cocoa-ink);
+  color: var(--color-cocoa-ink);
+  font-family: var(--font-hand);
+  font-size: 22px;
+  line-height: 1.25;
+  text-align: center;
+  rotate: -3deg;
+  animation: bubble-pop 0.6s 0.2s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+.mascot-bubble::after {
+  content: "";
+  position: absolute;
+  bottom: -14px;
+  left: 50%;
+  width: 22px;
+  height: 22px;
+  translate: -50% 0;
+  rotate: 45deg;
+  border-right: 2.5px solid var(--color-cocoa-ink);
+  border-bottom: 2.5px solid var(--color-cocoa-ink);
+  background: var(--color-cream-paper);
+}
+
+.auth-mascot {
+  width: min(250px, 100%);
+  height: auto;
+  overflow: visible;
+  animation: mascot-bounce 2.6s ease-in-out infinite;
+}
+
+.auth-mascot .m-ink {
+  stroke: var(--color-cocoa-ink);
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.auth-mascot .m-ink-thin {
+  stroke: var(--color-cocoa-ink);
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+.auth-mascot .m-ink-fill {
+  fill: var(--color-cocoa-ink);
+}
+
+.auth-mascot .m-label {
+  fill: var(--color-cocoa-ink);
+  font-family: var(--font-gelica);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.auth-mascot .m-eye {
+  fill: var(--color-cocoa-ink);
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: mascot-blink 4s infinite;
+}
+
+.auth-mascot .m-oh {
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+  transform: scale(0.3);
+  transition: opacity 0.2s ease, transform 0.25s ease;
+}
+
+.auth-mascot .m-smile {
+  transition: opacity 0.2s ease;
+}
+
+.auth-mascot .m-hand {
+  transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.auth-mascot .m-hand-right {
+  transform-box: view-box;
+  transform-origin: 210px 150px;
+  animation: mascot-wave 1.4s ease-in-out infinite;
+}
+
+.auth-mascot .m-spark {
+  stroke: var(--color-cocoa-ink);
+  stroke-width: 2;
+  stroke-linejoin: round;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: spark-twinkle 1.8s ease-in-out infinite;
+}
+
+.auth-mascot .m-spark-2 {
+  animation-delay: 0.9s;
+}
+
+.signup-card:has(input[type="password"]:focus) .m-hand-left {
+  transform: translate(72px, -62px);
+}
+
+.signup-card:has(input[type="password"]:focus) .m-hand-right {
+  animation: none;
+  transform: translate(-74px, 12px);
+}
+
+.signup-card:has(input[type="password"]:focus) .m-smile {
+  opacity: 0;
+}
+
+.signup-card:has(input[type="password"]:focus) .m-oh {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.signup-card:has(input[type="password"]:focus) .mascot-bubble {
+  animation: bubble-shake 0.4s ease-in-out;
+}
+
+.signup-card:has(input[type="email"]:focus) .auth-mascot,
+.signup-card:has(input[type="text"]:focus) .auth-mascot {
+  animation: mascot-bounce 0.9s ease-in-out infinite;
+}
+
+@keyframes mascot-bounce {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 -8px; }
+}
+
+@keyframes mascot-blink {
+  0%, 90%, 100% { transform: scaleY(1); }
+  94% { transform: scaleY(0.1); }
+}
+
+@keyframes mascot-wave {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(-22deg); }
+}
+
+@keyframes spark-twinkle {
+  0%, 100% { transform: scale(1) rotate(0deg); }
+  50% { transform: scale(0.6) rotate(45deg); }
+}
+
+@keyframes bubble-pop {
+  from { scale: 0; }
+  to { scale: 1; }
+}
+
+@keyframes bubble-shake {
+  0%, 100% { translate: 0 0; }
+  25% { translate: -4px 0; }
+  75% { translate: 4px 0; }
+}
+
+@media (max-width: 720px) {
+  .auth-side {
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: center;
+    padding: var(--spacing-24) var(--spacing-16) var(--spacing-12);
+    border-right: 0;
+    border-bottom: 3px solid var(--color-cocoa-ink);
+  }
+
+  .auth-mascot {
+    width: 120px;
+  }
+
+  .mascot-bubble {
+    align-self: center;
+    font-size: 18px;
+  }
+
+  .mascot-bubble::after {
+    bottom: auto;
+    top: 50%;
+    left: auto;
+    right: -14px;
+    translate: 0 -50%;
+    rotate: -45deg;
+  }
+}

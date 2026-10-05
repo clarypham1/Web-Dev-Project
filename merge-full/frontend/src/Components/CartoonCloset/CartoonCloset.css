@@ -1,0 +1,164 @@
+.cartoon-closet-wrap {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: min(440px, 100%);
+}
+
+.cartoon-closet {
+  width: 100%;
+  cursor: pointer;
+  outline: none;
+  transform: rotate(4deg);
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  animation: closet-bob 4s ease-in-out infinite;
+}
+
+.cartoon-closet:hover,
+.cartoon-closet.is-open {
+  transform: rotate(0deg) scale(1.02);
+}
+
+.cartoon-closet:focus-visible {
+  outline: 2px solid var(--color-sprout-sticker);
+  outline-offset: 8px;
+  border-radius: 24px;
+}
+
+.cartoon-closet svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.cartoon-closet .ink-line {
+  stroke: var(--color-cocoa-ink);
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.cartoon-closet .ink-thin {
+  stroke: var(--color-cocoa-ink);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.cartoon-closet .ink-fill {
+  fill: var(--color-cocoa-ink);
+}
+
+.cartoon-closet .rail {
+  stroke-width: 5;
+}
+
+.closet-label text {
+  fill: var(--color-cocoa-ink);
+  font-family: var(--font-gelica);
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.closet-door {
+  transform-box: view-box;
+  transition: transform 0.55s cubic-bezier(0.34, 1.4, 0.64, 1);
+}
+
+.closet-door-left {
+  transform-origin: 40px 250px;
+}
+
+.closet-door-right {
+  transform-origin: 360px 250px;
+}
+
+.cartoon-closet.is-open .closet-door-left {
+  transform: scaleX(0.14) skewY(-4deg);
+}
+
+.cartoon-closet.is-open .closet-door-right {
+  transform: scaleX(0.14) skewY(4deg);
+}
+
+.closet-eye {
+  fill: var(--color-cocoa-ink);
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: closet-blink 4.5s infinite;
+}
+
+.closet-cloth {
+  transform-box: view-box;
+}
+
+.cartoon-closet.is-open .closet-cloth {
+  animation: closet-swing 1.6s ease-in-out infinite;
+}
+
+.closet-sparkles path {
+  transform-box: fill-box;
+  transform-origin: center;
+  transform: scale(0) rotate(-40deg);
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.cartoon-closet.is-open .closet-sparkles path {
+  transform: scale(1) rotate(0deg);
+}
+
+.cartoon-closet.is-open .closet-sparkles path:nth-child(2) {
+  transition-delay: 0.08s;
+}
+
+.cartoon-closet.is-open .closet-sparkles path:nth-child(3) {
+  transition-delay: 0.16s;
+}
+
+.closet-caption {
+  position: relative;
+  align-self: flex-start;
+  margin: var(--spacing-12) 0 0 var(--spacing-48);
+  color: var(--color-marker-orange);
+  font-size: var(--text-subheading);
+  font-style: italic;
+  transform: rotate(-4deg);
+}
+
+.closet-arrow {
+  position: absolute;
+  left: -64px;
+  top: -40px;
+  width: 64px;
+  height: 44px;
+  fill: none;
+  stroke: var(--color-charcoal);
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+@keyframes closet-bob {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 -6px; }
+}
+
+@keyframes closet-blink {
+  0%, 92%, 100% { transform: scaleY(1); }
+  95% { transform: scaleY(0.1); }
+}
+
+@keyframes closet-swing {
+  0%, 100% { transform: rotate(-6deg); }
+  50% { transform: rotate(6deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cartoon-closet,
+  .closet-eye,
+  .cartoon-closet.is-open .closet-cloth {
+    animation: none;
+  }
+}

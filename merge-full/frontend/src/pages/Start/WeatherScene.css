@@ -1,0 +1,160 @@
+.weather-scene {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.ws-cloud {
+  position: absolute;
+  left: -30%;
+  height: auto;
+  overflow: visible;
+  fill: #ffffff;
+  animation-name: ws-drift;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.ws-cloud-dark {
+  fill: #8f9bb3;
+}
+
+.ws-stormy .ws-cloud-dark {
+  fill: #5f6680;
+}
+
+.ws-sun {
+  position: absolute;
+  top: -40px;
+  right: 4%;
+  width: 260px;
+  height: auto;
+  animation: ws-sun-bob 4s ease-in-out infinite;
+}
+
+.ws-sun-rays {
+  transform-box: view-box;
+  transform-origin: 100px 100px;
+  animation: ws-spin 14s linear infinite;
+}
+
+.ws-drop {
+  position: absolute;
+  top: -30px;
+  width: 4px;
+  height: 22px;
+  border-radius: 4px;
+  background: #3b82f6;
+  box-shadow: 0 0 0 1.5px var(--color-cocoa-ink);
+  rotate: 12deg;
+  animation-name: ws-fall;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.ws-flake {
+  position: absolute;
+  top: -20px;
+  border: 2px solid var(--color-cocoa-ink);
+  border-radius: 50%;
+  background: #ffffff;
+  animation-name: ws-snow;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.ws-fog {
+  position: absolute;
+  left: -20%;
+  width: 70%;
+  height: 34px;
+  border: 2px solid rgba(43, 26, 7, 0.25);
+  border-radius: 999px;
+  background: rgba(253, 251, 249, 0.6);
+  animation: ws-fog-drift ease-in-out infinite alternate;
+}
+
+.ws-bolt {
+  position: absolute;
+  top: 18%;
+  right: 14%;
+  width: 70px;
+  opacity: 0;
+  animation: ws-bolt 4s infinite;
+}
+
+.ws-bolt-2 {
+  right: 32%;
+  top: 26%;
+  width: 50px;
+  animation-delay: 1.7s;
+}
+
+.ws-flash {
+  position: absolute;
+  inset: 0;
+  background: #fffbe6;
+  opacity: 0;
+  animation: ws-flash 4s infinite;
+}
+
+@keyframes ws-drift {
+  from { left: -30%; }
+  to { left: 110%; }
+}
+
+@keyframes ws-spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes ws-sun-bob {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 10px; }
+}
+
+@keyframes ws-fall {
+  from { transform: translateY(0); }
+  to { transform: translateY(560px); }
+}
+
+@keyframes ws-snow {
+  0% { transform: translate(0, 0); }
+  25% { transform: translate(14px, 140px); }
+  50% { transform: translate(-10px, 280px); }
+  75% { transform: translate(12px, 420px); }
+  100% { transform: translate(0, 560px); }
+}
+
+@keyframes ws-fog-drift {
+  from { translate: 0 0; }
+  to { translate: 60% 0; }
+}
+
+@keyframes ws-bolt {
+  0%, 8%, 100% { opacity: 0; scale: 0.8; }
+  2%, 6% { opacity: 1; scale: 1; }
+  4% { opacity: 0.3; }
+}
+
+@keyframes ws-flash {
+  0%, 8%, 100% { opacity: 0; }
+  2%, 6% { opacity: 0.55; }
+  4% { opacity: 0.1; }
+}
+
+@media (max-width: 760px) {
+  .ws-sun {
+    top: -50px;
+    right: -40px;
+    width: 180px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .weather-scene * {
+    animation: none !important;
+  }
+}

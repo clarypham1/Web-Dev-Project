@@ -1,0 +1,57 @@
+.sticker-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.sticker {
+  position: absolute;
+  pointer-events: auto;
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+  rotate: var(--sticker-rotate);
+  transition: scale 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.2s ease;
+  animation: sticker-pop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+.sticker svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.sticker:hover {
+  animation: sticker-wiggle 0.5s ease-in-out;
+  scale: 1.08;
+}
+
+.sticker.is-dragging {
+  cursor: grabbing;
+  scale: 1.18;
+  animation: none;
+  filter: drop-shadow(0 6px 4px rgba(0, 0, 0, 0.18));
+}
+
+.sticker:nth-child(2) { animation-delay: 0.08s; }
+.sticker:nth-child(3) { animation-delay: 0.16s; }
+.sticker:nth-child(4) { animation-delay: 0.24s; }
+.sticker:nth-child(5) { animation-delay: 0.32s; }
+
+@keyframes sticker-pop {
+  from { scale: 0; }
+  to { scale: 1; }
+}
+
+@keyframes sticker-wiggle {
+  0%, 100% { rotate: var(--sticker-rotate); }
+  25% { rotate: calc(var(--sticker-rotate) - 10deg); }
+  75% { rotate: calc(var(--sticker-rotate) + 10deg); }
+}
+
+@media (max-width: 760px) {
+  .sticker {
+    scale: 0.75;
+  }
+}
