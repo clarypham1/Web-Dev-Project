@@ -38,7 +38,9 @@
   background: #ffe27a;
   box-shadow: 5px 6px 0 var(--color-cocoa-ink);
   text-align: center;
-  animation: stat-pop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) both, stat-float 3.5s 0.6s ease-in-out infinite;
+  animation:
+    stat-pop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) both,
+    stat-float 3.5s 0.6s ease-in-out infinite;
 }
 
 .history-stat:nth-child(2) {
@@ -105,7 +107,7 @@
 
 .history-list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: var(--spacing-64) var(--spacing-32);
   margin-top: var(--spacing-48);
 }
@@ -122,7 +124,9 @@
   box-shadow: 5px 6px 0 var(--color-cocoa-ink);
   transform-origin: 50% -14px;
   rotate: var(--card-tilt);
-  animation: card-drop 0.8s var(--card-delay) cubic-bezier(0.34, 1.4, 0.64, 1) both;
+  animation:
+    card-drop 0.8s var(--card-delay)
+    cubic-bezier(0.34, 1.4, 0.64, 1) both;
 }
 
 .outfit-card::before {
@@ -155,44 +159,109 @@
   box-shadow: inset 0 -16px 0 #c78b54;
 }
 
+/* The beige area that contains the whole outfit */
 .outfit-photo {
   display: grid;
   place-items: center;
+
+  width: 100%;
+  aspect-ratio: 3 / 4;
+
   overflow: hidden;
-  aspect-ratio: 1;
+
   border: 2px solid var(--color-cocoa-ink);
   border-radius: 4px;
   background: var(--color-dew-drop);
+
   cursor: pointer;
 }
 
-.outfit-photo img {
+/* Normal single image fallback */
+.outfit-photo > img {
   width: 100%;
   height: 100%;
+  max-width: 100%;
+  max-height: 100%;
   object-fit: contain;
-  transition: scale 0.3s ease;
+  transition: transform 0.3s ease;
 }
 
-.outfit-card:hover .outfit-photo img,
-.outfit-card:hover .history-doodle {
-  scale: 1.08;
+/*
+  The complete outfit area.
+
+  Every item gets its own grid space.
+  This means the clothes cannot escape the beige box.
+*/
+.outfit-items-preview {
+  display: grid;
+
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-auto-rows: minmax(0, 1fr);
+
+  gap: 8px;
+
+  width: 100%;
+  height: 100%;
+
+  padding: 12px;
+
+  box-sizing: border-box;
+
+  overflow: hidden;
+}
+
+/*
+  Every clothing item MUST fit inside its grid space.
+  object-fit: contain makes tall items such as trousers
+  automatically become smaller instead of escaping.
+*/
+.outfit-item-image {
+  position: static;
+
+  width: 100% !important;
+  height: 100% !important;
+
+  min-width: 0;
+  min-height: 0;
+
+  max-width: 100%;
+  max-height: 100%;
+
+  object-fit: contain;
+
+  margin: 0;
+
+  transition: transform 0.3s ease;
+}
+
+.outfit-card:hover .outfit-item-image {
+  transform: scale(1.03);
 }
 
 .history-doodle {
   width: 70%;
   height: auto;
-  transition: scale 0.3s ease;
+  transition: transform 0.3s ease;
+}
+
+.outfit-card:hover .history-doodle {
+  transform: scale(1.03);
 }
 
 .outfit-card > button {
   align-self: flex-start;
+
   padding: 0;
+
   border: 0;
   background: none;
   box-shadow: none;
+
   color: var(--color-cocoa-ink);
+
   font-family: var(--font-hand);
   font-size: 24px;
+
   text-align: left;
 }
 
@@ -204,6 +273,7 @@
 
 .outfit-card p {
   margin: 0;
+
   font-family: var(--font-geist);
   font-size: 14px;
 }
@@ -216,9 +286,12 @@
 
 .usage-tag {
   padding: 2px 12px;
+
   border: 2px solid var(--color-cocoa-ink);
   border-radius: 999px;
+
   background: var(--color-dew-drop);
+
   font-family: var(--font-geist);
   font-size: 13px;
 }
@@ -226,13 +299,19 @@
 .popular-tag {
   display: inline-grid;
   place-items: center;
+
   padding: 4px 12px;
+
   border: 2px solid var(--color-cocoa-ink);
   border-radius: 999px;
+
   background: var(--color-marker-orange);
+
   color: var(--color-cocoa-ink);
+
   font-family: var(--font-hand);
   font-size: 17px;
+
   animation: popular-pulse 1.4s ease-in-out infinite;
 }
 
@@ -240,62 +319,142 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+
   gap: var(--spacing-12);
+
   max-width: 420px;
+
   margin: var(--spacing-32) auto 0;
   padding: var(--spacing-40) var(--spacing-24);
+
   border: 3px dashed var(--color-cocoa-ink);
   border-radius: 24px;
+
   text-align: center;
 }
 
 .empty-history p {
   color: var(--color-marker-orange);
+
   font-family: var(--font-hand);
   font-size: 26px;
 }
 
 .empty-hanger {
   width: 150px;
+
   transform-origin: 50% 10%;
+
   animation: hanger-wobble 2.4s ease-in-out infinite;
 }
 
+
+/* =========================================
+   OUTFIT DETAIL
+   ========================================= */
+
 .outfit-detail {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 1fr);
   gap: var(--spacing-40);
+
+  width: 100%;
   max-width: 900px;
+  box-sizing: border-box;
+
   margin-top: var(--spacing-16);
   padding: var(--card-padding);
+
   border: 3px solid var(--color-cocoa-ink);
   border-radius: 24px;
+
   background: var(--color-cream-paper);
+
   box-shadow: 7px 8px 0 var(--color-cocoa-ink);
-  animation: detail-open 0.55s cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  animation:
+    detail-open 0.55s
+    cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  overflow: hidden;
 }
 
 .outfit-detail-photo {
   position: relative;
+
   display: grid;
   place-items: center;
+
+  width: 100%;
+  min-width: 0;
+
   padding: var(--spacing-16);
+  box-sizing: border-box;
+
   border: 2.5px solid var(--color-cocoa-ink);
   border-radius: 6px;
+
   background: #fff;
+
   rotate: -3deg;
+
+  overflow: hidden;
 }
 
-.outfit-detail-photo img {
+/* Multiple clothing items in the opened outfit */
+.outfit-detail-photo .outfit-items-preview {
+  display: grid;
+
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-auto-rows: minmax(0, 1fr);
+
+  gap: 8px;
+
+  width: 100%;
+  height: 380px;
+
+  padding: 10px;
+  box-sizing: border-box;
+
+  overflow: hidden;
+}
+
+/* Make every item fit inside its own space */
+.outfit-detail-photo .outfit-item-image {
+  width: 100% !important;
+  height: 100% !important;
+
+  min-width: 0;
+  min-height: 0;
+
+  max-width: 100%;
+  max-height: 100%;
+
+  object-fit: contain;
+
+  margin: 0;
+}
+
+/* Fallback if an outfit has one normal image */
+.outfit-detail-photo > img {
+  width: 100%;
+  max-width: 100%;
   max-height: 380px;
+
   object-fit: contain;
 }
 
 .outfit-detail-photo .popular-tag {
   position: absolute;
+
   top: -14px;
   right: -14px;
+
   rotate: 12deg;
+}
+
+.outfit-detail-info {
+  min-width: 0;
 }
 
 .outfit-detail-info h2 {
@@ -305,89 +464,199 @@
 .outfit-detail-facts {
   display: flex;
   flex-direction: column;
+
   gap: var(--spacing-12);
+
   margin: 0 0 var(--spacing-24);
   padding: 0;
+
   list-style: none;
 }
 
 .outfit-detail-facts li {
   display: flex;
   align-items: center;
+
   gap: var(--spacing-12);
+
   font-size: var(--text-body-sm);
+
   animation: fact-in 0.4s ease-out both;
 }
 
-.outfit-detail-facts li:nth-child(2) { animation-delay: 0.1s; }
-.outfit-detail-facts li:nth-child(3) { animation-delay: 0.2s; }
-.outfit-detail-facts li:nth-child(4) { animation-delay: 0.3s; }
+.outfit-detail-facts li:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+.outfit-detail-facts li:nth-child(3) {
+  animation-delay: 0.2s;
+}
+
+.outfit-detail-facts li:nth-child(4) {
+  animation-delay: 0.3s;
+}
 
 .outfit-detail-facts span {
   min-width: 110px;
+
   padding: 2px 12px;
+
   border: 2px solid var(--color-cocoa-ink);
   border-radius: 999px;
+
   background: #ffe27a;
+
   font-family: var(--font-hand);
   font-size: 18px;
+
   text-align: center;
 }
 
+
+/* =========================================
+   ANIMATIONS
+   ========================================= */
+
 @keyframes stat-pop {
-  from { scale: 0; rotate: -20deg; }
-  to { scale: 1; rotate: 0deg; }
+  from {
+    scale: 0;
+    rotate: -20deg;
+  }
+
+  to {
+    scale: 1;
+    rotate: 0deg;
+  }
 }
 
 @keyframes stat-float {
-  0%, 100% { translate: 0 0; }
-  50% { translate: 0 -8px; }
+  0%,
+  100% {
+    translate: 0 0;
+  }
+
+  50% {
+    translate: 0 -8px;
+  }
 }
 
 @keyframes stat-wiggle {
-  0%, 100% { rotate: 0deg; }
-  30% { rotate: -8deg; }
-  70% { rotate: 8deg; }
+  0%,
+  100% {
+    rotate: 0deg;
+  }
+
+  30% {
+    rotate: -8deg;
+  }
+
+  70% {
+    rotate: 8deg;
+  }
 }
 
 @keyframes dot-hop {
-  0%, 100% { translate: 0 0; }
-  50% { translate: 0 -12px; }
+  0%,
+  100% {
+    translate: 0 0;
+  }
+
+  50% {
+    translate: 0 -12px;
+  }
 }
 
 @keyframes card-drop {
-  from { opacity: 0; translate: 0 -120px; rotate: calc(var(--card-tilt) * -6); }
-  to { opacity: 1; translate: 0 0; rotate: var(--card-tilt); }
+  from {
+    opacity: 0;
+
+    translate: 0 -120px;
+
+    rotate: calc(var(--card-tilt) * -6);
+  }
+
+  to {
+    opacity: 1;
+
+    translate: 0 0;
+
+    rotate: var(--card-tilt);
+  }
 }
 
 @keyframes card-swing {
-  0%, 100% { rotate: var(--card-tilt); }
-  25% { rotate: calc(var(--card-tilt) + 6deg); }
-  60% { rotate: calc(var(--card-tilt) - 4deg); }
-  85% { rotate: calc(var(--card-tilt) + 1deg); }
+  0%,
+  100% {
+    rotate: var(--card-tilt);
+  }
+
+  25% {
+    rotate: calc(var(--card-tilt) + 6deg);
+  }
+
+  60% {
+    rotate: calc(var(--card-tilt) - 4deg);
+  }
+
+  85% {
+    rotate: calc(var(--card-tilt) + 1deg);
+  }
 }
 
 @keyframes popular-pulse {
-  0%, 100% { scale: 1; }
-  50% { scale: 1.1; }
+  0%,
+  100% {
+    scale: 1;
+  }
+
+  50% {
+    scale: 1.1;
+  }
 }
 
 @keyframes hanger-wobble {
-  0%, 100% { rotate: -6deg; }
-  50% { rotate: 6deg; }
+  0%,
+  100% {
+    rotate: -6deg;
+  }
+
+  50% {
+    rotate: 6deg;
+  }
 }
 
 @keyframes detail-open {
-  from { opacity: 0; scale: 0.85; rotate: -2deg; }
-  to { opacity: 1; scale: 1; rotate: 0deg; }
+  from {
+    opacity: 0;
+    scale: 0.85;
+    rotate: -2deg;
+  }
+
+  to {
+    opacity: 1;
+    scale: 1;
+    rotate: 0deg;
+  }
 }
 
 @keyframes fact-in {
-  from { opacity: 0; translate: -16px 0; }
-  to { opacity: 1; translate: 0 0; }
+  from {
+    opacity: 0;
+    translate: -16px 0;
+  }
+
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
 }
 
-@media (max-width: 700px) {
+
+/* =========================================
+   MOBILE
+   ========================================= */
+
+@media (max-width: 800px) {
   .history-stat {
     width: 120px;
     height: 120px;
@@ -399,11 +668,17 @@
 
   .outfit-detail {
     grid-template-columns: 1fr;
+    max-width: 100%;
+  }
+
+  .outfit-detail-photo .outfit-items-preview {
+    height: 350px;
   }
 }
 
 .outfit-card .last-worn {
   color: var(--color-burnt-sienna);
+
   font-family: var(--font-hand);
   font-size: 17px;
 }

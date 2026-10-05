@@ -109,7 +109,7 @@ const generateOutfitsForUser = async (req, res) => {
     });
 
     res.status(200).json({
-      source: result.source, 
+      source: result.source,
       weather: todayWeather,
       destination: String(destination).trim(),
       preferences: String(preferences || "").trim(),
@@ -123,7 +123,11 @@ const generateOutfitsForUser = async (req, res) => {
 // GET /api/outfits/history
 const getHistory = async (req, res) => {
   try {
-    const outfits = await Outfit.find({ user: req.user._id }).sort({ lastWornAt: -1, createdAt: -1 });
+    const outfits = await Outfit.find({ user: req.user._id })
+      .sort({ lastWornAt: -1, createdAt: -1 });
+
+    console.log("HISTORY:", JSON.stringify(outfits, null, 2));
+
     res.status(200).json(outfits);
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -141,17 +145,27 @@ const createOutfit = async (req, res) => {
 
     // keep only the item fields we store
     let savedItems = [];
-    if (Array.isArray(items)) {
-      savedItems = items.map((item) => {
-        const clean = normalizeItem(item);
-        return {
-          itemId: clean.id,
-          name: clean.name,
-          category: clean.category,
-          color: clean.color,
-          image: clean.image,
-        };
+
+    if (Array.isArray(items) && items.length > 0) {
+      const itemIds = items
+        .map((item) => {
+          const clean = normalizeItem(item);
+          return clean.id;
+        })
+        .filter((id) => mongoose.isValidObjectId(id));
+
+      const dbItems = await Item.find({
+        _id: { $in: itemIds },
+        user: req.user._id,
       });
+
+      savedItems = dbItems.map((item) => ({
+        itemId: item._id.toString(),
+        name: item.name,
+        category: item.type,
+        color: item.colour || "",
+        image: item.image,
+      }));
     }
 
     const outfit = await Outfit.create({

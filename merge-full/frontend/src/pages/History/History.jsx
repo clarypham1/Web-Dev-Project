@@ -119,17 +119,34 @@ const History = () => {
                 <div className="outfit-detail">
 
                     <div className="outfit-detail-photo">
-                        {selectedOutfit.image ? (
-                            <img
-                                src={selectedOutfit.image}
-                                alt={selectedOutfit.name}
-                            />
-                        ) : (
-                            <OutfitDoodle color="#ffb3d9" />
-                        )}
+
+                        <div className="outfit-detail-items">
+                            {selectedOutfit.items &&
+                                selectedOutfit.items.map((item, itemIndex) => (
+                                    <div
+                                        className="outfit-detail-item"
+                                        key={item.itemId || itemIndex}
+                                    >
+                                        {item.image ? (
+                                            <img
+                                                src={item.image}
+                                                alt={item.name}
+                                            />
+                                        ) : (
+                                            <div className="outfit-detail-no-image">
+                                                No image
+                                            </div>
+                                        )}
+
+                                        <span>{item.name}</span>
+                                    </div>
+                                ))}
+                        </div>
+
                         {selectedOutfit.usageCount >= 10 && (
                             <span className="popular-tag">Popular!</span>
                         )}
+
                     </div>
 
                     <div className="outfit-detail-info">
@@ -180,14 +197,25 @@ const History = () => {
                             >
                                 <span className="outfit-pin" aria-hidden="true"></span>
 
-                                <div className="outfit-photo" onClick={() => setSelectedOutfit(outfit)}>
-                                    {outfit.image ? (
-                                        <img
-                                            src={outfit.image}
-                                            alt={outfit.name}
-                                        />
+                                <div
+                                    className="outfit-photo"
+                                    onClick={() => setSelectedOutfit(outfit)}
+                                >
+                                    {outfit.items && outfit.items.length > 0 ? (
+                                        <div className="outfit-items-preview">
+                                            {outfit.items.map((item, itemIndex) => (
+                                                <img
+                                                    key={item.itemId || itemIndex}
+                                                    src={item.image}
+                                                    alt={item.name}
+                                                    className="outfit-item-image"
+                                                />
+                                            ))}
+                                        </div>
                                     ) : (
-                                        <OutfitDoodle color={CARD_COLORS[index % CARD_COLORS.length]} />
+                                        <OutfitDoodle
+                                            color={CARD_COLORS[index % CARD_COLORS.length]}
+                                        />
                                     )}
                                 </div>
 
