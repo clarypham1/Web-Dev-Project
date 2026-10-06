@@ -209,7 +209,7 @@ const OUTFIT_TOOL = {
   },
 };
 
-const claudeOutfits = async ({ items, weather, destination, preferences, avoid, count }) => {
+const claudeOutfits = async ({ items, weather, destination, preferences, learnedPreferences, avoid, count }) => {
   const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
 
   // only send what the AI needs (no images -> fewer tokens)
@@ -238,12 +238,25 @@ const claudeOutfits = async ({ items, weather, destination, preferences, avoid, 
     avoidText = `- Do NOT repeat these combinations the user already saw: ${JSON.stringify(avoid)}`;
   }
 
+  let learnedPreferencesText = "";
+
+  if (learnedPreferences) {
+    learnedPreferencesText = [
+      "Learned user preferences:",
+      `- Preferred styles: ${learnedPreferences.preferredStyles.join(", ") || "none yet"}`,
+      `- Preferred colours: ${learnedPreferences.preferredColours.join(", ") || "none yet"}`,
+      `- Preferred categories: ${learnedPreferences.preferredCategories.join(", ") || "none yet"}`,
+      `- Favourite items: ${learnedPreferences.favouriteItems.join(", ") || "none yet"}`,
+    ].join("\n");
+  }
+
   const prompt = [
     `Create ${askFor} different outfits for today.`,
     "",
     `Weather: ${weatherText}`,
     `Going to: ${destination}`,
-    `Style wishes: ${preferences || "none, surprise me"}`,
+    `Style wishes: ${preferences || "none, surprise me"}`, 
+    learnedPreferencesText,
     "",
     "Rules:",
     "- Each outfit uses 2 or 3 items from the wardrobe below, using their exact ids.",
@@ -275,14 +288,14 @@ const claudeOutfits = async ({ items, weather, destination, preferences, avoid, 
 };
 
 // ---------- 3. main function used by the controller ----------
-const generateOutfits = async ({ items, weather, destination, preferences, avoid = [], count = 5 }) => {
+const generateOutfits = async ({ items, weather, destination, preferences, learnedPreferences, avoid = [], count = 5 }) => {
   // no key -> rule-based
   if (!process.env.ANTHROPIC_API_KEY) {
     return { source: "rules", outfitItems: ruleBasedOutfits({ items, weather, avoid, count }) };
   }
 
   try {
-    const outfitItems = await claudeOutfits({ items, weather, destination, preferences, avoid, count });
+    const outfitItems = await claudeOutfits({ items, weather, destination, preferences, learnedPreferences, avoid, count });
 
     // AI gave nothing usable -> fall back so the user still gets something
     if (outfitItems.length === 0) {

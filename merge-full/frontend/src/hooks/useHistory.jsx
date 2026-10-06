@@ -1,10 +1,10 @@
 
 import { useState, useEffect } from "react";
 
-export default function useHistory (url) {
-    const [outfitHistory, setoutfitHistory] = useState ([]);
-    const [error, setError] = useState (null);
-    const [isLoading, setIsLoading] = useState (false);
+export default function useHistory(url) {
+    const [outfitHistory, setoutfitHistory] = useState([]);
+    const [error, setError] = useState(null);
+    const [isLoading, setIsLoading] = useState(false);
 
     const getHistory = async () => {
         setIsLoading(true);
@@ -13,14 +13,14 @@ export default function useHistory (url) {
         const user = JSON.parse(localStorage.getItem("user"));
 
         if (!user || !user.token) {
-            setError ("You must be logged in to see your history");
+            setError("You must be logged in to see your history");
             setIsLoading(false);
             return null;
         }
 
         try {
 
-            const response = await fetch (url, {
+            const response = await fetch(url, {
                 method: "GET",
                 headers: {
                     "Authorization": `Bearer ${user.token}`
@@ -30,7 +30,7 @@ export default function useHistory (url) {
             const data = await response.json();
 
             if (!response.ok) {
-                setError (data.error);
+                setError(data.error);
                 setIsLoading(false);
                 return null;
             }
@@ -39,7 +39,7 @@ export default function useHistory (url) {
             setIsLoading(false);
 
             return data;
-        }catch (err) {
+        } catch (err) {
             setError(err.message);
             setIsLoading(false);
 
@@ -47,8 +47,43 @@ export default function useHistory (url) {
         }
     };
 
+    const deleteOutfit = async (outfitId) => {
+        const user = JSON.parse(localStorage.getItem("user"));
+
+        if (!user || !user.token) {
+            setError("You must be logged in to delete an outfit");
+            return null;
+        }
+
+        try {
+            const response = await fetch(`/api/outfits/${outfitId}`, {
+                method: "DELETE",
+                headers: {
+                    "Authorization": `Bearer ${user.token}`
+                }
+            });
+
+            const data = await response.json();
+
+            if (!response.ok) {
+                setError(data.error);
+                return null;
+            }
+
+            setoutfitHistory((current) =>
+                current.filter((outfit) => outfit.id !== outfitId)
+            );
+
+            return data;
+        } catch (err) {
+            setError(err.message);
+            return null;
+        }
+    };
+
     return {
         getHistory,
+        deleteOutfit,
         outfitHistory,
         isLoading,
         error

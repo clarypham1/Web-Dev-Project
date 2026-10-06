@@ -61,6 +61,7 @@ const History = () => {
 
     const [selectedOutfit, setSelectedOutfit] = useState(null);
     const { getHistory,
+        deleteOutfit,
         outfitHistory,
         isLoading,
         error } = useHistory("/api/outfits/history");
@@ -165,9 +166,21 @@ const History = () => {
                         <button onClick={() => setSelectedOutfit(null)}>
                             ← Back to history
                         </button>
-                    </div>
 
+                        <button
+                            onClick={() => {
+                                if (window.confirm("Are you sure you want to delete this outfit?")) {
+                                    deleteOutfit(selectedOutfit.id);
+                                    setSelectedOutfit(null);
+                                }
+                            }}
+                        >
+                            Delete outfit
+                        </button>
+                    </div>
                 </div>
+
+
 
             ) : (
 

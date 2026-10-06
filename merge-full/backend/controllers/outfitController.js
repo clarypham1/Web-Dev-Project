@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 import Outfit from "../models/outfitModel.js";
 import Item from "../models/itemModel.js";
 import { generateOutfits, comboKey } from "../services/aiOutfitService.js";
+import { calculateUserPreferences } from "../services/userPreferenceService.js";
 
 // All routes here use requireAuth, so req.user is always the logged-in user.
 const normalizeItem = (item) => {
@@ -72,6 +73,11 @@ const generateOutfitsForUser = async (req, res) => {
       wardrobe = dbItems.map((item) => normalizeItem(item.toObject()));
     }
 
+    const dbItems = await Item.find({ user: req.user._id });
+    const outfits = await Outfit.find({ user: req.user._id });
+
+    const learnedPreferences = calculateUserPreferences(dbItems, outfits);
+
     if (wardrobe.length < 2) {
       return res.status(400).json({ error: "Add at least 2 items to your wardrobe first" });
     }
@@ -84,6 +90,7 @@ const generateOutfitsForUser = async (req, res) => {
       weather: todayWeather,
       destination: String(destination).trim(),
       preferences: String(preferences || "").trim(),
+      learnedPreferences,
       avoid: toAvoidList(previousOutfits),
       count: howMany,
     });
